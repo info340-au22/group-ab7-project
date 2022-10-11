@@ -1,19 +1,146 @@
-h1 {
-    color: blue;
-    font-style: italic;
+html,
+body {
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: aqua;
+  background-color: #cccccc;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
-h2 {
-    color: blueviolet;
-    font-style: italic;
-    font-weight: bolder;
+nav {
+  height: 60px;
+  margin-top: 0;
+  background-color: #444444;
 }
 
-p {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.15rem;
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  display: inline;
+}
+
+.title,
+nav li a {
+  color: white;
+}
+
+.title {
+  font-size: 30px;
+  width: 600px;
+  padding: 15px 15px;
+}
+
+.option {
+  width: auto;
+}
+
+nav li a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 24px;
+  padding: 17px 17px;
+}
+
+div,
+nav li a {
+  display: block;
+}
+
+nav li a:hover {
+  background-color: #222222;
+}
+
+footer div,
+nav ul,
+#about-content {
+  width: 80%;
+}
+
+nav,
+#floating-top {
+  position: sticky;
+  width: 100%;
+  right: 0;
+  top: 0;
+  z-index: 16384;
+}
+
+#floating-top {
+  backdrop-filter: blur(4px);
+  height: 48px;
+}
+
+.page,
+.bio {
+  height: calc(100vh);
+}
+
+.italic {
+  font-style: italic;
+}
+
+img {
+  width: 500px;
+}
+
+#side-index {
+  color: red;
+}
+
+#main {
+  width: 1000px;
+}
+
+.bio-info {
+  width: 60%;
+}
+
+nav,
+.bio-info {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.bio-photo {
+  object-fit: cover;
+}
+
+.title,
+.left {
+  float: left;
+}
+
+.option,
+.right {
+  float: right;
+}
+
+.bio-text {
+  margin: auto;
+}
+
+footer {
+  background-color: #999999;
+}
+
+footer div {
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.bio-photo,
+.bio-text {
+  width: 40%;
 }
