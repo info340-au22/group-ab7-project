@@ -83,9 +83,9 @@ nav,
   height: 48px;
 }
 
-.page,
-.bio {
-  height: calc(100vh);
+.page {
+  height: max(calc(100vh), auto);
+  padding: 100px;
 }
 
 .italic {
@@ -154,7 +154,4 @@ footer div {
   text-align: center;
 }
 
-.extra {
-  height: auto;
-  padding: 100px;
-}
+.extra {}
