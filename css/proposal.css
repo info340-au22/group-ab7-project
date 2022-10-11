@@ -37,7 +37,7 @@ nav li a {
 
 .title {
   font-size: 20pt;
-  padding-right: 15px;
+  padding-right: 10px;
   width: auto;
 }
 
@@ -68,6 +68,7 @@ footer div,
   width: 80%;
 }
 
+header,
 nav,
 #floating-top {
   position: sticky;
