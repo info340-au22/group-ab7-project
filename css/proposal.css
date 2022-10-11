@@ -38,6 +38,7 @@ nav li a {
 .title {
   font-size: 20pt;
   padding-right: 10px;
+  margin: 0;
   width: auto;
 }
 
@@ -92,11 +93,16 @@ nav,
   font-style: italic;
 }
 
-nav,
-.titlecore {
+nav {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.titlecore {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .title,
