@@ -1,0 +1,19 @@
+.row, img {
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.card {
+    border-radius: 30px;
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#Washington {
+    background-image: url(../img/SpaceNeedle.jpg);
+}
+
