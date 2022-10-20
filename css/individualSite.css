@@ -124,13 +124,22 @@ nav a:hover {
   margin-left:  10%;
   margin-right: 10%;
 }
-.siteName{
-  background-color: #24292F;
-  color: white;
 
-}
 .sitesImg{
   width: 40%;
   float: right;
 
 }
+
+.siteName{
+  width: 100%;
+  background-image: url(../img/Olympic_bg.jpg);
+  background-size: cover; 
+	background-position: center; 
+}
+.siteName > #Olympic { 
+	color: white; 
+	background-color: rgba(0,0,0,0.3); 
+	padding: 2em 1em; 
+	font-family: sans-serif; 
+} 
