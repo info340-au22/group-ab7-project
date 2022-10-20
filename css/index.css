@@ -110,3 +110,12 @@ nav li:active {
   height: 300px;
   width: 300px;
 }
+
+nav a {
+  text-decoration: none;
+  color: #F6F8FA;
+}
+
+nav a:hover {
+  color: #BEBFC1;
+}
