@@ -22,6 +22,22 @@ img {
   background-image: url(../img/SpaceNeedle.jpg);
 }
 
+#Idaho {
+  background-image: url(../img/Idaho.jpg);
+}
+
+#Oregon {
+  background-image: url(../img/Portland.jpg);
+}
+
+#California {
+  background-image: url(../img/GoldenBridge.jpg);
+}
+
+#Nevada {
+  background-image: url(../img/Vegas.jpg);
+}
+
 section#site-section {
     background: grey;
 }
@@ -29,3 +45,4 @@ section#site-section {
 div.card {
     width: 18em;
 }
+
