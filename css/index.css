@@ -116,8 +116,29 @@ nav {
 }
 
 .map img {
+  position: absolute;
   height: 300px;
   width: 300px;
+}
+
+.map {
+  position: relative;
+}
+
+#map-wa {
+  right: 20px;
+}
+
+#map-or {
+  top: 90px;
+  right: 50px;
+}
+
+.map-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 nav a {
@@ -316,4 +337,8 @@ footer p {
 .copyrighted {
   font-weight: bold;
   color: red;
+}
+  .cancel {
+    z-index: 1;
+  }
 }
