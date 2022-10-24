@@ -116,8 +116,13 @@ nav {
 }
 
 .map img {
+  position: absolute;
   height: 300px;
   width: 300px;
+}
+
+.map {
+  position: relative;
 }
 
 nav a {
