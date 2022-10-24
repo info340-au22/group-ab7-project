@@ -4,13 +4,27 @@ img {
   border-radius: 30px;
 }
 
+.state-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.state-info {
+  width: 80%;
+  padding: 30px;
+}
+
 .state-card-container {
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 90%;
+  width: 100%;
 }
 
 .state-card {
@@ -47,35 +61,33 @@ img {
   flex: 3;
 }
 
-#washington {
+.washington {
   background-image: url(../img/title-wa.webp);
 }
 
-#idaho {
+.idaho {
   background-image: url(../img/title-id.webp);
 }
 
-#oregon {
+.oregon {
   background-image: url(../img/title-or.jpg);
 }
 
-#california {
+.california {
   background-image: url(../img/title-ca.jpg);
 }
 
-#nevada {
+.nevada {
   background-image: url(../img/title-nv.jpg);
 }
 
-section#site-section {
+section.site-section {
   background-color: grey;
 }
 
 div.card {
   width: 18em;
 }
-
-
 
 footer p {
   margin-left: 4px
@@ -85,7 +97,7 @@ img.card-img-top {
   border-radius: 10%;
 }
 
-#site-section .card img {
+.site-section .card img {
   height: 200px;
   width: 200px;
 }
@@ -100,7 +112,7 @@ img.card-img-top {
 }
 
 h1 {
- text-align: center;
+  text-align: center;
   padding: 5px;
 }
 
