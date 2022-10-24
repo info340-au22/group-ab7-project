@@ -322,6 +322,11 @@ header h1 {
   text-align: center;
 }
 
+footer {
+  background-color: #24292F;
+  color: white;
+}
+
 footer p.bolded {
   font-weight: bold;
   font-size: 25px;
