@@ -146,6 +146,8 @@ nav a:hover {
 }
 
 .site-card h2 {
+  text-align: left;
+  padding: 0;
   margin: 0 20px;
   font-size: 14pt;
 }
@@ -274,11 +276,11 @@ nav a:hover {
 }
 
 .selected,
-.filter li:hover {
+.unselected:hover {
   background: lightgray;
 }
 
-.filter li:hover {
+.unselected:hover {
   border: 1px solid lightgray;
 }
 
@@ -306,4 +308,7 @@ footer p.bolded {
 
 footer p {
   font-size: 15px;
+  
+.cancel {
+  z-index: 1;
 }

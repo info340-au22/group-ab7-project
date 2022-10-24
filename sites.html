@@ -2,179 +2,178 @@
 
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" type="image/png" href="img/favicon.png" />
-    <title>Landmarks</title>
-    <script src="script/sites.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <title>Landmarks</title>
+  <script src="script/sites.js"></script>
+</head>
 
-  <body>
-    <header>
-      <nav>
-        <div class="titlecore">
-          <div>
-            <ul>
-              <li id="title">
-                <a href="index.html"><img id="page-icon" src="img/icon.png"></a>
-              </li>
-              <li class="nav-option"><a href="states.html">States</a></li>
-              <li class="nav-option"><a href="sites.html">Sites</a></li>
-            </ul>
-          </div>
-          <div id="nav-right">
-            <div class="search-bar">
-              <input type="text" placeholder="Search..">
-              <button type="submit"><img id="search-icon" src="img/search.png"></button>
-            </div>
-            <img id="avatar" src="img/ava.jpg">
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <div id="content-area">
-
-      <section id="page-search">
-        <div id="page-search-bar">
-          <input type="text" placeholder="Search..">
-          <button type="submit"><img id="page-search-icon" src="img/search.png"></button>
-        </div>
-      </section>
-
-      <seciton id="filter-box">
-        <h3>
-          Filters:
-        </h3>
-        <div class="filter">
-          <h4>
-            State:
-          </h4>
+<body>
+  <header>
+    <nav>
+      <div class="titlecore">
+        <div>
           <ul>
-            <li>
-              <div>
-                <span>Washington</span>
-                <span class="cancel hidden">×</span>
-              </div>
+            <li id="title">
+              <a href="index.html"><img id="page-icon" src="img/icon.png"></a>
             </li>
-            <li>
-              <div>
-                <span>Oregon</span>
-                <span class="cancel hidden">×</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <span>California</span>
-                <span class="cancel hidden">×</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <span>Nevada</span>
-                <span class="cancel hidden">×</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <span>Idaho</span>
-                <span class="cancel hidden">×</span>
-              </div>
-            </li>
+            <li class="nav-option"><a href="states.html">States</a></li>
+            <li class="nav-option"><a href="sites.html">Sites</a></li>
           </ul>
         </div>
-        <div class="filter">
-          <h4>
-            Type:
-          </h4>
-          <ul>
-            <li>
-              <div>
-                <span>Cultural</span>
-                <span class="cancel hidden">×</span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <span>Natural</span>
-                <span class="cancel hidden">×</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </seciton>
-
-      <section id="sites-box">
-        <div class="card-container" data-state="WA" data-type="cultural">
-          <div class="site-card">
-            <img data-state="WA" src="img/card-space-needle.jpeg" alt="image of space needle">
-            <h2>Space needle</h2>
-            <h3>Landmark of Seattle</h3>
-            <p>Seattle, WA</p>
+        <div id="nav-right">
+          <div class="search-bar">
+            <input type="text" placeholder="Search..">
+            <button type="submit"><img id="search-icon" src="img/search.png"></button>
           </div>
+          <img id="avatar" src="img/ava.jpg">
         </div>
-
-        <div class="card-container" data-state="WA" data-type="cultural">
-          <div class="site-card">
-            <img src="img/card-seattle-great-wheel.jpeg" alt="Seattle Great Ferris Wheel">
-            <h2>Seattle Great Wheel</h2>
-            <h3>West Coast's Tallest Ferris Wheel</h3>
-            <p>Seattle, WA</p>
-          </div>
-        </div>
-
-        <div class="card-container" data-state="WA" data-type="natural">
-          <div class="site-card">
-            <img src="img/card-mt-rainier.jpeg" alt="Mount Rainier">
-            <h2>Mount Rainier</h2>
-            <h3>Highest Mountain in the Cascades</h3>
-            <p>Mt. Rainier National Park, WA</p>
-          </div>
-        </div>
-
-        <div class="card-container" data-state="WA" data-type="cultural">
-          <div class="site-card">
-            <img src="img/card-pike-market-place.jpeg" alt="Pike Place Market">
-            <h2>Pike Place Market</h2>
-            <h3>Seattle's Famous Market</h3>
-            <p>Seattle, WA</p>
-          </div>
-        </div>
-
-        <div class="card-container" data-state="CA" data-type="cultural">
-          <div class="site-card">
-            <img src="img/card-golden-gate-bridge.jpg" alt="golden gate bridge">
-            <h2>Golden Gate Bridge</h2>
-            <h3>Most Famous Bridge in the World</h3>
-            <p>San Francisco, CA</p>
-          </div>
-        </div>
-
-        <div class="card-container" data-state="WA" data-type="natural">
-          <div class="site-card">
-            <img src="img/card-olympic-nation-park.jpg" alt="Olympic National Park">
-            <h2>Olympic National Park</h2>
-            <h3>Largest Wilderness Area in WA</h3>
-            <p>Olympic National Park, WA</p>
-          </div>
-        </div>
-
-      </section>
-    </div>
-
-    <footer>
-      <div>
-        <p>Project member:</p>
-        <p>Mustafa Mohamud Abdulkadir</p>
-        <p>Travon Dragon Dao</p>
-        <p>Zelin He</p>
-        <p>Zhuyi Gu</p>
       </div>
-    </footer>
+    </nav>
+  </header>
 
-  </body>
+  <div id="content-area">
+
+    <section id="page-search">
+      <div id="page-search-bar">
+        <input type="text" placeholder="Search..">
+        <button type="submit"><img id="page-search-icon" src="img/search.png"></button>
+      </div>
+    </section>
+
+    <seciton id="filter-box">
+      <h3>
+        Filters:
+      </h3>
+      <div class="filter">
+        <h4>
+          State:
+        </h4>
+        <ul>
+          <li class="unselected">
+            <div>
+              <span>Washington</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+          <li class="unselected">
+            <div>
+              <span>Oregon</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+          <li class="unselected">
+            <div>
+              <span>California</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+          <li class="unselected">
+            <div>
+              <span>Nevada</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+          <li class="unselected">
+            <div>
+              <span>Idaho</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="filter">
+        <h4>
+          Type:
+        </h4>
+        <ul>
+          <li class="unselected">
+            <div>
+              <span>Cultural</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+          <li class="unselected">
+            <div>
+              <span>Natural</span>
+              <span class="cancel hidden">×</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </seciton>
+
+    <section id="sites-box">
+      <div class="card-container" data-state="WA" data-type="cultural">
+        <div class="site-card">
+          <img data-state="WA" src="img/card-space-needle.jpeg" alt="image of space needle">
+          <h2>Space needle</h2>
+          <h3>landmark of Seattle</h3>
+          <p>Seattle, WA</p>
+        </div>
+      </div>
+
+      <div class="card-container" data-state="WA" data-type="cultural">
+        <div class="site-card">
+          <img src="img/card-seattle-great-wheel.jpeg" alt="Seattle Great Ferris Wheel">
+          <h2>Seattle Great Wheel</h2>
+          <h3>tallest Ferris wheel on the West Coast</h3>
+          <p>Seattle, WA</p>
+        </div>
+      </div>
+
+      <div class="card-container" data-state="WA" data-type="natural">
+        <div class="site-card">
+          <img src="img/card-mt-rainier.jpeg" alt="Mount Rainier">
+          <h2>Mount Rainier</h2>
+          <h3>highest mountain in the Cascades</h3>
+          <p>Mt. Rainier National Park, WA</p>
+        </div>
+      </div>
+
+      <div class="card-container" data-state="WA" data-type="cultural">
+        <div class="site-card">
+          <img src="img/card-pike-market-place.jpeg" alt="Pike Place Market">
+          <h2>Pike Place Market</h2>
+          <h3>seattle's famous market</h3>
+          <p>Seattle, WA</p>
+        </div>
+      </div>
+
+      <div class="card-container" data-state="CA" data-type="cultural">
+        <div class="site-card">
+          <img src="img/card-golden-gate-bridge.jpg" alt="golden gate bridge">
+          <h2>Golden Gate Bridge</h2>
+          <h3>most famous bridge in the world</h3>
+          <p>San Francisco, CA</p>
+        </div>
+      </div>
+
+      <div class="card-container" data-state="WA" data-type="natural">
+        <div class="site-card">
+          <img src="img/card-olympic-nation-park.jpg" alt="Olympic National Park">
+          <h2>Olympic National Park</h2>
+          <h3>largest wilderness area in WA</h3>
+          <p>Olympic National Park, WA</p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>
+    <div>
+      <p>Project member:</p>
+      <p>Mustafa Mohamud Abdulkadir</p>
+      <p>Travon Dragon Dao</p>
+      <p>Zelin He</p>
+      <p>Zhuyi Gu</p>
+    </div>
+  </footer>
+
+</body>
 
 </html>
