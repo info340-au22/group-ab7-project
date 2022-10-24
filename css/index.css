@@ -508,9 +508,10 @@ h1 {
   text-align: center;
 }
 
-.sitesImg {
-  width: 40%;
-  float: right;
+.site-info img {
+  width: 60%;
+  margin: 0 20%;
+  border-radius: 0;
 }
 
 .site-page-header {
@@ -554,6 +555,31 @@ h1 {
   background-color: white;
   border-radius: 5px;
   border: 1px solid #f0f2f7;
+}
+
+.side-bars {
+  width: 100%;
+  background-color: red;
+}
+
+.content-bar {
+  background-color: red;
+  width: 225px;
+  height: 365px;
+  position: fixed;
+  right: 90%;
+  top: 50%;
+  margin-top: -183px;
+}
+
+.operation-bar {
+  background-color: red;
+  width: 225px;
+  height: 365px;
+  position: fixed;
+  left: 90%;
+  top: 50%;
+  margin-top: -183px;
 }
 
 @media (max-width: 767px) {
