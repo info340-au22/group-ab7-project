@@ -123,29 +123,31 @@ nav {
 
 .map {
   position: relative;
+  height: 530px;
 }
 
 .map-wa {
+  top: -50px;
   right: -149px;
 }
 
 .map-or {
-  top: 81px;
+  top: 31px;
   right: -126px;
 }
 
 .map-ca {
-  top: 252px;
+  top: 202px;
   right: -114px;
 }
 
 .map-id {
-  top: 73px;
+  top: 23px;
   right: -238px;
 }
 
 .map-nv {
-  top: 235px;
+  top: 185px;
   right: -171px;
 }
 
