@@ -126,12 +126,27 @@ nav {
 }
 
 #map-wa {
-  right: 20px;
+  right: -149px;
 }
 
 #map-or {
-  top: 90px;
-  right: 50px;
+  top: 81px;
+  right: -126px;
+}
+
+#map-ca {
+  top: 252px;
+  right: -114px;
+}
+
+#map-id {
+  top: 73px;
+  right: -238px;
+}
+
+#map-nv {
+  top: 235px;
+  right: -171px;
 }
 
 .map-container {
