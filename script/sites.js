@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(function() {
   window.addEventListener('load', init);
 
   /**
@@ -15,9 +15,18 @@
 
   function filterClicked(event) {
     let current = event.currentTarget;
-    current.children[0].children[1].classList.remove("hidden");
-    current.classList.add("selected");
+    if (current.classList.contains("unselected")) {
+      current.children[0].children[1].classList.remove("hidden");
+      current.classList.add("selected");
+      current.classList.remove("unselected");
+    } else {
+      current.children[0].children[1].classList.add("hidden");
+      current.classList.remove("selected");
+      current.classList.add("unselected");
+    }
   }
+
+  function cancelClicked(event) {}
 
   /**
    * Returns the element that has the ID attribute with the specified value.
