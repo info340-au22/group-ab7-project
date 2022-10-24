@@ -13,6 +13,11 @@ img {
   text-align: center;
 }
 
+.sub-title {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .state-info {
   width: 80%;
   padding: 30px;
