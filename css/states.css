@@ -72,3 +72,13 @@ img.card-img-top {
 .card p {
   font-size: 12px
 }
+
+h1 {
+ text-align: center;
+  padding: 5px;
+}
+
+h2 {
+  text-align: center;
+  padding: 5px
+}
