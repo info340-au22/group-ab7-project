@@ -362,8 +362,147 @@ p.copyrighted {
   font-weight: lighter;
 }
 
-@media (max-width: 768px) {
-  nav .search-bar {
+.row,
+img {
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.state-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.sub-title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.state-info {
+  width: 80%;
+  padding: 30px;
+}
+
+.state-card-container {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.state-card {
+  flex: 1;
+  height: 100%;
+  width: 500px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  transition: all 500ms ease;
+}
+
+.state-card:hover {
+  transition: all 500ms ease;
+  flex: 3;
+}
+
+.state-card img {
+  height: 50%;
+  transition: all 500ms ease;
+}
+
+.state-card:hover img {
+  transition: all 500ms ease;
+  height: 70%;
+}
+
+.site-selected {
+  flex: 3;
+}
+
+.washington {
+  background-image: url(../img/title-wa.webp);
+}
+
+.idaho {
+  background-image: url(../img/title-id.webp);
+}
+
+.oregon {
+  background-image: url(../img/title-or.jpg);
+}
+
+.california {
+  background-image: url(../img/title-ca.jpg);
+}
+
+.nevada {
+  background-image: url(../img/title-nv.jpg);
+}
+
+section.site-section {
+  background-color: grey;
+}
+
+div.card {
+  width: 18em;
+}
+
+footer p {
+  margin-left: 4px
+}
+
+img.card-img-top {
+  border-radius: 10%;
+}
+
+.site-section .card img {
+  height: 200px;
+  width: 200px;
+}
+
+.card h1 {
+  font-size: 15px;
+  padding-top: 3px;
+}
+
+.card p {
+  font-size: 12px
+}
+
+h1 {
+  text-align: center;
+  padding: 5px;
+}
+
+h2 {
+  text-align: center;
+  padding: 5px
+}
+
+.west-states {
+  text-align: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  nav input {
     display: none;
+  }
+  .state-card-container {
+    height: 39vw;
   }
 }
