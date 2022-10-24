@@ -4,13 +4,27 @@ img {
   border-radius: 30px;
 }
 
+.state-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.state-info {
+  width: 80%;
+  padding: 30px;
+}
+
 .state-card-container {
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 90%;
+  width: 100%;
 }
 
 .state-card {
@@ -75,8 +89,6 @@ div.card {
   width: 18em;
 }
 
-
-
 footer p {
   margin-left: 4px
 }
@@ -100,7 +112,7 @@ img.card-img-top {
 }
 
 h1 {
- text-align: center;
+  text-align: center;
   padding: 5px;
 }
 

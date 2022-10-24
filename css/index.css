@@ -199,7 +199,7 @@ nav a:hover {
   font-size: 10pt;
 }
 
-#sites-box {
+.sites-box {
   margin: 50px;
   display: flex;
   flex-wrap: wrap;
@@ -350,6 +350,7 @@ footer p.bolded {
 footer p {
   font-size: 15px;
 }
+
 .cancel {
   z-index: 1;
 }

@@ -1,12 +1,21 @@
 'use strict';
 
-(function () {
+(function() {
   window.addEventListener('load', init);
 
   /**
    * initlization of the program.
    */
-  function init() {}
+  function init() {
+    let stateCards = qsa(".state-card");
+    for (let i = 0; i < stateCards.length; i++) {
+      stateCards[i].addEventListener("mouseover", showStateInfo);
+    }
+  }
+
+  function showStateInfo(event) {
+    console.log("hello!");
+  }
 
   /**
    * Returns the element that has the ID attribute with the specified value.
