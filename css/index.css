@@ -308,7 +308,12 @@ footer p.bolded {
 
 footer p {
   font-size: 15px;
-  
+
 .cancel {
   z-index: 1;
+}
+
+.copyrighted {
+  font-weight: bold;
+  color: red;
 }
