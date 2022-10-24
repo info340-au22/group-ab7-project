@@ -20,6 +20,12 @@ nav {
   height: 60px;
 }
 
+.nav-space {
+  display: block;
+  height: 60px;
+  width: 100px;
+}
+
 nav img {
   width: 32px;
   height: 32px;
@@ -90,10 +96,18 @@ nav li:active {
   box-shadow: inset 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36), inset 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36), inset 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36), inset 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
 }
 
+.site-info,
 .site-card,
 nav {
   --shadow-color: 210deg 8% 61%;
   box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36), 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36), 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36), 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+}
+
+nav {
+  z-index: 10000;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 
 .search-bar input:focus {
@@ -494,6 +508,54 @@ h1 {
   text-align: center;
 }
 
+.sitesImg {
+  width: 40%;
+  float: right;
+}
+
+.site-page-header {
+  width: 100%;
+  height: 200px;
+  background-image: url(../img/header-olympic-national-park.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-page-title-box {
+  background-color: #00000030;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  padding: 0 20px;
+  border-radius: 15px;
+  --shadow-color: 0deg 0% 15%;
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34), 1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34), 2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34), 4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34), 7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34), 11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34);
+}
+
+.site-page-title {
+  color: white;
+  font-size: 30pt;
+  margin: auto;
+}
+
+.site-info-part:first-of-type {
+  border: none;
+}
+
+.site-info {
+  margin: 20px auto;
+  width: 80%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #f0f2f7;
+}
+
 @media (max-width: 767px) {
   nav input {
     display: none;
@@ -503,26 +565,8 @@ h1 {
   }
 }
 
-.sites {
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.sitesImg {
-  width: 40%;
-  float: right;
-}
-
-.siteName {
-  width: 100%;
-  background-image: url(../img/header-olympic-national-park.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-.siteName > #Olympic {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 2em 1em;
-  font-family: sans-serif;
+@media (min-width: 1200px) {
+  .site-info {
+    width: 960px;
+  }
 }
