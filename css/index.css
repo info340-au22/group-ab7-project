@@ -502,3 +502,27 @@ h1 {
     height: 39vw;
   }
 }
+
+.sites {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.sitesImg {
+  width: 40%;
+  float: right;
+}
+
+.siteName {
+  width: 100%;
+  background-image: url(../img/header-olympic-national-park.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.siteName > #Olympic {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2em 1em;
+  font-family: sans-serif;
+}
