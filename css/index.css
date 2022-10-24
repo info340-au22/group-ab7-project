@@ -8,11 +8,16 @@ body {
   background-color: #F6F8FA;
 }
 
+.centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 nav {
   color: white;
   background-color: #24292F;
   height: 60px;
-  ;
 }
 
 nav img {
@@ -226,4 +231,65 @@ nav a:hover {
 #page-search button {
   border: none;
   outline: none;
+}
+
+#filter-box {
+  width: 80%;
+}
+
+.filter {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  height: 70px;
+}
+
+.filter:last-child {
+  border-top: none;
+}
+
+.filter,
+.filter ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.filter ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.filter h4,
+.filter li {
+  margin: 0 10px;
+}
+
+.filter li {
+  height: 34px;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.selected,
+.filter li:hover {
+  background: lightgray;
+}
+
+.filter li:hover {
+  border: 1px solid lightgray;
+}
+
+.hidden {
+  display: none;
+}
+
+.selected {
+  border: 1px darkgray solid;
+}
+
+.selected:hover {
+  background-color: darkgray;
 }

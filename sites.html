@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <title>Landmarks</title>
+    <script src="script/sites.js"></script>
   </head>
 
   <body>
@@ -44,17 +45,79 @@
         </div>
       </section>
 
+      <seciton id="filter-box">
+        <h3>
+          Filters:
+        </h3>
+        <div class="filter">
+          <h4>
+            State:
+          </h4>
+          <ul>
+            <li>
+              <div>
+                <span>Washington</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Oregon</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>California</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Nevada</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Idaho</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="filter">
+          <h4>
+            Type:
+          </h4>
+          <ul>
+            <li>
+              <div>
+                <span>Cultural</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Natural</span>
+                <span class="cancel hidden">×</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </seciton>
+
       <section id="sites-box">
-        <div class="card-container">
+        <div class="card-container" data-state="WA" data-type="cultural">
           <div class="site-card">
-            <img src="img/card-space-needle.jpeg" alt="image of space needle">
+            <img data-state="WA" src="img/card-space-needle.jpeg" alt="image of space needle">
             <h2>Space needle</h2>
             <h3>landmark of Seattle</h3>
             <p>Seattle, WA</p>
           </div>
         </div>
 
-        <div class="card-container">
+        <div class="card-container" data-state="WA" data-type="cultural">
           <div class="site-card">
             <img src="img/card-seattle-great-wheel.jpeg" alt="Seattle Great Ferris Wheel">
             <h2>Seattle Great Wheel</h2>
@@ -63,7 +126,7 @@
           </div>
         </div>
 
-        <div class="card-container">
+        <div class="card-container" data-state="WA" data-type="natural">
           <div class="site-card">
             <img src="img/card-mt-rainier.jpeg" alt="Mount Rainier">
             <h2>Mount Rainier</h2>
@@ -72,7 +135,7 @@
           </div>
         </div>
 
-        <div class="card-container">
+        <div class="card-container" data-state="WA" data-type="cultural">
           <div class="site-card">
             <img src="img/card-pike-market-place.jpeg" alt="Pike Place Market">
             <h2>Pike Place Market</h2>
@@ -81,7 +144,7 @@
           </div>
         </div>
 
-        <div class="card-container">
+        <div class="card-container" data-state="CA" data-type="cultural">
           <div class="site-card">
             <img src="img/card-golden-gate-bridge.jpg" alt="golden gate bridge">
             <h2>Golden Gate Bridge</h2>
@@ -90,7 +153,7 @@
           </div>
         </div>
 
-        <div class="card-container">
+        <div class="card-container" data-state="WA" data-type="natural">
           <div class="site-card">
             <img src="img/card-olympic-nation-park.jpg" alt="Olympic National Park">
             <h2>Olympic National Park</h2>

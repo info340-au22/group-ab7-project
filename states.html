@@ -7,12 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
       rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/states.css">
+    <script src="script/states.js"></script>
     <!-- Temporary -->
     <link rel="icon" type="image/png" href="img/favicon.png" />
 
@@ -43,114 +41,93 @@
       </nav>
     </header>
 
-
-    <section id="page-search">
-      <div id="page-search-bar">
-        <input type="text" placeholder="Search..">
-        <button type="submit"><img id="page-search-icon" src="img/search.png"></button>
+    <section class="centering">
+      <div class="state-card-container">
+        <div class="state-card" id="washington">
+          <img src="img/seal-wa.png">
+        </div>
+        <div class="state-card" id="oregon">
+          <img src="img/seal-or.png">
+        </div>
+        <div class="state-card" id="california">
+          <img src="img/seal-ca.png">
+        </div>
+        <div class="state-card" id="nevada">
+          <img src="img/seal-nv.png">
+        </div>
+        <div class="state-card" id="idaho">
+          <img src="img/seal-id.png">
+        </div>
       </div>
     </section>
 
 
-    <section>
-      <div class="map">
-        <div class="container">
-          <div class="row ms-1">
-            <div class="col">
-              <div class="card mb-4" id="Washington">
-                <p class="text-white">Washington</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-4" id="Idaho">
-                <p class="text-white">Idaho</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-4" id="Oregon">
-                <p class="text-white">Oregon</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-4" id="California">
-                <p class="text-white">California</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-4" id="Nevada">
-                <p class="text-white">Nevada</p>
-              </div>
-            </div>
-          </div>
+    <section id="sites-box">
+      <div class="card-container" data-state="WA" data-type="cultural">
+        <div class="site-card">
+          <img data-state="WA" src="img/card-space-needle.jpeg" alt="image of space needle">
+          <h2>Space needle</h2>
+          <h3>landmark of Seattle</h3>
+          <p>Seattle, WA</p>
         </div>
       </div>
 
+      <div class="card-container" data-state="WA" data-type="cultural">
+        <div class="site-card">
+          <img src="img/card-seattle-great-wheel.jpeg" alt="Seattle Great Ferris Wheel">
+          <h2>Seattle Great Wheel</h2>
+          <h3>tallest Ferris wheel on the West Coast</h3>
+          <p>Seattle, WA</p>
+        </div>
+      </div>
 
-      <section id="site-section">
+      <div class="card-container" data-state="WA" data-type="natural">
+        <div class="site-card">
+          <img src="img/card-mt-rainier.jpeg" alt="Mount Rainier">
+          <h2>Mount Rainier</h2>
+          <h3>highest mountain in the Cascades</h3>
+          <p>Mt. Rainier National Park, WA</p>
+        </div>
+      </div>
 
+      <div class="card-container" data-state="WA" data-type="cultural">
+        <div class="site-card">
+          <img src="img/card-pike-market-place.jpeg" alt="Pike Place Market">
+          <h2>Pike Place Market</h2>
+          <h3>seattle's famous market</h3>
+          <p>Seattle, WA</p>
+        </div>
+      </div>
 
-        <div class="container-fluid">
-          <div class="row">
+      <div class="card-container" data-state="CA" data-type="cultural">
+        <div class="site-card">
+          <img src="img/card-golden-gate-bridge.jpg" alt="golden gate bridge">
+          <h2>Golden Gate Bridge</h2>
+          <h3>most famous bridge in the world</h3>
+          <p>San Francisco, CA</p>
+        </div>
+      </div>
 
-            <!-- Card 1 -->
-            <div class="col p-3">
-              <div class="card h-100" style="width: 15rem">
-                <div class="card-block">
-                  <img src="img/space_needle_alone.jpg" alt="Space Needle">
-                  <h1 class="card-title">Space Needle</h1>
-                  <p> Located in Seattle Center </p>
-                </div>
-              </div>
-            </div>
+      <div class="card-container" data-state="WA" data-type="natural">
+        <div class="site-card">
+          <img src="img/card-olympic-nation-park.jpg" alt="Olympic National Park">
+          <h2>Olympic National Park</h2>
+          <h3>largest wilderness area in WA</h3>
+          <p>Olympic National Park, WA</p>
+        </div>
+      </div>
 
+    </section>
 
-            <!-- card 2 -->
-            <div class="col p-3">
-              <div class="card h-100" style="width: 15rem">
-                <img class="" src="img/ferris.jpeg" alt="Seattle Great Ferris Wheel">
-                <div class="card-block">
-                  <h1 class="card-title">Seattle Great Wheel</h1>
-                  <p> Located at Pier 57, Elliot Bay </p>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- card 3 -->
-            <div class="col p-3">
-              <div class="card h-100" style="width: 15rem">
-                <img class="" src="img/rainier.jpeg" alt="Mount Rainier">
-                <div class="card-block">
-                  <h1 class="card-title">Mount Rainier</h1>
-                  <p> Located in Mt. Rainier National Park </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- card 4 -->
-            <div class="col p-3">
-              <div class="card h-100" style="width: 15rem">
-                <img class="" src="img/pike.jpeg" alt="Pike Place Market">
-                <div class="card-block">
-                  <h1 class="card-title">Pike Place Market</h1>
-                  <p> Located in Downtown Seattle</p>
-                </div>
-              </div>
-            </div>
-
-
-            <section>
-
-
-              <footer>
-                <div>
-                  <p>Project Members:</p>
-                  <p>Mustafa Mohamud Abdulkadir</p>
-                  <p>Travon Dragon Dao</p>
-                  <p>Zelin He</p>
-                  <p>Zhuyi Gu</p>
-                </div>
-              </footer>
+    <footer>
+      <div>
+        <p>Project Members:</p>
+        <p>Mustafa Mohamud Abdulkadir</p>
+        <p>Travon Dragon Dao</p>
+        <p>Zelin He</p>
+        <p>Zhuyi Gu</p>
+      </div>
+    </footer>
 
   </body>
 

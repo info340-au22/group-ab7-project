@@ -4,10 +4,19 @@ img {
   border-radius: 30px;
 }
 
-.card {
-  border-radius: 30px;
+.state-card-container {
   height: 300px;
-  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 90%;
+}
+
+.state-card {
+  flex: 1;
+  height: 100%;
+  width: 500px;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -16,34 +25,54 @@ img {
   background-repeat: no-repeat;
   background-origin: border-box;
   background-clip: border-box;
+  transition: all 500ms ease;
 }
 
-#Washington {
-  background-image: url(../img/SpaceNeedle.jpg);
+.state-card:hover {
+  transition: all 500ms ease;
+  flex: 3;
 }
 
-#Idaho {
-  background-image: url(../img/Idaho.jpg);
+.state-card img {
+  height: 50%;
+  transition: all 500ms ease;
 }
 
-#Oregon {
-  background-image: url(../img/Portland.jpg);
+.state-card:hover img {
+  transition: all 500ms ease;
+  height: 70%;
 }
 
-#California {
-  background-image: url(../img/GoldenBridge.jpg);
+.site-selected {
+  flex: 3;
 }
 
-#Nevada {
-  background-image: url(../img/Vegas.jpg);
+#washington {
+  background-image: url(../img/title-wa.webp);
+}
+
+#idaho {
+  background-image: url(../img/title-id.webp);
+}
+
+#oregon {
+  background-image: url(../img/title-or.jpg);
+}
+
+#california {
+  background-image: url(../img/title-ca.jpg);
+}
+
+#nevada {
+  background-image: url(../img/title-nv.jpg);
 }
 
 section#site-section {
-    background-color: grey;
+  background-color: grey;
 }
 
 div.card {
-    width: 18em;
+  width: 18em;
 }
 
 footer {
