@@ -361,3 +361,9 @@ p.copyrighted {
   text-align: center;
   font-weight: lighter;
 }
+
+@media (max-width: 768px) {
+  nav .search-bar {
+    display: none;
+  }
+}
