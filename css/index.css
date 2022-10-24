@@ -301,6 +301,19 @@ nav a:hover {
   background-color: darkgray;
 }
 
+header h1 {
+  background: url("/img/plane.jpeg");
+  text-align: center;
+}
+
+footer p.bolded {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+footer p {
+  font-size: 15px;
+  
 .cancel {
   z-index: 1;
 }
