@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   window.addEventListener('load', init);
 
   /**
@@ -11,8 +11,20 @@
     for (let i = 0; i < filters.length; i++) {
       filters[i].addEventListener("click", filterClicked);
     }
+    qs(".olympic-nation-park").addEventListener("click", olympicParkPage);
   }
 
+  /**
+   * jump to the olympic park pgae.
+   */
+  function olympicParkPage() {
+    window.location.href = "olympic-nation-park.html";
+  }
+
+  /**
+   * toggle the filter status after being clicked
+   * @param {event} event
+   */
   function filterClicked(event) {
     let current = event.currentTarget;
     if (current.classList.contains("unselected")) {
@@ -25,8 +37,6 @@
       current.classList.add("unselected");
     }
   }
-
-  function cancelClicked(event) {}
 
   /**
    * Returns the element that has the ID attribute with the specified value.
@@ -44,6 +54,15 @@
    */
   function gen(tagName) {
     return document.createElement(tagName);
+  }
+
+  /**
+   * Returns an  elements matching the given query.
+   * @param {string} query - CSS query selector.
+   * @returns {HTMLElement} - the DOM objects matching the given query.
+   */
+  function qs(query) {
+    return document.querySelector(query);
   }
 
   /**
