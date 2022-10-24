@@ -120,26 +120,26 @@ nav a:hover {
   color: #BEBFC1;
 }
 
-.sites{
-  margin-left:  10%;
+.sites {
+  margin-left: 10%;
   margin-right: 10%;
 }
 
-.sitesImg{
+.sitesImg {
   width: 40%;
   float: right;
-
 }
 
-.siteName{
+.siteName {
   width: 100%;
-  background-image: url(../img/Olympic_bg.jpg);
-  background-size: cover; 
-	background-position: center; 
+  background-image: url(../img/header-olympic-national-park.jpg);
+  background-size: cover;
+  background-position: center;
 }
-.siteName > #Olympic { 
-	color: white; 
-	background-color: rgba(0,0,0,0.3); 
-	padding: 2em 1em; 
-	font-family: sans-serif; 
-} 
+
+.siteName > #Olympic {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2em 1em;
+  font-family: sans-serif;
+}
