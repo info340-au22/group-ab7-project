@@ -61,27 +61,27 @@ img {
   flex: 3;
 }
 
-#washington {
+.washington {
   background-image: url(../img/title-wa.webp);
 }
 
-#idaho {
+.idaho {
   background-image: url(../img/title-id.webp);
 }
 
-#oregon {
+.oregon {
   background-image: url(../img/title-or.jpg);
 }
 
-#california {
+.california {
   background-image: url(../img/title-ca.jpg);
 }
 
-#nevada {
+.nevada {
   background-image: url(../img/title-nv.jpg);
 }
 
-section#site-section {
+section.site-section {
   background-color: grey;
 }
 
@@ -97,7 +97,7 @@ img.card-img-top {
   border-radius: 10%;
 }
 
-#site-section .card img {
+.site-section .card img {
   height: 200px;
   width: 200px;
 }
