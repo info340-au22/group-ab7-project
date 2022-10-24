@@ -7,14 +7,46 @@
    * initlization of the program.
    */
   function init() {
-    let stateCards = qsa(".state-card");
+    // let stateCards = qsa(".state-card");
+    qs(".washington").addEventListener("mouseover", showWAInfo);
+    qs(".nevada").addEventListener("mouseover", showNVInfo);
+    qs(".oregon").addEventListener("mouseover", showORInfo);
+    qs(".california").addEventListener("mouseover", showCAInfo);
+    qs(".idaho").addEventListener("mouseover", showIDInfo);
+  }
+
+  function hideAllInfo() {
+    let stateCards = qsa(".state-info");
     for (let i = 0; i < stateCards.length; i++) {
-      stateCards[i].addEventListener("mouseover", showStateInfo);
+      stateCards[i].classList.add("hidden");
     }
   }
 
-  function showStateInfo(event) {
-    console.log("hello!");
+  function showWAInfo(event) {
+    hideAllInfo();
+    qs(".washington-info").classList.remove("hidden");
+  }
+
+  function showNVInfo(event) {
+    hideAllInfo();
+    qs(".nevada-info").classList.remove("hidden");
+  }
+
+
+  function showORInfo(event) {
+    hideAllInfo();
+    qs(".oregon-info").classList.remove("hidden");
+  }
+
+  function showCAInfo(event) {
+    hideAllInfo();
+    qs(".california-info").classList.remove("hidden");
+  }
+
+
+  function showIDInfo(event) {
+    hideAllInfo();
+    qs(".california-info").classList.remove("hidden");
   }
 
   /**
@@ -34,6 +66,12 @@
   function gen(tagName) {
     return document.createElement(tagName);
   }
+
+
+  function qs(query) {
+    return document.querySelector(query);
+  }
+
 
   /**
    * Returns an array of elements matching the given query.
