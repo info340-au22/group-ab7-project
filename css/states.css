@@ -75,10 +75,7 @@ div.card {
   width: 18em;
 }
 
-footer {
-  background-color: black;
-  color: white;
-}
+
 
 footer p {
   margin-left: 4px
@@ -110,4 +107,8 @@ h1 {
 h2 {
   text-align: center;
   padding: 5px
+}
+
+.west-states {
+  text-align: center;
 }

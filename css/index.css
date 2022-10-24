@@ -337,6 +337,11 @@ header h1 {
   text-align: center;
 }
 
+footer {
+  background-color: #24292F;
+  color: white;
+}
+
 footer p.bolded {
   font-weight: bold;
   font-size: 25px;
@@ -344,7 +349,12 @@ footer p.bolded {
 
 footer p {
   font-size: 15px;
-  .cancel {
-    z-index: 1;
-  }
+}
+.cancel {
+  z-index: 1;
+}
+
+p.copyrighted {
+  text-align: center;
+  font-weight: lighter;
 }
