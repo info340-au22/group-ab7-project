@@ -132,6 +132,10 @@ header {
   border-radius: 50%;
 }
 
+.index-titles {
+  padding-top: 50px;
+}
+
 .map img {
   position: absolute;
   height: 300px;
@@ -545,6 +549,13 @@ h1 {
   color: white;
   font-size: 30pt;
   margin: auto;
+}
+
+.site-page-author {
+  color: grey;
+  font-size: 10pt;
+  margin: auto;
+  text-align: center;
 }
 
 .site-info-part:first-of-type {
