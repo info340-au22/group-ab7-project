@@ -662,6 +662,11 @@ footer a:hover {
   color: #BEBFC1;
 }
 
+p a {
+  color: orange;
+  text-decoration: underline;
+}
+
 @media (max-width: 767px) {
   nav input {
     display: none;
