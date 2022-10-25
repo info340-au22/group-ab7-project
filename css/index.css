@@ -564,6 +564,12 @@ h1 {
   border: none;
 }
 
+.imgCitation {
+  font-size: 3px;
+  text-align: center;
+  color: grey;
+}
+
 .site-info {
   margin: 20px auto;
   width: 700px;
