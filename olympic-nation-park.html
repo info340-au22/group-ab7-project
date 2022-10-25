@@ -51,7 +51,6 @@
         <h1 class="site-page-title">Olympic National Park </h1>
       </div>
     </section>
-    <p class="site-page-author">by Douglas Scott,  Olympic National Park, WA,  March 22, 2016</p>
 
     <div class="sites-info-container">
 
@@ -150,8 +149,8 @@
 
       <div class="operation-bar side-bar">
         <ul>
-          <li tabindex="0" role="button" data-toggle="popover" data-trigger="hover"
-            title="Add to Bookmark"><i class="fa-regular fa-bookmark"></i></li>
+          <li tabindex="0" class="popover-content" role="button" data-toggle="popover"
+            data-trigger="focus" title="Add to Bookmark"><i class="fa-regular fa-bookmark"></i></li>
           <li tabindex="0" role="button" data-toggle="popover" data-trigger="hover"
             title="Share"><i class="fa-solid fa-share-from-square"></i></li>
           <li tabindex="0" role="button" data-toggle="popover" data-trigger="hover"
@@ -162,16 +161,16 @@
         <script>
           $(function() {
             $('[data-toggle="popover"]').popover({
-              trigger: 'hover'
+              trigger: 'hover',
             })
           })
         </script>
       </div>
-    </div>
-    <div class="balancer"></div>
+      <div class="balancer"></div>
     </div>
 
     <footer>
+      <p class="site-page-author">source: Douglas Scott, Olympic National Park, WA, March 22, 2016</p>
       <div class="container">
         <div class="row">
           <div class="col-4 pt-3">
