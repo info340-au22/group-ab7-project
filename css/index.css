@@ -544,6 +544,13 @@ h1 {
   margin: auto;
 }
 
+.site-page-author {
+  color: grey;
+  font-size: 10pt;
+  margin: auto;
+  text-align: center;
+}
+
 .site-info-part:first-of-type {
   border: none;
 }
