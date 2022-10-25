@@ -129,6 +129,10 @@ nav {
   border-radius: 50%;
 }
 
+.index-titles {
+  padding-top: 50px;
+}
+
 .map img {
   position: absolute;
   height: 300px;
