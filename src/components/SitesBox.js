@@ -24,7 +24,7 @@ export default function SitesBox(props) {
       return (
         <SiteCard
           singleSiteData={singleSiteData}
-          key={singleSiteData.imgSrc}
+          key={singleSiteData.siteName}
         ></SiteCard>
       );
     });
