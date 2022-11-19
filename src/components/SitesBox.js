@@ -3,6 +3,7 @@ import SiteCard from "../components/SiteCard";
 import siteData from "../data/sites.json";
 
 export default function SitesBox(props) {
+  console.log(props.filterStates);
   const siteCardArray = siteData
     .filter((element) => {
       if (

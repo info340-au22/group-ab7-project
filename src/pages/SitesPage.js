@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import SitesBox from "../components/SitesBox";
@@ -6,9 +7,16 @@ import states from "../data/states.json";
 const typeFilter = ["Cultural", "Natural"];
 
 export default function SitesPage() {
-  function statesFilterClicked(event, filterType) {
+  const [stateFilter, setStateFilter] = useState([]);
+  function updateFilter(filter) {
+    setStateFilter(filter);
+  }
+
+  function statesFilterClicked(event) {
     event.currentTarget.classList.toggle("selected");
     event.currentTarget.children[0].children[1].classList.toggle("not-shown");
+    console.log(event.currentTarget.key);
+    updateFilter(stateFilter.concat([event.currentTarget.filtername]));
   }
 
   return (
@@ -28,7 +36,7 @@ export default function SitesPage() {
           </div>
         </section>
 
-        <seciton className="filter-box">
+        <section className="filter-box">
           <h3>Filters:</h3>
           <div className="filter">
             <h4>State:</h4>
@@ -36,7 +44,7 @@ export default function SitesPage() {
               {states.map((element) => (
                 <li
                   key={element.name}
-                  filterName={element.short}
+                  filtername={element.short}
                   className="unselected"
                   onClick={statesFilterClicked}
                 >
@@ -54,7 +62,7 @@ export default function SitesPage() {
               {typeFilter.map((element) => (
                 <li
                   key={element}
-                  filterName={element.toLowerCase()}
+                  filtername={element.toLowerCase()}
                   className="unselected"
                   onClick={statesFilterClicked}
                 >
@@ -66,9 +74,9 @@ export default function SitesPage() {
               ))}
             </ul>
           </div>
-        </seciton>
+        </section>
         <h3 className="sub-title">Sites of this State</h3>
-        <SitesBox filterStates={["WA"]}/>
+        <SitesBox filterStates={stateFilter} />
       </div>
       <Footer></Footer>
     </div>
