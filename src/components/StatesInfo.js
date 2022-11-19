@@ -79,12 +79,12 @@ export default function StatesInfo(props) {
   }
 
   return (
-    <div>
+    <section>
       <StatesBanner
         callBack={updateState}
         callBackFilterStates={props.callBackFilterStates}
       />
       <StateBrief data={states[currentState]} />
-    </div>
+    </section>
   );
 }

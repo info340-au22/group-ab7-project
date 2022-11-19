@@ -28,5 +28,5 @@ export default function SitesBox(props) {
         ></SiteCard>
       );
     });
-  return <div className="sites-box">{siteCardArray}</div>;
+  return <section className="sites-box">{siteCardArray}</section>;
 }
