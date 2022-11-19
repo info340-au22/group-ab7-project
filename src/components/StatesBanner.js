@@ -3,7 +3,14 @@ import states from "../data/states.json";
 
 function State(props) {
   return (
-    <div className={"state-card " + props.data.name.toLowerCase()}>
+    <div
+      className={"state-card " + props.data.name.toLowerCase()}
+      onMouseOver={() => {
+        props.callBack(props.data.name);
+        console.log(props.data.name);
+        props.callBackFilterStates(props.data.short.toUpperCase());
+      }}
+    >
       <img
         src={"img/seal-" + props.data.short.toLowerCase() + ".png"}
         alt={props.data.name}
@@ -12,13 +19,19 @@ function State(props) {
   );
 }
 
-export default function StatesBanner() {
+export default function StatesBanner(props) {
   return (
     <div className="centering">
       <div className="state-card-container">
         {states.map((element) => {
-          console.log(element);
-          return <State data={element} />;
+          return (
+            <State
+              key={element.name}
+              callBack={props.callBack}
+              callBackFilterStates={props.callBackFilterStates}
+              data={element}
+            />
+          );
         })}
       </div>
     </div>

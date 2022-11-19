@@ -2,26 +2,71 @@
   {
     "name": "Washington",
     "short": "WA",
-    "description": "Washington is a coastal state bordering canada with a lot of mountains and greenery. It has a population of 7.7 million. It's capital city is Olympia."
+    "nickname": "The Evergreen State",
+    "motto" : "Alki, \"by and by\"",
+    "description": "Washington, is a state in the Pacific Northwest region of the Western United States. Named for George Washington—the first U.S. president—the state was formed from the western part of the Washington Territory. The state is bordered on the west by the Pacific Ocean, Oregon to the south, Idaho to the east, and the Canadian province of British Columbia to the north. It was admitted to the Union as the 42nd state in 1889. ",
+    "capital": "Olympia",
+    "largestCity": "Seattle",
+    "totalArea":"184,827 km²",
+    "population": "7,887,965",
+    "populationDensity": "39.6/km²",
+    "highestElevation": "Mount Rainier (4,392 m)",
+    "timeZone": "UTC -08:00"
   },
   {
     "name": "Oregon",
     "short": "OR",
-    "description": "Oregon is a coastal city in the pacific northwest in between Washington and California. It has a population of 4 million. It's capital is Salem."
+    "nickname": "The Beaver State",
+    "motto" : "Alis volat propriis (She flies with her own wings)",
+    "description": "Washington, is a state in the Pacific Northwest region of the Western United States. Named for George Washington—the first U.S. president—the state was formed from the western part of the Washington Territory. The state is bordered on the west by the Pacific Ocean, Oregon to the south, Idaho to the east, and the Canadian province of British Columbia to the north. It was admitted to the Union as the 42nd state in 1889. ",
+    "capital": "Olympia",
+    "largestCity": "Seattle",
+    "totalArea":"184,827 km²",
+    "population": "7,887,965",
+    "populationDensity": "39.6/km²",
+    "highestElevation": "Mount Rainier (4,392 m)",
+    "timeZone": "UTC -08:00"
   },
   {
     "name": "California",
     "short": "CA",
-    "description": "California is a coastal city that borders Mexico. It has population of 40 million. It's capital is Sacramento."
+    "nickname": "The Golden State",
+    "motto" : "\"Eureka\"",
+    "description": "Washington, is a state in the Pacific Northwest region of the Western United States. Named for George Washington—the first U.S. president—the state was formed from the western part of the Washington Territory. The state is bordered on the west by the Pacific Ocean, Oregon to the south, Idaho to the east, and the Canadian province of British Columbia to the north. It was admitted to the Union as the 42nd state in 1889. ",
+    "capital": "Olympia",
+    "largestCity": "Seattle",
+    "totalArea":"184,827 km²",
+    "population": "7,887,965",
+    "populationDensity": "39.6/km²",
+    "highestElevation": "Mount Rainier (4,392 m)",
+    "timeZone": "UTC -08:00"
   },
   {
     "name": "Idaho",
     "short": "ID",
-    "description": "Idaho is a landlocked state on the west coast. It is known as the Gem state because it produces 72 semi-precious stones. It has a population of 1.8 million with a capital city of Boise."
+    "nickname": "The Evergreen State",
+    "motto" : "Alki, \"by and by\"",
+    "description": "Washington, is a state in the Pacific Northwest region of the Western United States. Named for George Washington—the first U.S. president—the state was formed from the western part of the Washington Territory. The state is bordered on the west by the Pacific Ocean, Oregon to the south, Idaho to the east, and the Canadian province of British Columbia to the north. It was admitted to the Union as the 42nd state in 1889. ",
+    "capital": "Olympia",
+    "largestCity": "Seattle",
+    "totalArea":"184,827 km²",
+    "population": "7,887,965",
+    "populationDensity": "39.6/km²",
+    "highestElevation": "Mount Rainier (4,392 m)",
+    "timeZone": "UTC -08:00"
   },
   {
     "name": "Nevada",
     "short": "NV",
-    "description": "Nevada is a landlocked state on the west coast. It is famous for casinos and no income tax. It's capital city is Carson City and the population of the state is 3 million."
+    "nickname": "The Evergreen State",
+    "motto" : "Alki, \"by and by\"",
+    "description": "Washington, is a state in the Pacific Northwest region of the Western United States. Named for George Washington—the first U.S. president—the state was formed from the western part of the Washington Territory. The state is bordered on the west by the Pacific Ocean, Oregon to the south, Idaho to the east, and the Canadian province of British Columbia to the north. It was admitted to the Union as the 42nd state in 1889. ",
+    "capital": "Olympia",
+    "largestCity": "Seattle",
+    "totalArea":"184,827 km²",
+    "population": "7,887,965",
+    "populationDensity": "39.6/km²",
+    "highestElevation": "Mount Rainier (4,392 m)",
+    "timeZone": "UTC -08:00"
   }
 ]

@@ -725,6 +725,45 @@ p a {
   margin-top: 7px;
 }
 
+.page-middle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.state-info-card {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: ;
+}
+
+.state-info img {
+  height: 250px;
+  width: 250px;
+}
+
+.state-info-mid {
+  margin: 20px;
+  width: 50%;
+}
+
+.state-info-table td {
+  margin-left: 20px;
+}
+
+.state-name {
+  font-weight: bold;
+  font-size: 24pt;
+}
+
+.state-nickname {
+  font-style: italic;
+  font-size: 14pt;
+}
+
 @media (min-width: 768px) {
   nav input {
     display: inline-block;
