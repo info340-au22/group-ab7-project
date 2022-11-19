@@ -389,6 +389,10 @@ nav {
   display: none;
 }
 
+.not-shown {
+  visibility: hidden;
+}
+
 .selected {
   border: 1px darkgray solid;
 }
@@ -737,7 +741,7 @@ p a {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ;
+  border-radius: 5px;
 }
 
 .state-info img {

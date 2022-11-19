@@ -7,7 +7,6 @@ function State(props) {
       className={"state-card " + props.data.name.toLowerCase()}
       onMouseOver={() => {
         props.callBack(props.data.name);
-        console.log(props.data.name);
         props.callBackFilterStates(props.data.short.toUpperCase());
       }}
     >

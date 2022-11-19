@@ -16,7 +16,7 @@ export default function StatesPage(props) {
       <StatesInfo callBackFilterStates={updateFilter}/>
 
       <h3 className="sub-title">Sites of this State</h3>
-      <SitesBox filterStates={stateFilter} />
+      <SitesBox filterStates={[stateFilter]} />
       <Footer></Footer>
     </div>
   );

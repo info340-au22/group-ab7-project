@@ -72,7 +72,6 @@ export default function StatesInfo(props) {
     for (let i = 0; i < states.length; i++) {
       if (state === states[i].name) {
         changeCurrentState(i);
-        console.log("!");
         return;
       }
     }
