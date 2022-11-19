@@ -1,11 +1,56 @@
-[{"state" : "WA", "siteType" : "cultural", "imgSrc" : "img/card-space-needle.jpeg", "imgAlt" : "Space Needle", "siteName" : "Space Needle", "siteFact": "Landmark of Seattle", "siteLocation" : "Seattle, WA"},
-
- {"state" : "WA", "siteType" : "cultural", "imgSrc" : "img/card-seattle-great-wheel.jpeg", "imgAlt" : "Seattle Great Ferris Wheel", "siteName" : "Seattle Great Wheel", "siteFact": "The West Coast's Tallest Ferris Wheel", "siteLocation" : "Seattle, WA"},
-
- {"state" : "WA", "siteType" : "natural", "imgSrc" : "img/card-mt-rainier.jpeg", "imgAlt" : "Mount Rainier", "siteName" : "Mount Rainier", "siteFact": "Highest Mountain in the Cascades", "siteLocation" : "Mt. Rainier National Park, WA"},
-
- {"state" : "WA", "siteType" : "cultural", "imgSrc" : "img/card-pike-market-place.jpeg", "imgAlt" : "Pike Place Market", "siteName" : "Pike Place Market", "siteFact": "Seattle's Famous Market", "siteLocation" : "Seattle, WA"},
-
- {"state" : "CA", "siteType" : "cultural", "imgSrc" : "img/card-golden-gate-bridge.jpg", "imgAlt" : "Golden Gate Bridge", "siteName" : "Golden Gate Bridge", "siteFact": "Most Famous Bridge in the World", "siteLocation" : "San Francisco, CA"}, 
-
- {"state" : "WA", "siteType" : "natural", "imgSrc" : "img/card-olympic-nation-park.jpg", "imgAlt" : "Olympic National Park", "siteName" : "Olympic National Park", "siteFact": "Largest Wilderness Area in WA", "siteLocation" : "Olympic National Park, WA"}]
+[
+  {
+    "state": "WA",
+    "siteType": "cultural",
+    "imgSrc": "img/card-space-needle.jpeg",
+    "imgAlt": "Space Needle",
+    "siteName": "Space Needle",
+    "siteFact": "Landmark of Seattle",
+    "siteLocation": "Seattle, WA"
+  },
+  {
+    "state": "WA",
+    "siteType": "cultural",
+    "imgSrc": "img/card-seattle-great-wheel.jpeg",
+    "imgAlt": "Seattle Great Ferris Wheel",
+    "siteName": "Seattle Great Wheel",
+    "siteFact": "The West Coast's Tallest Ferris Wheel",
+    "siteLocation": "Seattle, WA"
+  },
+  {
+    "state": "WA",
+    "siteType": "natural",
+    "imgSrc": "img/card-mt-rainier.jpeg",
+    "imgAlt": "Mount Rainier",
+    "siteName": "Mount Rainier",
+    "siteFact": "Highest Mountain in the Cascades",
+    "siteLocation": "Mt. Rainier National Park, WA"
+  },
+  {
+    "state": "WA",
+    "siteType": "cultural",
+    "imgSrc": "img/card-pike-market-place.jpeg",
+    "imgAlt": "Pike Place Market",
+    "siteName": "Pike Place Market",
+    "siteFact": "Seattle's Famous Market",
+    "siteLocation": "Seattle, WA"
+  },
+  {
+    "state": "CA",
+    "siteType": "cultural",
+    "imgSrc": "img/card-golden-gate-bridge.jpg",
+    "imgAlt": "Golden Gate Bridge",
+    "siteName": "Golden Gate Bridge",
+    "siteFact": "Most Famous Bridge in the World",
+    "siteLocation": "San Francisco, CA"
+  },
+  {
+    "state": "WA",
+    "siteType": "natural",
+    "imgSrc": "img/card-olympic-nation-park.jpg",
+    "imgAlt": "Olympic National Park",
+    "siteName": "Olympic National Park",
+    "siteFact": "Largest Wilderness Area in WA",
+    "siteLocation": "Olympic National Park, WA"
+  }
+]

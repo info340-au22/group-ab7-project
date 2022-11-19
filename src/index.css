@@ -1,730 +1,744 @@
 body {
-    font-size: 14pt;
-    font-family: 'Roboto Slab', sans-serif;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    color: #000;
-    background-color: #F6F8FA;
-  }
-  
-  .centering {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  /*
+  font-size: 14pt;
+  font-family: "Roboto Slab", sans-serif;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background-color: #f6f8fa;
+}
+
+.centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
     nav bar properties
   */
-  
-  header {
-    position: sticky;
-    z-index: 10000;
-    top: 0;
-  }
-  
-  nav {
-    width: 100%;
-    color: white;
-    background-color: #24292F;
-    height: 60px;
-  }
-  
-  .nav-space {
-    display: block;
-    height: 60px;
-    width: 100px;
-  }
-  
-  nav img {
-    width: 32px;
-    height: 32px;
-  }
-  
-  nav input {
-    display: none;
-  }
-  
-  .search-icon,
-  .page-icon {
-    filter: invert(100%);
-  }
-  
-  nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  nav,
-  nav div,
-  nav ul,
-  .titlecore,
-  .title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .search-bar {
-    margin-right: 20px;
-  }
-  
-  nav li {
-    margin-right: 40px;
-  }
-  
-  nav li:hover {
-    color: #BEBFC1;
-  }
-  
-  nav li:active {
-    color: #9A9B9D;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #F6F8FA;
-  }
-  
-  nav a:hover {
-    color: #BEBFC1;
-  }
-  
-  .search-icon:hover,
-  .page-icon:hover {
-    filter: invert(74%);
-  }
-  
-  .search-icon:active,
-  .page-icon:active {
-    filter: invert(60%);
-  }
-  
-  .titlecore {
-    width: 100%;
-    padding: 0 32px;
-    justify-content: space-between;
-  }
-  
-  .search-bar input {
-    font-size: 14pt;
-    background: #F6F8FA;
-    padding: 4px 6px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 5px;
-    font-family: 'Roboto Slab', sans-serif;
-    --shadow-color: 210deg 8% 61%;
-    box-shadow: inset 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36), inset 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36), inset 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36), inset 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
-  }
-  
-  
-  /*
+
+header {
+  position: sticky;
+  z-index: 10000;
+  top: 0;
+}
+
+nav {
+  width: 100%;
+  color: white;
+  background-color: #24292f;
+  height: 60px;
+}
+
+.nav-space {
+  display: block;
+  height: 60px;
+  width: 100px;
+}
+
+nav img {
+  width: 32px;
+  height: 32px;
+}
+
+nav input {
+  display: none;
+}
+
+.search-icon,
+.page-icon {
+  filter: invert(100%);
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav,
+nav div,
+nav ul,
+.titlecore,
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-bar {
+  margin-right: 20px;
+}
+
+nav li {
+  margin-right: 40px;
+}
+
+nav li:hover {
+  color: #bebfc1;
+}
+
+nav li:active {
+  color: #9a9b9d;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f6f8fa;
+}
+
+nav a:hover {
+  color: #bebfc1;
+}
+
+.search-icon:hover,
+.page-icon:hover {
+  filter: invert(74%);
+}
+
+.search-icon:active,
+.page-icon:active {
+  filter: invert(60%);
+}
+
+.titlecore {
+  width: 100%;
+  padding: 0 32px;
+  justify-content: space-between;
+}
+
+.search-bar input {
+  font-size: 14pt;
+  background: #f6f8fa;
+  padding: 4px 6px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 5px;
+  font-family: "Roboto Slab", sans-serif;
+  --shadow-color: 210deg 8% 61%;
+  box-shadow: inset 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    inset 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    inset 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    inset 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+}
+
+/*
     realistic shadow
   */
-  
-  .side-bar,
-  .site-info,
-  .site-card,
-  nav {
-    --shadow-color: 210deg 8% 61%;
-    box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36), 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36), 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36), 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
-  }
-  
-  .search-bar input:focus {
-    background: white;
-    outline: none;
-  }
-  
-  .search-bar button {
-    background: none;
-    border: none;
-  }
-  
-  .search-icon {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .avatar {
-    border-radius: 50%;
-  }
-  
-  .index-titles {
-    padding-top: 50px;
-  }
-  
-  
-  /*
+
+.side-bar,
+.site-info,
+.site-card,
+nav {
+  --shadow-color: 210deg 8% 61%;
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+}
+
+.search-bar input:focus {
+  background: white;
+  outline: none;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.index-titles {
+  padding-top: 50px;
+}
+
+/*
     index page, map section
   */
-  
-  .map img {
-    position: absolute;
-    height: 300px;
-    width: 300px;
-  }
-  
-  .map {
-    position: relative;
-    height: 530px;
-  }
-  
-  .map-wa {
-    top: -50px;
-    right: -149px;
-  }
-  
-  .map-or {
-    top: 31px;
-    right: -126px;
-  }
-  
-  .map-ca {
-    top: 202px;
-    right: -114px;
-  }
-  
-  .map-id {
-    top: 23px;
-    right: -238px;
-  }
-  
-  .map-nv {
-    top: 185px;
-    right: -171px;
-  }
-  
-  .map-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  /*
+
+.map img {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+}
+
+.map {
+  position: relative;
+  height: 530px;
+}
+
+.map-wa {
+  top: -50px;
+  right: -149px;
+}
+
+.map-or {
+  top: 31px;
+  right: -126px;
+}
+
+.map-ca {
+  top: 202px;
+  right: -114px;
+}
+
+.map-id {
+  top: 23px;
+  right: -238px;
+}
+
+.map-nv {
+  top: 185px;
+  right: -171px;
+}
+
+.map-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
   properties of cards of each sites
   */
-  
-  .site-card {
-    width: 280px;
-    height: 230px;
-    background-color: white;
-    border-radius: 20px;
-    margin: 10px;
-    transition: all 500ms ease;
-  }
-  
-  .site-card img {
-    width: 100%;
-    height: 68%;
-    object-fit: cover;
-    border-radius: 20px 20px 0 0;
-  }
-  
-  .site-card h2 {
-    text-align: left;
-    padding: 0;
-    margin: 0 20px;
-    font-size: 14pt;
-    font-weight: bold;
-  }
-  
-  .site-card h3 {
-    margin: 0px 20px;
-    font-size: 10pt;
-  }
-  
-  .site-card p {
-    font-style: italic;
-    margin: 0px 20px;
-    font-size: 10pt;
-  }
-  
-  .sites-box {
-    margin: 20px 50px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .site-card:hover {
-    transform: scale(1.1);
-    transition: all 500ms ease;
-    --shadow-color: 210deg 8% 61%;
-    box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34), 1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34), 2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34), 4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34), 7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34), 11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34);
-  }
-  
-  .site-card:active {
-    filter: brightness(.9);
-  }
-  
-  .card-container {
-    width: 300px;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .content-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  
-  /*
+
+.site-card {
+  width: 280px;
+  height: 230px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 10px;
+  transition: all 500ms ease;
+}
+
+.site-card img {
+  width: 100%;
+  height: 68%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.site-card h2 {
+  text-align: left;
+  padding: 0;
+  margin: 0 20px;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.site-card h3 {
+  margin: 0px 20px;
+  font-size: 10pt;
+}
+
+.site-card p {
+  font-style: italic;
+  margin: 0px 20px;
+  font-size: 10pt;
+}
+
+.sites-box {
+  margin: 20px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-card:hover {
+  transform: scale(1.1);
+  transition: all 500ms ease;
+  --shadow-color: 210deg 8% 61%;
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+    2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+    7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34);
+}
+
+.site-card:active {
+  filter: brightness(0.9);
+}
+
+.card-container {
+  width: 300px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
     main search bar
   */
-  
-  .page-search-bar {
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .page-search-bar input {
-    font-size: 20pt;
-    height: 45px;
-    background: #F6F8FA;
-    padding: 4px 6px;
-    border-radius: 5px;
-    width: 500px;
-    border: none;
-    margin-right: 5px;
-    font-family: 'Roboto Slab', sans-serif;
-    --shadow-color: 210deg 8% 61%;
-    box-shadow: inset 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36), inset 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36), inset 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36), inset 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36), 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36);
-  }
-  
-  .page-search-bar input:focus {
-    background: white;
-    outline: none;
-  }
-  
-  .page-search-icon {
-    height: 45px;
-    width: 45px;
-    border: none;
-    outline: none;
-  }
-  
-  .page-search button {
-    border: none;
-    outline: none;
-  }
-  
-  
-  /*
+
+.page-search-bar {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-search-bar input {
+  font-size: 20pt;
+  height: 45px;
+  background: #f6f8fa;
+  padding: 4px 6px;
+  border-radius: 5px;
+  width: 500px;
+  border: none;
+  margin-right: 5px;
+  font-family: "Roboto Slab", sans-serif;
+  --shadow-color: 210deg 8% 61%;
+  box-shadow: inset 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    inset 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    inset 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    inset 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36),
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36);
+}
+
+.page-search-bar input:focus {
+  background: white;
+  outline: none;
+}
+
+.page-search-icon {
+  height: 45px;
+  width: 45px;
+  border: none;
+  outline: none;
+}
+
+.page-search button {
+  border: none;
+  outline: none;
+}
+
+/*
     filters
   */
-  
-  .filter-box {
-    width: 80%;
-  }
-  
-  .filter {
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    height: 70px;
-  }
-  
-  .filter:last-child {
-    border-top: none;
-  }
-  
-  .filter,
-  .filter ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .filter ul {
-    list-style-type: none;
-    margin: 0;
-  }
-  
-  .filter h4,
-  .filter li {
-    margin: 0 10px;
-  }
-  
-  .filter li {
-    height: 34px;
-    border-radius: 17px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-  }
-  
-  .selected,
-  .unselected:hover {
-    background: lightgray;
-  }
-  
-  .unselected:hover {
-    border: 1px solid lightgray;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .selected {
-    border: 1px darkgray solid;
-  }
-  
-  .selected:hover {
-    background-color: darkgray;
-  }
-  
-  
-  /*
+
+.filter-box {
+  width: 80%;
+}
+
+.filter {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  height: 70px;
+}
+
+.filter:last-child {
+  border-top: none;
+}
+
+.filter,
+.filter ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.filter ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.filter h4,
+.filter li {
+  margin: 0 10px;
+}
+
+.filter li {
+  height: 34px;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.selected,
+.unselected:hover {
+  background: lightgray;
+}
+
+.unselected:hover {
+  border: 1px solid lightgray;
+}
+
+.hidden {
+  display: none;
+}
+
+.selected {
+  border: 1px darkgray solid;
+}
+
+.selected:hover {
+  background-color: darkgray;
+}
+
+/*
     footer style
   */
-  
-  footer {
-    background-color: #24292F;
-    color: white;
-  }
-  
-  footer a:hover {
-    color: #BEBFC1;
-  }
-  
-  footer p.bolded {
-    font-weight: bold;
-    font-size: 25px;
-  }
-  
-  footer p {
-    font-size: 15px;
-    margin-left: 4px
-  }
-  
-  .cancel {
-    z-index: 1;
-  }
-  
-  p.copyrighted {
-    text-align: center;
-    font-weight: lighter;
-    margin: 0;
-    padding-bottom: 10px;
-  }
-  
-  .row,
-  img {
-    object-fit: cover;
-    border-radius: 30px;
-  }
-  
-  
-  /*
+
+footer {
+  background-color: #24292f;
+  color: white;
+}
+
+footer a:hover {
+  color: #bebfc1;
+}
+
+footer p.bolded {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+footer p {
+  font-size: 15px;
+  margin-left: 4px;
+}
+
+.cancel {
+  z-index: 1;
+}
+
+p.copyrighted {
+  text-align: center;
+  font-weight: lighter;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.row,
+img {
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+/*
     styles for the states page, selecting states
   */
-  
-  .state-info-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .sub-title {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .state-info {
-    width: 80%;
-    padding: 30px;
-  }
-  
-  .state-card-container {
-    height: 39vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
-  }
-  
-  .state-card {
-    flex: 1;
-    height: 100%;
-    width: 500px;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-origin: border-box;
-    background-clip: border-box;
-    transition: all 500ms ease;
-  }
-  
-  .state-card:hover {
-    transition: all 500ms ease;
-    flex: 3;
-  }
-  
-  .state-card img {
-    height: 50%;
-    transition: all 500ms ease;
-  }
-  
-  .state-card:hover img {
-    transition: all 500ms ease;
-    height: 70%;
-  }
-  
-  .site-selected {
-    flex: 3;
-  }
-  
-  .washington {
-    background-image: url(../public/img/title-wa.webp);
-  }
-  
-  .idaho {
-    background-image: url(../public/img/title-id.webp);
-  }
-  
-  .oregon {
-    background-image: url(../public/img/title-or.jpg);
-  }
-  
-  .california {
-    background-image: url(../public/img/title-ca.jpg);
-  }
-  
-  .nevada {
-    background-image: url(../public/img/title-nv.jpg);
-  }
-  
-  section.site-section {
-    background-color: grey;
-  }
-  
-  div.card {
-    width: 18em;
-  }
-  
-  img.card-img-top {
-    border-radius: 10%;
-  }
-  
-  .site-section .card img {
-    height: 200px;
-    width: 200px;
-  }
-  
-  .card h1 {
-    font-size: 15px;
-    padding-top: 3px;
-  }
-  
-  .card p {
-    font-size: 12px
-  }
-  
-  h1 {
-    text-align: center;
-    padding: 5px;
-  }
-  
-  .west-states {
-    text-align: center;
-  }
-  
-  .centered {
-    text-align: center;
-  }
-  
-  
-  /*
+
+.state-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.sub-title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.state-info {
+  width: 80%;
+  padding: 30px;
+}
+
+.state-card-container {
+  height: 39vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.state-card {
+  flex: 1;
+  height: 100%;
+  width: 500px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  transition: all 500ms ease;
+}
+
+.state-card:hover {
+  transition: all 500ms ease;
+  flex: 3;
+}
+
+.state-card img {
+  height: 50%;
+  transition: all 500ms ease;
+}
+
+.state-card:hover img {
+  transition: all 500ms ease;
+  height: 70%;
+}
+
+.site-selected {
+  flex: 3;
+}
+
+.washington {
+  background-image: url(../public/img/title-wa.webp);
+}
+
+.idaho {
+  background-image: url(../public/img/title-id.webp);
+}
+
+.oregon {
+  background-image: url(../public/img/title-or.jpg);
+}
+
+.california {
+  background-image: url(../public/img/title-ca.jpg);
+}
+
+.nevada {
+  background-image: url(../public/img/title-nv.jpg);
+}
+
+section.site-section {
+  background-color: grey;
+}
+
+div.card {
+  width: 18em;
+}
+
+img.card-img-top {
+  border-radius: 10%;
+}
+
+.site-section .card img {
+  height: 200px;
+  width: 200px;
+}
+
+.card h1 {
+  font-size: 15px;
+  padding-top: 3px;
+}
+
+.card p {
+  font-size: 12px;
+}
+
+h1 {
+  text-align: center;
+  padding: 5px;
+}
+
+.west-states {
+  text-align: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+/*
     sytles used for the individual site pages
   */
-  
-  .site-info img {
-    width: 60%;
-    margin: 0 20%;
-    border-radius: 0;
-  }
-  
-  .site-page-header {
-    width: 100%;
-    height: 200px;
-    background-image: url(../public/img/header-olympic-national-park.jpg);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .site-page-title-box {
-    background-color: #00000030;
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50%;
-    padding: 0 20px;
-    border-radius: 15px;
-    --shadow-color: 0deg 0% 15%;
-    box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34), 1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34), 2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34), 4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34), 7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34), 11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34);
-  }
-  
-  .site-page-title {
-    color: white;
-    font-size: 30pt;
-    margin: auto;
-  }
-  
-  .site-page-author {
-    color: grey;
-    font-size: 10pt;
-    margin: auto;
-    text-align: center;
-  }
-  
-  .site-info-part:first-of-type {
-    border: none;
-  }
-  
-  .img-citation {
-    font-size: 3px;
-    text-align: center;
-    color: grey;
-  }
-  
-  .site-info {
-    margin: 20px auto;
-    width: 80vw;
-    padding: 30px;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #f0f2f7;
-  }
-  
-  
-  /*
+
+.site-info img {
+  width: 60%;
+  margin: 0 20%;
+  border-radius: 0;
+}
+
+.site-page-header {
+  width: 100%;
+  height: 200px;
+  background-image: url(../public/img/header-olympic-national-park.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-page-title-box {
+  background-color: #00000030;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  padding: 0 20px;
+  border-radius: 15px;
+  --shadow-color: 0deg 0% 15%;
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+    2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+    7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34);
+}
+
+.site-page-title {
+  color: white;
+  font-size: 30pt;
+  margin: auto;
+}
+
+.site-page-author {
+  color: grey;
+  font-size: 10pt;
+  margin: auto;
+  text-align: center;
+}
+
+.site-info-part:first-of-type {
+  border: none;
+}
+
+.img-citation {
+  font-size: 3px;
+  text-align: center;
+  color: grey;
+}
+
+.site-info {
+  margin: 20px auto;
+  width: 80vw;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #f0f2f7;
+}
+
+/*
     side bars of the site page
   */
-  
-  .side-bar {
-    background-color: white;
-    border: 1px solid #f0f2f7;
-    height: 100%;
-    position: sticky;
-    top: 80px;
-    margin: 20px;
-    border-radius: 5px;
+
+.side-bar {
+  background-color: white;
+  border: 1px solid #f0f2f7;
+  height: 100%;
+  position: sticky;
+  top: 80px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.index-bar {
+  display: none;
+  width: 200px;
+}
+
+.side-bar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-bar h4 {
+  font-weight: bold;
+}
+
+.side-bar h4,
+.side-bar li {
+  margin: 0;
+}
+
+.index-bar h4,
+.index-bar li {
+  font-size: 14pt;
+  padding: 12px 16px;
+}
+
+.side-bar li {
+  border-top: 1px solid #e2e3e7;
+  transition: all 150ms ease-out;
+}
+
+.side-bar li:hover {
+  background-color: #e2e3e7;
+  transition: all 150ms ease-in;
+}
+
+.operation-bar li:first-of-type {
+  border-top: none;
+}
+
+.operation-bar li {
+  text-align: center;
+  font-size: 20pt;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sites-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.balancer {
+  width: 130px;
+}
+
+.popover {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.my-specific-popover {
+  color: blue;
+}
+
+p a {
+  color: orange;
+  text-decoration: underline;
+}
+
+.site-card h2 {
+  margin-top: 7px;
+}
+
+@media (min-width: 768px) {
+  nav input {
+    display: inline-block;
   }
-  
+  .state-card-container {
+    height: 300px;
+  }
+}
+
+@media (min-width: 876px) {
+  .site-info {
+    width: 700px;
+  }
   .index-bar {
-    display: none;
-    width: 200px;
+    display: block;
   }
-  
-  .side-bar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .side-bar h4 {
-    font-weight: bold;
-  }
-  
-  .side-bar h4,
-  .side-bar li {
-    margin: 0;
-  }
-  
-  .index-bar h4,
-  .index-bar li {
-    font-size: 14pt;
-    padding: 12px 16px;
-  }
-  
-  .side-bar li {
-    border-top: 1px solid #e2e3e7;
-    transition: all 150ms ease-out;
-  }
-  
-  .side-bar li:hover {
-    background-color: #e2e3e7;
-    transition: all 150ms ease-in;
-  }
-  
-  .operation-bar li:first-of-type {
-    border-top: none;
-  }
-  
-  .operation-bar li {
-    text-align: center;
-    font-size: 20pt;
-    height: 70px;
-    width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sites-info-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-self: flex-start;
-  }
-  
-  .balancer {
-    width: 130px;
-  }
-  
-  .popover {
-    font-family: 'Roboto Slab', sans-serif;
-  }
-  
-  .my-specific-popover {
-    color: blue;
-  }
-  
-  p a {
-    color: orange;
-    text-decoration: underline;
-  }
-  
-  @media (min-width: 768px) {
-    nav input {
-      display: inline-block;
-    }
-    .state-card-container {
-      height: 300px;
-    }
-  }
-  
-  @media (min-width: 876px) {
-    .site-info {
-      width: 700px;
-    }
-    .index-bar {
-      display: block;
-    }
-  }
+}
