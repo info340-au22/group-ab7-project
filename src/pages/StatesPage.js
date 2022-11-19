@@ -1,6 +1,6 @@
-import NavBar from './NavBar';
-import Footer from './Footer';
-import SiteCard from './SiteCard';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import SiteCard from '../components/SiteCard';
 
 export default function StatesPage(props) {
   const siteData = props.siteData;
