@@ -1,4 +1,6 @@
+import React from "react";
 import NavBar from "../components/NavBar";
+import StatesBanner from "../components/StatesBanner";
 import Footer from "../components/Footer";
 import SiteCard from "../components/SiteCard";
 
@@ -16,26 +18,7 @@ export default function StatesPage(props) {
     <div>
       <NavBar></NavBar>
       <title>States</title>
-
-      <section className="centering">
-        <div className="state-card-container">
-          <div className="state-card washington">
-            <img src="img/seal-wa.png" alt="Washington" />
-          </div>
-          <div className="state-card oregon">
-            <img src="img/seal-or.png" alt="Oregon" />
-          </div>
-          <div className="state-card california">
-            <img src="img/seal-ca.png" alt="California" />
-          </div>
-          <div className="state-card nevada">
-            <img src="img/seal-nv.png" alt="Nevada" />
-          </div>
-          <div className="state-card idaho">
-            <img src="img/seal-id.png" alt="Idaho" />
-          </div>
-        </div>
-      </section>
+      <StatesBanner />
 
       <section className="state-info-container">
         <div className="state-info hidden washington-info">
