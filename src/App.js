@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import StatesPage from "./pages/StatesPage";
 import SitesPage from "./pages/SitesPage";
 import siteData from "./data/sites.json";
+import SavedSites from "./pages/savedsites";
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="home" element={<HomePage />} />
         <Route path="states" element={<StatesPage />} />
         <Route path="sites" element={<SitesPage />} />
+        <Route path="savedsites" element={<SavedSites></SavedSites>} />
       </Routes>
     </div>
   );
