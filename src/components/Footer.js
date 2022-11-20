@@ -5,19 +5,19 @@ export default function Footer(props) {
 const footerDataArray = footerData;
 let AuthorMap = footerDataArray.map((element) => {
                 return (
-                <p>{element.AuthorData}</p>
-                )
-})
+                <p key={element.AuthorData}>{element.AuthorData}</p>
+                );
+});
 let EmailMap = footerDataArray.map((element) => {
     return (
-        <p><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
-    )
-})
+        <p key={element.AuthorData}><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
+    );
+});
 let PhoneMap = footerDataArray.map((element) => {
     return (
-        <p><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
-    )
-})
+        <p key={element.AuthorData}><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
+    );
+});
 return(
     <footer>
         <div className="container">

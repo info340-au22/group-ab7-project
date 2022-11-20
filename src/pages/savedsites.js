@@ -6,6 +6,7 @@ import SiteCard from "../components/SiteCard";
 import siteData from "../data/sites.json";
 
 export default function SavedSites(props) {
+    const [bookmarkedSites, setBookmarked] = useState([]);
     return (
         <div>
             <NavBar></NavBar>
