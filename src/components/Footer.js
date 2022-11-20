@@ -3,32 +3,38 @@ import footerData from "../data/authors.json";
 
 export default function Footer(props) {
 const footerDataArray = footerData;
+let AuthorMap = footerDataArray.map((element) => {
+                return (
+                <p>{element.AuthorData}</p>
+                )
+})
+let EmailMap = footerDataArray.map((element) => {
+    return (
+        <p><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
+    )
+})
+let PhoneMap = footerDataArray.map((element) => {
+    return (
+        <p><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
+    )
+})
 return(
     <footer>
         <div className="container">
         <div className="row">
             <div className="col-4 pt-3">
             <p className="bolded">Authors</p>
-            <p>Mustafa Mohamud Abdulkadir</p>
-            <p>Travon Dragon Dao</p>
-            <p>Zelin He</p>
-            <p>Zhuyi Gu</p>
+           {AuthorMap}
             </div>
 
             <div className="col-4 pt-3">
             <p className="bolded">Email</p>
-            <p><a href="mailto:Mabdul3@uw.edu">Mabdul3@uw.edu</a></p>
-            <p><a href="mailto:tdao09@uw.edu">tdao09@uw.edu</a></p>
-            <p><a href="mailto:zelinh2@uw.edu ">zelinh2@uw.edu</a></p>
-            <p><a href="mailto:zhuyi@uw.edu">Zhuyi@uw.edu</a></p>
+            {EmailMap}
             </div>
 
             <div className="col-4 pt-3">
             <p className="bolded">Phone Number</p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
+            {PhoneMap}
             </div>
 
             <form></form>
@@ -49,3 +55,4 @@ return(
         <p className="copyrighted centered "> &copy;2022 West Coast Tourist Recommendations</p>
     </footer>);
 }
+
