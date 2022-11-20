@@ -1,28 +1,5 @@
-[{"ColumnName" : "", "AuthorData" : "" }, {"ColumnName" : "", "AuthorData" : ""}, {"ColumnName" : "", "AuthorData" : ""}]
+[{"ColumnName" : "Authors", "AuthorData" : "Mustafa Mohamud Abdulkadir", "AuthorData2": "Travon Dragon Dao", "AuthorData3": "Zelin He", "AuthorData4": "Zhuyi Gu" }, 
+{"ColumnName" : "Email", "AuthorData" : "Mabdul3@uw.edu", "AuthorData2": "tdao09@uw.edu", "AuthorData3": "zelinh2@uw.edu", "AuthorData4": "Zhuyi@uw.edu"}, 
+{"ColumnName" : "Phone Number", "AuthorData" : "(123) 456-7890", "AuthorData2": "(123) 456-7890", "AuthorData3": "(123) 456-7890", "AuthorData4": "(123) 456-7890"}]
 
 
-
-
-            <div className="col-4 pt-3">
-            <p className="bolded">Authors</p>
-            <p>Mustafa Mohamud Abdulkadir</p>
-            <p>Travon Dragon Dao</p>
-            <p>Zelin He</p>
-            <p>Zhuyi Gu</p>
-            </div>
-
-            <div className="col-4 pt-3">
-            <p className="bolded">Email</p>
-            <p><a href="mailto:Mabdul3@uw.edu">Mabdul3@uw.edu</a></p>
-            <p><a href="mailto:tdao09@uw.edu">tdao09@uw.edu</a></p>
-            <p><a href="mailto:zelinh2@uw.edu ">zelinh2@uw.edu</a></p>
-            <p><a href="mailto:zhuyi@uw.edu">Zhuyi@uw.edu</a></p>
-            </div>
-
-            <div className="col-4 pt-3">
-            <p className="bolded">Phone Number</p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
-            </div>
