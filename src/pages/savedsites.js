@@ -7,13 +7,20 @@ import siteData from "../data/sites.json";
 
 export default function SavedSites(props) {
     const [bookmarkedSites, setBookmarked] = useState([]);
+    const bookmarks = props.savedSites;
+    let view;
+
+    if (bookmarks.length === 0) {
+        view = <p> You have no saved sites </p>;
+    } else {
+        view = bookmarks;
+    }
     return (
         <div>
             <NavBar></NavBar>
             <h1> Your Saved Sites </h1>
-            <SitesBox></SitesBox>
+                {view}
             <Footer></Footer>
-        
             </div>
     );
 }

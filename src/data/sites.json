@@ -6,8 +6,7 @@
     "imgAlt": "Space Needle",
     "siteName": "Space Needle",
     "siteFact": "Landmark of Seattle",
-    "siteLocation": "Seattle, WA",
-    "bookmarked" : true
+    "siteLocation": "Seattle, WA"
   },
   {
     "state": "WA",
@@ -16,8 +15,7 @@
     "imgAlt": "Seattle Great Ferris Wheel",
     "siteName": "Seattle Great Wheel",
     "siteFact": "The West Coast's Tallest Ferris Wheel",
-    "siteLocation": "Seattle, WA",
-    "bookmarked" : false
+    "siteLocation": "Seattle, WA"
   },
   {
     "state": "WA",
@@ -26,8 +24,7 @@
     "imgAlt": "Mount Rainier",
     "siteName": "Mount Rainier",
     "siteFact": "Highest Mountain in the Cascades",
-    "siteLocation": "Mt. Rainier National Park, WA",
-    "bookmarked" : false
+    "siteLocation": "Mt. Rainier National Park, WA"
   },
   {
     "state": "WA",
@@ -36,8 +33,7 @@
     "imgAlt": "Pike Place Market",
     "siteName": "Pike Place Market",
     "siteFact": "Seattle's Famous Market",
-    "siteLocation": "Seattle, WA",
-    "bookmarked" : false
+    "siteLocation": "Seattle, WA"
   },
   {
     "state": "CA",
@@ -46,8 +42,7 @@
     "imgAlt": "Golden Gate Bridge",
     "siteName": "Golden Gate Bridge",
     "siteFact": "Most Famous Bridge in the World",
-    "siteLocation": "San Francisco, CA",
-    "bookmarked" : false
+    "siteLocation": "San Francisco, CA"
   },
   {
     "state": "WA",
@@ -56,7 +51,6 @@
     "imgAlt": "Olympic National Park",
     "siteName": "Olympic National Park",
     "siteFact": "Largest Wilderness Area in WA",
-    "siteLocation": "Olympic National Park, WA",
-    "bookmarked" : false
+    "siteLocation": "Olympic National Park, WA"
   }
 ]

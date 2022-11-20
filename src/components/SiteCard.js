@@ -1,14 +1,33 @@
 import React, { useState } from "react";
 import reactDOM from 'react-dom/client';
 
-const handleClick = function(event) {
-    console.log("bookmarked!");
-    console.log(event.target.parentNode);
-}
-
 export default function SiteCard(props) {
+
+    const bookmarks = props.bookmarks;
+    const setBookmarks = props.setBookmarks;
+   
+    //console.log(bookmarks);
+
     const singleSiteData = props.singleSiteData;
-    const [bookmarked, setBookmark] = useState(false);
+    const [bookmarked, setBookmarked] = useState(false);
+
+    const handleClick = function(event) {
+        const bookmarkedCard = event.target.parentNode;
+        //console.log(bookmarkedCard);
+        const bookmarksCopy = [...bookmarks];
+
+        if (bookmarksCopy.includes) {
+            bookmarksCopy.splice(bookmarkedCard);
+        } else {
+            bookmarksCopy.push(bookmarkedCard);
+        }
+        //console.log(bookmarkCopy);
+        setBookmarks(bookmarksCopy);
+        setBookmarked(!bookmarked);
+    }
+
+    
+
     let imgSrc;
     if (bookmarked) {
         imgSrc = "./img/bookmark-filled.png";
@@ -16,7 +35,6 @@ export default function SiteCard(props) {
     } else {
         imgSrc = "./img/bookmark.png";
     }
-
 
     return(
         <div className="card-container" data-state={singleSiteData.state} data-type=        {singleSiteData.siteType}>
