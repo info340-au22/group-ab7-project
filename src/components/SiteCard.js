@@ -14,13 +14,14 @@ export default function SiteCard(props) {
     const handleClick = function(event) {
         const bookmarkedCard = event.target.parentNode;
         //console.log(bookmarkedCard);
-        const bookmarksCopy = [...bookmarks];
+        const bookmarksCopy = new Set(bookmarks);
 
-        if (bookmarksCopy.includes) {
-            bookmarksCopy.splice(bookmarkedCard);
+        if (bookmarksCopy.has(bookmarkedCard)) {
+            bookmarksCopy.delete(bookmarkedCard);
         } else {
-            bookmarksCopy.push(bookmarkedCard);
+            bookmarksCopy.add(bookmarkedCard);
         }
+
         //console.log(bookmarkCopy);
         setBookmarks(bookmarksCopy);
         setBookmarked(!bookmarked);

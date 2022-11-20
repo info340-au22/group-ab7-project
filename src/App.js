@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 export default function App(card) {
-  const[bookmarks, setBookmarks] = useState([]);
+  const[bookmarks, setBookmarks] = useState(new Set());
   
   console.log(bookmarks);
   //function setBookmarks() {
