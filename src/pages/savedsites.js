@@ -10,7 +10,7 @@ export default function SavedSites(props) {
     const bookmarks = props.savedSites;
     let view;
 
-    if (bookmarks.length === 0) {
+    if (bookmarks.size === 0) {
         view = <p> You have no saved sites </p>;
     } else {
         view = bookmarks;
