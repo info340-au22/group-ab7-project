@@ -52,7 +52,7 @@ return(
 
         </form>
         </div>
-        <p className="copyrighted centered "> &copy2022 West Coast Tourist Recommendations</p>
+        <p className="copyrighted centered "> &copy;2022 West Coast Tourist Recommendations</p>
     </footer>);
 }
 
