@@ -8,15 +8,41 @@ const typeFilter = ["Cultural", "Natural"];
 
 export default function SitesPage() {
   const [stateFilter, setStateFilter] = useState([]);
-  function updateFilter(filter) {
-    setStateFilter(filter);
-  }
+  const [siteTypeFilter, setSiteTypeFilter] = useState([]);
+  const [titleSearchContent, setTitleSearchContent] = useState("");
 
   function statesFilterClicked(event) {
     event.currentTarget.classList.toggle("selected");
     event.currentTarget.children[0].children[1].classList.toggle("not-shown");
-    console.log(event.currentTarget.key);
-    updateFilter(stateFilter.concat([event.currentTarget.filtername]));
+    let filter = event.currentTarget.dataset.filterName;
+    if (stateFilter.indexOf(filter) === -1) {
+      setStateFilter(stateFilter.concat([filter]));
+    } else {
+      setStateFilter(
+        stateFilter
+          .slice(0, stateFilter.indexOf(filter))
+          .concat(stateFilter.slice(stateFilter.indexOf(filter) + 1))
+      );
+    }
+  }
+
+  function siteFilterClicked(event) {
+    event.currentTarget.classList.toggle("selected");
+    event.currentTarget.children[0].children[1].classList.toggle("not-shown");
+    let filter = event.currentTarget.dataset.filterName.toLowerCase();
+    if (siteTypeFilter.indexOf(filter) === -1) {
+      setSiteTypeFilter(siteTypeFilter.concat([filter]));
+    } else {
+      setSiteTypeFilter(
+        siteTypeFilter
+          .slice(0, siteTypeFilter.indexOf(filter))
+          .concat(siteTypeFilter.slice(siteTypeFilter.indexOf(filter) + 1))
+      );
+    }
+  }
+
+  function search() {
+    setTitleSearchContent(document.getElementById("title-search").value);
   }
 
   return (
@@ -25,8 +51,22 @@ export default function SitesPage() {
       <div className="content-area">
         <section className="page-search">
           <div className="page-search-bar">
-            <input type="text" placeholder="Search.." />
-            <button type="submit">
+            <input
+              id="title-search"
+              type="text"
+              placeholder="Search.."
+              onKeyDown={(event) => {
+                if (event.which === 13) {
+                  search();
+                }
+              }}
+              onChange={(event) => {
+                if (event.target.value === "") {
+                  search();
+                }
+              }}
+            />
+            <button type="submit" onClick={search}>
               <img
                 className="page-search-icon"
                 src="img/search.png"
@@ -44,7 +84,7 @@ export default function SitesPage() {
               {states.map((element) => (
                 <li
                   key={element.name}
-                  filtername={element.short}
+                  data-filter-name={element.short}
                   className="unselected"
                   onClick={statesFilterClicked}
                 >
@@ -62,9 +102,9 @@ export default function SitesPage() {
               {typeFilter.map((element) => (
                 <li
                   key={element}
-                  filtername={element.toLowerCase()}
+                  data-filter-name={element.toLowerCase()}
                   className="unselected"
-                  onClick={statesFilterClicked}
+                  onClick={siteFilterClicked}
                 >
                   <div>
                     <span>{element} </span>
@@ -75,8 +115,11 @@ export default function SitesPage() {
             </ul>
           </div>
         </section>
-        <h3 className="sub-title">Sites of this State</h3>
-        <SitesBox filterStates={stateFilter} />
+        <SitesBox
+          filterStates={stateFilter}
+          filterType={siteTypeFilter}
+          titleSearch={titleSearchContent}
+        />
       </div>
       <Footer></Footer>
     </div>

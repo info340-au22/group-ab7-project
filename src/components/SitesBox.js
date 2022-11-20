@@ -3,8 +3,16 @@ import SiteCard from "../components/SiteCard";
 import siteData from "../data/sites.json";
 
 export default function SitesBox(props) {
-  console.log(props.filterStates);
+  //  console.log(props.filterStates);
+  //  console.log(props.filterType);
   const siteCardArray = siteData
+    .filter((element) => {
+      if (props.titleSearch !== undefined && props.titleSearch !== "") {
+        return element.siteName.toLowerCase().includes(props.titleSearch.toLowerCase());
+      } else {
+        return true;
+      }
+    })
     .filter((element) => {
       if (
         props.filterStates !== undefined &&
@@ -20,6 +28,21 @@ export default function SitesBox(props) {
         return true;
       }
     })
+    .filter((element) => {
+      if (
+        props.filterType !== undefined &&
+        props.filterType[0] !== null &&
+        props.filterType.length !== 0
+      ) {
+        return props.filterType.reduce(
+          (accumulator, currentValue) =>
+            accumulator || element.siteType === currentValue,
+          false
+        );
+      } else {
+        return true;
+      }
+    })
     .map((singleSiteData) => {
       return (
         <SiteCard
@@ -28,5 +51,14 @@ export default function SitesBox(props) {
         ></SiteCard>
       );
     });
-  return <section className="sites-box">{siteCardArray}</section>;
+//  console.log(siteCardArray);
+  return (
+    <section className="sites-box">
+      {siteCardArray.length !== 0 ? (
+        siteCardArray
+      ) : (
+        <h4>Sorry, no matching site was found...</h4>
+      )}
+    </section>
+  );
 }
