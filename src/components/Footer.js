@@ -1,12 +1,12 @@
 import React from 'react';
 import footerData from "../data/authors.json";
 
-export default function Footer(props) {
+export default function Footer() {
 const footerDataArray = footerData;
 let AuthorMap = footerDataArray.map((element) => {
-                return (
-                <p>{element.AuthorData}</p>
-                )
+    return (
+    <p>{element.AuthorData}</p>
+    )
 })
 let EmailMap = footerDataArray.map((element) => {
     return (
