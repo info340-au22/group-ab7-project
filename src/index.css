@@ -785,3 +785,23 @@ p a {
     display: block;
   }
 }
+
+
+/* Save Button */
+.saveButton {
+  position: absolute;
+  bottom: 77px; 
+  right: 5px;
+  border-radius: 5px;
+  background-color: #0e52a4;
+  color: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bookmark {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

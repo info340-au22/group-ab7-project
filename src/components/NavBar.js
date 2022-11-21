@@ -11,6 +11,7 @@ export default function NavBar(props) {
               </li>
               <li className="nav-option"><a href="states">States</a></li>
               <li className="nav-option"><a href="sites">Sites</a></li>
+              <li className="nav-option"><a href="savedsites">Saved Sites</a></li>
             </ul>
           </div>
           <div className="nav-right">

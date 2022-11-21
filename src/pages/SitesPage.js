@@ -6,7 +6,7 @@ import states from "../data/states.json";
 
 const typeFilter = ["Cultural", "Natural"];
 
-export default function SitesPage() {
+export default function SitesPage(props) {
   const [stateFilter, setStateFilter] = useState([]);
   const [siteTypeFilter, setSiteTypeFilter] = useState([]);
   const [titleSearchContent, setTitleSearchContent] = useState("");
@@ -119,6 +119,8 @@ export default function SitesPage() {
           filterStates={stateFilter}
           filterType={siteTypeFilter}
           titleSearch={titleSearchContent}
+          setBookmarks={props.setBookmarks}
+          bookmarks={props.bookmarks}
         />
       </div>
       <Footer></Footer>

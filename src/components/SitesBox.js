@@ -48,6 +48,8 @@ export default function SitesBox(props) {
         <SiteCard
           singleSiteData={singleSiteData}
           key={singleSiteData.siteName}
+          setBookmarks={props.setBookmarks}
+          bookmarks={props.bookmarks}
         ></SiteCard>
       );
     });
