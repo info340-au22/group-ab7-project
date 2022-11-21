@@ -19,7 +19,7 @@ let columnMap = footerDataArray.map((element) => {
             <p key={element.AuthorData} class="padding-zero"><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
             </div>
 
-            <div className="col-4 padding-zerocd">
+            <div className="col-4 padding-zero">
             <p className="bolded footer-header">{element.columnName3}</p>
             <p key={element.AuthorData} class="padding-zero"><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
             </div>
