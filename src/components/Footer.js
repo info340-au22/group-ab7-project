@@ -4,17 +4,10 @@ import footerData from "../data/authors.json";
 export default function Footer() {
 const footerDataArray = footerData;
 let AuthorMap = footerDataArray.map((element) => {
-<<<<<<< HEAD
-    return (
-    <p>{element.AuthorData}</p>
-    )
-})
-=======
                 return (
                 <p key={element.AuthorData}>{element.AuthorData}</p>
                 );
 });
->>>>>>> 30db568b0c8d75e1dbc35108c96b75ff8e15d341
 let EmailMap = footerDataArray.map((element) => {
     return (
         <p key={element.AuthorData}><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
