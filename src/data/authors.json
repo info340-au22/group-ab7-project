@@ -1,8 +1,8 @@
- [ {"AuthorData" : "Mustafa Mohamud Abdulkadir", "AuthorData2": "Mabdul3@uw.edu", "AuthorData3": "(123) 456-7890"}
+ [ {"columnName": "Authors", "columnName2": "Email", "columnName3": "Phone Number"},
+ {"AuthorData" : "Mustafa Mohamud Abdulkadir", "AuthorData2": "Mabdul3@uw.edu", "AuthorData3": "(206) 244-4444"}
 
-, {"AuthorData" : "Travon Dragon Dao", "AuthorData2": "tdao09@uw.edu", "AuthorData3": "(123) 456-7890"}
+, { "AuthorData" : "Travon Dragon Dao", "AuthorData2": "tdao09@uw.edu", "AuthorData3": "(206) 247-0989"}
 
-,{"AuthorData" : "Zelin He", "AuthorData2": "zelinh2@uw.edu", "AuthorData3": "(123) 456-7890"}
-,{"AuthorData": "Zhuyi Gu", "AuthorData2": "Zhuyi@uw.edu", "AuthorData3": "(123) 456-7890"}]
-
-
+,{"AuthorData" : "Zelin He", "AuthorData2": "zelinh2@uw.edu", "AuthorData3": "(206) 980-7780"}
+,{"AuthorData": "Zhuyi Gu", "AuthorData2": "Zhuyi@uw.edu", "AuthorData3": "(206) 424-2440"}
+]
