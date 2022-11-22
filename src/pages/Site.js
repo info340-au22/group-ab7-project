@@ -5,7 +5,10 @@ import allSites from "../data/allSites.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { faStar as faStarSolid, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar as faStarSolid,
+  faStarHalfStroke,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function HomePage(props) {
   let data = allSites[props.site];
@@ -24,38 +27,39 @@ export default function HomePage(props) {
       <div className="sites-info-container">
         <div className="site-info">
           <h2>Introduction</h2>
-          {data.intro.map((element) => (
-            <p>{element}</p>
+          {data.intro.map((element, index) => (
+            <p key={"paragraph" + index}>{element}</p>
           ))}
         </div>
       </div>
       <div className="sites-info-container">
         <div className="map-info">
-          <div class="location-info">
+          <div className="location-info">
             <h3>State</h3>
             <p>{data.state}</p>
             <h3>Location</h3>
             <p>{data.location}</p>
           </div>
           <iframe
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
             src={
               "https://www.google.com/maps/embed/v1/place?key=AIzaSyCOj2Uhxker2xOnU5VMLKLqIhkBIoyTBQ0&q=" +
               data.mapName
             }
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>
       <div className="sites-info-container">
         <div className="site-info">
           <h3>Rating</h3>
-          <h1>{calcRating(data.ratings).toFixed(1)}</h1>
+          <h2>{calcRating(data.ratings).toFixed(1)}</h2>
+          <Stars starCount={calcRating(data.ratings)} />
           <p>
             {data.ratings.reduce((element, total) => (total += element))}{" "}
             Reviews
           </p>
-          <Stars starCount="3.5" />
+          <StarDistribution stars={data.ratings} />
         </div>
       </div>
 
@@ -65,14 +69,62 @@ export default function HomePage(props) {
 }
 
 export function Stars(props) {
-  let fullStar = <FontAwesomeIcon icon={faStarSolid} />;
-  let halfStar = <FontAwesomeIcon icon={faStarHalfStroke} />;
-  let emptyStar = <FontAwesomeIcon icon={faStar} />;
+  let stars = [];
+  for (let i = 1; i <= 5; i++) {
+    if (props.starCount - i >= -0.3) {
+      stars.push(
+        <FontAwesomeIcon
+          icon={faStarSolid}
+          className="star"
+          key={"star-" + i}
+        />
+      );
+    } else if (props.starCount - i >= -0.7) {
+      stars.push(
+        <FontAwesomeIcon
+          icon={faStarHalfStroke}
+          className="star"
+          key={"star-" + i}
+        />
+      );
+    } else if (props.showBlank !== "false") {
+      stars.push(
+        <FontAwesomeIcon icon={faStar} className="star" key={"star-" + i} />
+      );
+    }
+  }
+  return <div>{stars}</div>;
+}
+
+export function StarDistribution(props) {
+  let body = [];
+  let starTotal = props.stars.reduce((cur, total) => {
+    total += cur;
+  }, 0);
+  console.log(props.stars);
+  for (let i = props.stars.length; i >= 1; i--) {
+    body.push(
+      <tr key={i + 1 + "-stars"}>
+        <td style={{ width: "20%" }}>
+          <Stars starCount={i} showBlank="false" />
+        </td>
+        <td style={{ width: "100%" }}>
+          <div className="star-count-bar">
+            <div
+              className="star-count-bar-content"
+              style={{
+                paddingLeft: (props.stars[i - 1] / starTotal) * 100 + "%",
+              }}
+            ></div>
+          </div>
+        </td>
+      </tr>
+    );
+  }
   return (
-    <div>
-      {halfStar}
-      {emptyStar}
-    </div>
+    <table>
+      <tbody>{body}</tbody>
+    </table>
   );
 }
 
