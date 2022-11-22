@@ -5,29 +5,27 @@ export default function Footer() {
 const footerDataArray = footerData;
 
 let columnMap = footerDataArray.map((element) => {
-    console.log(element);
     return (
         <div className="containers">
         <div className="row">
             <div className="col-4 padding-zero">
-            <p className="bolded footer-header">{element.columnName}</p>
+            {element.columnName !== undefined ? <p className="bolded footer-header">{element.columnName}</p> : ""}
             <p key={element.AuthorData} class="padding-zero">{element.AuthorData}</p>
             </div>
 
             <div className="col-4 padding-zero">
-            <p className="bolded footer-header">{element.columnName2}</p>
-            <p key={element.AuthorData} class="padding-zero"><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
+            {element.columnName2 !== undefined ? <p className="bolded footer-header">{element.columnName2}</p> : ""}
+            <p key={element.AuthorData} className="padding-zero"><a href={"mailto:" + element.AuthorData2}>{element.AuthorData2}</a></p>
             </div>
 
             <div className="col-4 padding-zero">
-            <p className="bolded footer-header">{element.columnName3}</p>
+            {element.columnName3 !== undefined ? <p className="bolded footer-header">{element.columnName3}</p> : ""}
             <p key={element.AuthorData} class="padding-zero"><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
             </div>
 
             <form></form>
         </div>
         </div>
-
     );
 });
 
@@ -36,7 +34,7 @@ return(
     <footer>
        {columnMap}
 
-        <p className="text-center m-0">Subscribe to our Email!</p>
+        <p className="text-center m-0 pt-3">Subscribe to our Email!</p>
         <div className="centering">
         <form>
 

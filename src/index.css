@@ -19,6 +19,10 @@ body {
   margin: 0;
 }
 
+.padding-bottom {
+  padding-bottom: 0;
+}
+
 .footer-header {
   padding: 0;
   margin: 20px 0;
