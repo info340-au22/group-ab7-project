@@ -590,6 +590,47 @@ img.card-img-top {
   overflow: hidden;
 }
 
+.rating {
+  display: flex;
+  flex-direction: row;
+}
+
+.rating-brief {
+  margin: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-brief p {
+  white-space: nowrap;
+}
+
+.rating-brief .rating-score {
+  font-size: 50pt;
+}
+
+.rating-brief h4 {
+  font-size: 20pt;
+}
+
+.rating-detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-detail table {
+  width: 100%;
+}
+
+.rating-stars {
+  width: 120px;
+}
+
 .star-count-bar-content {
   background-color: #fbbc04;
   border-color: #fbbc04;
