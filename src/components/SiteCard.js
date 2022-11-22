@@ -39,7 +39,12 @@ export default function SiteCard(props) {
       data-state={singleSiteData.state}
       data-type={singleSiteData.siteType}
     >
-      <div className="site-card">
+      <div
+        className="site-card"
+        onClick={() => {
+          window.location.href = "/site/" + singleSiteData.title;
+        }}
+      >
         <img src={singleSiteData.imgSrc} alt={singleSiteData.imgAlt} />
         <input
           type="image"
