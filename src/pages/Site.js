@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import allSites from "../data/allSites.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as faStarSolid, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 export default function HomePage(props) {
   let data = allSites[props.site];
@@ -20,7 +24,9 @@ export default function HomePage(props) {
       <div className="sites-info-container">
         <div className="site-info">
           <h2>Introduction</h2>
-          {data.intro.map((element) => <p>{element}</p>)}
+          {data.intro.map((element) => (
+            <p>{element}</p>
+          ))}
         </div>
       </div>
       <div className="sites-info-container">
@@ -31,32 +37,48 @@ export default function HomePage(props) {
             <h3>Location</h3>
             <p>{data.location}</p>
           </div>
-          <iframe referrerpolicy="no-referrer-when-downgrade"
-            src=
-            {"https://www.google.com/maps/embed/v1/place?key=AIzaSyCOj2Uhxker2xOnU5VMLKLqIhkBIoyTBQ0&q=" + data.mapName}
-            allowfullscreen>
-          </iframe>
+          <iframe
+            referrerpolicy="no-referrer-when-downgrade"
+            src={
+              "https://www.google.com/maps/embed/v1/place?key=AIzaSyCOj2Uhxker2xOnU5VMLKLqIhkBIoyTBQ0&q=" +
+              data.mapName
+            }
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
       <div className="sites-info-container">
         <div className="site-info">
-          <h3>
-            Rating
-          </h3>
-          <h1>
-            {calcRating(data.ratings).toFixed(1)}
-          </h1>
-          <p>{data.ratings.reduce((element, total) => total += element)} Reviews</p>
+          <h3>Rating</h3>
+          <h1>{calcRating(data.ratings).toFixed(1)}</h1>
+          <p>
+            {data.ratings.reduce((element, total) => (total += element))}{" "}
+            Reviews
+          </p>
+          <Stars starCount="3.5" />
         </div>
       </div>
 
       <Footer></Footer>
-    </div >
+    </div>
+  );
+}
+
+export function Stars(props) {
+  let fullStar = <FontAwesomeIcon icon={faStarSolid} />;
+  let halfStar = <FontAwesomeIcon icon={faStarHalfStroke} />;
+  let emptyStar = <FontAwesomeIcon icon={faStar} />;
+  return (
+    <div>
+      {halfStar}
+      {emptyStar}
+    </div>
   );
 }
 
 function calcRating(ratings) {
-  let total = 0, totalCount = 0;
+  let total = 0,
+    totalCount = 0;
   for (let i = 1; i <= 5; i++) {
     total += ratings[i - 1] * i;
     totalCount += ratings[i - 1];
