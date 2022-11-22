@@ -36,7 +36,7 @@ export default function HomePage(props) {
         <div className="map-info">
           <div className="location-info">
             <h3>State</h3>
-            <p>{data.state}</p>
+            <p>{data.stateFull}</p>
             <h3>Location</h3>
             <p>{data.location}</p>
           </div>
@@ -52,14 +52,25 @@ export default function HomePage(props) {
       </div>
       <div className="sites-info-container">
         <div className="site-info">
-          <h3>Rating</h3>
-          <h2>{calcRating(data.ratings).toFixed(1)}</h2>
-          <Stars starCount={calcRating(data.ratings)} />
-          <p>
-            {data.ratings.reduce((element, total) => (total += element))}{" "}
-            Reviews
-          </p>
-          <StarDistribution stars={data.ratings} />
+          <div className="rating">
+            <div className="rating-brief">
+              <h3>Rating</h3>
+              <h4>
+                <span className="rating-score">
+                  {calcRating(data.ratings).toFixed(1)}
+                </span>
+                /5
+              </h4>
+              <Stars starCount={calcRating(data.ratings)} />
+              <p>
+                {data.ratings.reduce((element, total) => (total += element))}{" "}
+                Reviews
+              </p>
+            </div>
+            <div className="rating-detail">
+              <StarDistribution stars={data.ratings} />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -98,22 +109,20 @@ export function Stars(props) {
 
 export function StarDistribution(props) {
   let body = [];
-  let starTotal = props.stars.reduce((cur, total) => {
-    total += cur;
-  }, 0);
+  let starMax = props.stars.reduce((max, cur) => Math.max(max, cur), 0);
   console.log(props.stars);
   for (let i = props.stars.length; i >= 1; i--) {
     body.push(
-      <tr key={i + 1 + "-stars"}>
-        <td style={{ width: "20%" }}>
+      <tr key={i + 1 + "-stars"} className="rating-tr">
+        <td className="rating-stars">
           <Stars starCount={i} showBlank="false" />
         </td>
-        <td style={{ width: "100%" }}>
+        <td className="rating-bar">
           <div className="star-count-bar">
             <div
               className="star-count-bar-content"
               style={{
-                paddingLeft: (props.stars[i - 1] / starTotal) * 100 + "%",
+                paddingLeft: (props.stars[i - 1] / starMax) * 100 + "%",
               }}
             ></div>
           </div>

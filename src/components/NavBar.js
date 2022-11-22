@@ -8,7 +8,7 @@ export default function NavBar(props) {
           <div>
             <ul>
               <li className="title">
-                <a href="home"><img className="page-icon" src="img/icon.png" alt="Website Icon"/></a>
+                <a href="home"><img className="page-icon" src="/img/icon.png" alt="Website Icon"/></a>
               </li>
               <li className="nav-option"><Link to="/states">States</Link></li>
               <li className="nav-option"><Link to="/sites">Sites</Link></li>
@@ -18,9 +18,9 @@ export default function NavBar(props) {
           <div className="nav-right">
             <div className="search-bar">
               <input type="text" placeholder="Search.."/>
-              <button type="submit"><img className="search-icon" src="img/search.png" alt="search glass"/></button>
+              <button type="submit"><img className="search-icon" src="/img/search.png" alt="search glass"/></button>
             </div>
-            <img className="avatar" src="img/ava.jpg" alt="avatar"/>
+            <img className="avatar" src="/img/ava.jpg" alt="avatar"/>
           </div>
         </div>
       </nav>
