@@ -7,11 +7,11 @@ export default function NavBar(props) {
           <div>
             <ul>
               <li className="title">
-                <a href="home"><img className="page-icon" src="img/icon.png" alt="Website Icon"/></a>
+                <a href="home"><img className="page-icon" src="/img/icon.png" alt="Website Icon"/></a>
               </li>
-              <li className="nav-option"><a href="states">States</a></li>
-              <li className="nav-option"><a href="sites">Sites</a></li>
-              <li className="nav-option"><a href="savedsites">Saved Sites</a></li>
+              <li className="nav-option"><a href="/states">States</a></li>
+              <li className="nav-option"><a href="/sites">Sites</a></li>
+              <li className="nav-option"><a href="/savedsites">Saved Sites</a></li>
             </ul>
           </div>
           <div className="nav-right">

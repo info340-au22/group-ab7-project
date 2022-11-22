@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import SiteCard from "../components/SiteCard";
-import siteData from "../data/sites.json";
+import allSites from "../data/allSites.json";
+//import siteData from "../data/sites.json";
 
 export default function SitesBox(props) {
   //  console.log(props.filterStates);
   //  console.log(props.filterType);
+  let siteData = [];
+
+  for (const [key, value] of Object.entries(allSites)) {
+    siteData.push(value);
+  }
   const siteCardArray = siteData
     .filter((element) => {
       if (props.titleSearch !== undefined && props.titleSearch !== "") {
-        return element.siteName.toLowerCase().includes(props.titleSearch.toLowerCase());
+        return element.siteName
+          .toLowerCase()
+          .includes(props.titleSearch.toLowerCase());
       } else {
         return true;
       }
@@ -53,7 +61,7 @@ export default function SitesBox(props) {
         ></SiteCard>
       );
     });
-//  console.log(siteCardArray);
+  //  console.log(siteCardArray);
   return (
     <section className="sites-box">
       {siteCardArray.length !== 0 ? (

@@ -3,7 +3,6 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import StatesPage from "./pages/StatesPage";
 import SitesPage from "./pages/SitesPage";
-import siteData from "./data/sites.json";
 import Site from "./pages/Site";
 import SavedSites from "./pages/savedsites";
 import React, { useState } from "react";
@@ -14,7 +13,7 @@ export default function App(card) {
   const [bookmarks, setBookmarks] = useState(new Set());
 
   console.log(bookmarks);
-//  console.log(allSites);
+  //  console.log(allSites);
   //function setBookmarks() {
   //setBookmarkSetter("hello");
 
@@ -23,7 +22,7 @@ export default function App(card) {
   for (const [key, value] of Object.entries(allSites)) {
     siteLink.push(
       <Route
-        key={value.title}
+        key={key}
         path={"site/" + value.title}
         element={<Site site={value.title} />}
       />

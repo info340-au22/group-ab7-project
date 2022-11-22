@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import SitesBox from "../components/SitesBox";
 import React, { useState } from "react";
 import SiteCard from "../components/SiteCard";
-import siteData from "../data/sites.json";
 
 export default function SavedSites(props) {
   const [bookmarkedSites, setBookmarked] = useState([]);
