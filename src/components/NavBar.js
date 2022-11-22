@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
     return(
@@ -9,9 +10,9 @@ export default function NavBar(props) {
               <li className="title">
                 <a href="home"><img className="page-icon" src="img/icon.png" alt="Website Icon"/></a>
               </li>
-              <li className="nav-option"><a href="states">States</a></li>
-              <li className="nav-option"><a href="sites">Sites</a></li>
-              <li className="nav-option"><a href="savedsites">Saved Sites</a></li>
+              <li className="nav-option"><Link to="/states">States</Link></li>
+              <li className="nav-option"><Link to="/sites">Sites</Link></li>
+              <li className="nav-option"><Link to="/savedsites">Saved Sites</Link></li>
             </ul>
           </div>
           <div className="nav-right">

@@ -12,8 +12,9 @@ export default function SiteCard(props) {
 
   const handleClick = function (event) {
     const bookmarkedCard = event.target.parentNode;
-    //console.log(bookmarkedCard);
-    const bookmarksCopy = new Set(bookmarks);
+    console.log(bookmarkedCard);
+    const bookmarksCopy = new Set(...bookmarks);
+    const bookmarksArr = [...bookmarks]
 
     if (bookmarksCopy.has(bookmarkedCard)) {
       bookmarksCopy.delete(bookmarkedCard);
@@ -21,6 +22,14 @@ export default function SiteCard(props) {
       bookmarksCopy.add(bookmarkedCard);
     }
 
+    if (bookmarksArr.includes(bookmarkedCard)) {
+      bookmarksArr.pop(bookmarkedCard);
+    } else {
+      bookmarksArr.push(bookmarkedCard);
+    }
+    //console.log(bookmarksCopy);
+    //console.log("below is array");
+    //console.log(bookmarksArr);
     //console.log(bookmarkCopy);
     setBookmarks(bookmarksCopy);
     setBookmarked(!bookmarked);

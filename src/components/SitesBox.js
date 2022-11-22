@@ -53,7 +53,7 @@ export default function SitesBox(props) {
         ></SiteCard>
       );
     });
-//  console.log(siteCardArray);
+//console.log(siteCardArray);
   return (
     <section className="sites-box">
       {siteCardArray.length !== 0 ? (

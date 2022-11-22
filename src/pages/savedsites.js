@@ -9,12 +9,19 @@ export default function SavedSites(props) {
   const [bookmarkedSites, setBookmarked] = useState([]);
   const bookmarks = props.savedSites;
   let view;
+  //console.log(bookmarks);
+  /* const bookmarkedCards = bookmarks.map((currentObj) => {
+    return currentObj.innerHTML;
+  }); */
+
+  //console.log(bookmarkedCards);
 
   if (bookmarks.size === 0) {
     view = <p> You have no saved sites </p>;
   } else {
     view = bookmarks;
   }
+  console.log(view);
   return (
     <div>
       <NavBar></NavBar>
@@ -24,3 +31,24 @@ export default function SavedSites(props) {
     </div>
   );
 }
+
+/*
+<div
+      className="card-container"
+      data-state={singleSiteData.state}
+      data-type={singleSiteData.siteType}
+    >
+      <div className="site-card">
+        <img src={singleSiteData.imgSrc} alt={singleSiteData.imgAlt} />
+        <input
+          type="image"
+          src={imgSrc}
+          className="bookmark"
+          onClick={handleClick}
+        />
+        <h2>{singleSiteData.siteName}</h2>
+        <h3>{singleSiteData.siteFact}</h3>
+        <p>{singleSiteData.siteLocation}</p>
+      </div>
+    </div>
+    */

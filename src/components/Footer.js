@@ -10,7 +10,7 @@ let columnMap = footerDataArray.map((element) => {
         <div className="row">
             <div className="col-4 padding-zero">
             {element.columnName !== undefined ? <p className="bolded footer-header">{element.columnName}</p> : ""}
-            <p key={element.AuthorData} class="padding-zero pb-3">{element.AuthorData}</p>
+            <p key={element.AuthorData} className="padding-zero pb-3">{element.AuthorData}</p>
             </div>
 
             <div className="col-4 padding-zero">
@@ -20,9 +20,8 @@ let columnMap = footerDataArray.map((element) => {
 
             <div className="col-4 padding-zero">
             {element.columnName3 !== undefined ? <p className="bolded footer-header">{element.columnName3}</p> : ""}
-            <p key={element.AuthorData} class="padding-zero pb-3"><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
+            <p key={element.AuthorData} className="padding-zero pb-3"><a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a></p>
             </div>
-
             <form></form>
         </div>
         </div>
