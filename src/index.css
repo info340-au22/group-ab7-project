@@ -8,6 +8,28 @@ body {
   background-color: #f6f8fa;
 }
 
+.map-info {
+  height: 350px;
+  margin: 20px auto;
+  width: 80vw;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: row;
+}
+
+.location-info {
+  width: 100%;
+  padding: 30px;
+}
+
+iframe {
+  border-radius: 0 4px 4px 0;
+  width: 100%;
+  border: 0;
+}
+
 .centering {
   display: flex;
   justify-content: center;
@@ -24,7 +46,7 @@ body {
   margin: 20px 0;
 }
 .containers {
-text-align: center;
+  text-align: center;
 }
 
 /*
@@ -140,6 +162,7 @@ nav a:hover {
     realistic shadow
   */
 
+.map-info,
 .side-bar,
 .site-info,
 .site-card,
@@ -790,7 +813,8 @@ p a {
 }
 
 @media (min-width: 876px) {
-  .site-info {
+  .site-info,
+  .map-info {
     width: 700px;
   }
   .index-bar {
@@ -798,11 +822,10 @@ p a {
   }
 }
 
-
 /* Save Button */
 .saveButton {
   position: absolute;
-  bottom: 77px; 
+  bottom: 77px;
   right: 5px;
   border-radius: 5px;
   background-color: #0e52a4;
