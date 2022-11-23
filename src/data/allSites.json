@@ -19,41 +19,69 @@
     "siteFact": "Largest Wilderness Area in WA",
     "siteLocation": "Olympic National Park, WA"
   },
-  "Seattle Great Wheel" :{
+  "Seattle Great Wheel": {
     "state": "WA",
     "siteType": "cultural",
     "imgSrc": "img/card-seattle-great-wheel.jpeg",
     "imgAlt": "Seattle Great Ferris Wheel",
     "siteName": "Seattle Great Wheel",
     "siteFact": "The West Coast's Tallest Ferris Wheel",
-    "siteLocation": "Seattle, WA"
+    "siteLocation": "Seattle, WA",
+    "title": "Seattle Great Wheel",
+    "stateFull": "Washington",
+    "intro": [],
+    "bannerImg": "",
+    "mapName": "Seattle Great Wheel",
+    "location": "",
+    "ratings": [0, 0, 0, 0, 0]
   },
-  "Mount Rainier" :{
+  "Mount Rainier": {
     "state": "WA",
     "siteType": "natural",
     "imgSrc": "img/card-mt-rainier.jpeg",
     "imgAlt": "Mount Rainier",
     "siteName": "Mount Rainier",
     "siteFact": "Highest Mountain in the Cascades",
-    "siteLocation": "Mt. Rainier National Park, WA"
+    "siteLocation": "Mt. Rainier National Park, WA",
+    "title": "Mount Rainier",
+    "stateFull": "Washington",
+    "intro": [],
+    "bannerImg": "",
+    "mapName": "Mount Rainier",
+    "location": "",
+    "ratings": [0, 0, 0, 0, 0]
   },
-  "Pike Place Market":{
+  "Pike Place Market": {
     "state": "WA",
     "siteType": "cultural",
     "imgSrc": "img/card-pike-market-place.jpeg",
     "imgAlt": "Pike Place Market",
     "siteName": "Pike Place Market",
     "siteFact": "Seattle's Famous Market",
-    "siteLocation": "Seattle, WA"
+    "siteLocation": "Seattle, WA",
+    "title": "Pike Place Market",
+    "stateFull": "Washington",
+    "intro": [],
+    "bannerImg": "",
+    "mapName": "Pike Place Market",
+    "location": "",
+    "ratings": [0, 0, 0, 0, 0]
   },
-  "Golden Gate Bridge":{
+  "Golden Gate Bridge": {
     "state": "CA",
     "siteType": "cultural",
     "imgSrc": "img/card-golden-gate-bridge.jpg",
     "imgAlt": "Golden Gate Bridge",
     "siteName": "Golden Gate Bridge",
     "siteFact": "Most Famous Bridge in the World",
-    "siteLocation": "San Francisco, CA"
+    "siteLocation": "San Francisco, CA",
+    "title": "Golden Gate Bridge",
+    "stateFull": "California",
+    "intro": [],
+    "bannerImg": "",
+    "mapName": "Golden Gate Bridge",
+    "location": "",
+    "ratings": [0, 0, 0, 0, 0]
   },
   "Space Needle": {
     "state": "WA",
@@ -62,6 +90,13 @@
     "imgAlt": "Space Needle",
     "siteName": "Space Needle",
     "siteFact": "Landmark of Seattle",
-    "siteLocation": "Seattle, WA"
+    "siteLocation": "Seattle, WA",
+    "title": "Space Needle",
+    "stateFull": "Washington",
+    "intro": [],
+    "bannerImg": "",
+    "mapName": "Space Needle",
+    "location": "",
+    "ratings": [0, 0, 0, 0, 0]
   }
 }

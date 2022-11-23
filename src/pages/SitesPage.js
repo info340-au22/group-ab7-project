@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import SitesBox from "../components/SitesBox";
 import states from "../data/states.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useSearchParams } from "react-router-dom";
 
 const typeFilter = ["Cultural", "Natural"];
 
 export default function SitesPage(props) {
+  const [searchParams] = useSearchParams();
+  let searchContent =
+    searchParams.get("search") === null ? "" : searchParams.get("search");
   const [stateFilter, setStateFilter] = useState([]);
   const [siteTypeFilter, setSiteTypeFilter] = useState([]);
-  const [titleSearchContent, setTitleSearchContent] = useState("");
+  const [titleSearchContent, setTitleSearchContent] = useState(searchContent);
 
   function statesFilterClicked(event) {
     event.currentTarget.classList.toggle("selected");
@@ -43,8 +49,10 @@ export default function SitesPage(props) {
 
   function search() {
     setTitleSearchContent(document.getElementById("title-search").value);
+    /*
+    window.location.href =
+      "/sites?search=" + document.getElementById("title-search").value;*/
   }
-
   return (
     <div>
       <NavBar></NavBar>
@@ -54,6 +62,7 @@ export default function SitesPage(props) {
             <input
               id="title-search"
               type="text"
+              defaultValue={searchContent}
               placeholder="Search.."
               onKeyDown={(event) => {
                 if (event.which === 13) {
@@ -67,10 +76,9 @@ export default function SitesPage(props) {
               }}
             />
             <button type="submit" onClick={search}>
-              <img
+              <FontAwesomeIcon
                 className="page-search-icon"
-                src="img/search.png"
-                alt="submit"
+                icon={faMagnifyingGlass}
               />
             </button>
           </div>
