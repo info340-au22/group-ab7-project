@@ -927,6 +927,7 @@ p a {
 .bookmark-card {
   width: 200px;
   text-align: center;
+  display: flex;
 }
 
 .bookmark-card h2 {
@@ -944,3 +945,4 @@ p a {
   margin-right: auto;
   width: 50%;
 }
+

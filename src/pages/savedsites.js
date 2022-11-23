@@ -14,7 +14,14 @@ export default function SavedSites(props) {
   let view;
 
   if (bookmarkedArray.length !== 0) {
-    view = <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>;
+    
+      view = (<>
+        <div className="bookmark-box">
+        <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>
+        </div>
+      </>
+      );
+    
   } else {
     view = ( <>
       <p>You currently have no saved sites.</p>

@@ -7,7 +7,6 @@ export default function BookmarkCard(props) {
         const url = "https://www.google.com";
         console.log(url);
         window.open('http://google.com/search?q=' + stateFull + " flights", "_blank");
-        console.log(stateFull);
       }
     return (
         
