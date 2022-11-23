@@ -2,41 +2,30 @@ import React, { useState } from "react";
 import reactDOM from "react-dom/client";
 
 export default function SiteCard(props) {
-  const bookmarks = props.bookmarks;
-  const setBookmarks = props.setBookmarks;
-
-  //console.log(bookmarks);
+  const bookmarks = props.state;
 
   const singleSiteData = props.singleSiteData;
-  const [bookmarked, setBookmarked] = useState(false);
 
+
+  //console.log(props.bookmarks);
   const handleClick = function (event) {
     const bookmarkedCard = event.target.parentNode;
-    console.log(bookmarkedCard);
-    const bookmarksCopy = new Set(...bookmarks);
-    const bookmarksArr = [...bookmarks];
-
-    if (bookmarksCopy.has(bookmarkedCard)) {
-      bookmarksCopy.delete(bookmarkedCard);
+    const name = bookmarkedCard.children[2].outerText;
+    
+    const stateCopy = {...props.state};
+  
+    if (!stateCopy[name].bookmarked) {
+      stateCopy[name].bookmarked = true;
     } else {
-      bookmarksCopy.add(bookmarkedCard);
+        stateCopy[name].bookmarked = false;
     }
 
-    if (bookmarksArr.includes(bookmarkedCard)) {
-      bookmarksArr.pop(bookmarkedCard);
-    } else {
-      bookmarksArr.push(bookmarkedCard);
-    }
-    //console.log(bookmarksCopy);
-    //console.log("below is array");
-    //console.log(bookmarksArr);
-    //console.log(bookmarkCopy);
-    setBookmarks(bookmarksCopy);
-    setBookmarked(!bookmarked);
-  };
+  
+    props.setState(stateCopy);
+  }
 
   let imgSrc;
-  if (bookmarked) {
+  if (singleSiteData.bookmarked) {
     imgSrc = "./img/bookmark-filled.png";
   } else {
     imgSrc = "./img/bookmark.png";

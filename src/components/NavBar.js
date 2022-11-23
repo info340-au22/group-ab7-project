@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar(props) {
-  console.log(faMagnifyingGlass);
+  //console.log(faMagnifyingGlass);
   return (
     <header>
       <nav>
@@ -21,13 +21,13 @@ export default function NavBar(props) {
                 </a>
               </li>
               <li className="nav-option">
-                <a href="/states">States</a>
+                <Link to="/states">States</Link>
               </li>
               <li className="nav-option">
-                <a href="/sites">Sites</a>
+                <Link to="/sites">Sites</Link>
               </li>
               <li className="nav-option">
-                <a href="/savedsites">Saved Sites</a>
+                <Link to="/savedsites">Saved Sites</Link>
               </li>
             </ul>
           </div>

@@ -9,22 +9,16 @@ import React, { useState, Component } from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import allSites from "./data/allSites.json";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+export default function App() {
+    const [state, setState] = useState(allSites);
 
-    this.state = new Set();
-  }
-
-  render() {
-    //const [bookmarks, setBookmarks] = useState(new Set());
-
-    console.log(this.state);
+    //console.log(this.state);
     //  console.log(allSites);
     //function setBookmarks() {
     //setBookmarkSetter("hello");
 
     // }
+    
     let siteLink = [];
     for (const [key, value] of Object.entries(allSites)) {
       siteLink.push(
@@ -45,18 +39,15 @@ class App extends Component {
           <Route
             path="sites"
             element={
-              <SitesPage setBookmarks={this.setState} bookmarks={this.state} />
+              <SitesPage setState={setState} state={state} />
             }
           />
           {siteLink}
           <Route
             path="savedsites"
-            element={<SavedSites savedSites={this.state}></SavedSites>}
+            element={<SavedSites state={state}></SavedSites>}
           />
         </Routes>
       </div>
     );
   }
-}
-
-export default App;
