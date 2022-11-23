@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> f4d6b462d1d6a812d0eb7dffd970a7fcc7106f91
 
 export default function NavBar(props) {
   console.log(faMagnifyingGlass);
@@ -28,6 +32,12 @@ export default function NavBar(props) {
               <li className="nav-option">
                 <a href="/savedsites">Saved Sites</a>
               </li>
+<<<<<<< HEAD
+=======
+              <li className="nav-option"><Link to="/states">States</Link></li>
+              <li className="nav-option"><Link to="/sites">Sites</Link></li>
+              <li className="nav-option"><Link to="/savedsites">Saved Sites</Link></li>
+>>>>>>> f4d6b462d1d6a812d0eb7dffd970a7fcc7106f91
             </ul>
           </div>
           <div className="nav-right">
