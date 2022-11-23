@@ -1019,16 +1019,11 @@ p a {
   margin: auto;
   display: block;
   width: 240px;
- 
-}
-
-.bookmark-box {
-  position: center;
 }
 
 .book-mark-box img.map-img {
   height: 50px;
-  width: 100px;
+  width: 1px;
 }
 
 div.img-text {
@@ -1059,6 +1054,11 @@ div.img-text {
   .bookmark-box {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .map-image {
+    width: 300px;
   }
 }
 
@@ -1070,6 +1070,10 @@ div.img-text {
   }
   .index-bar {
     display: block;
+  }
+
+  .map-image {
+    width: 350px;
   }
 }
 
