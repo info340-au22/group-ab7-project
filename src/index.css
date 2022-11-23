@@ -921,26 +921,6 @@ p a {
   font-size: 14pt;
 }
 
-@media (min-width: 768px) {
-  nav input {
-    display: inline-block;
-  }
-  .state-card-container {
-    height: 300px;
-  }
-}
-
-@media (min-width: 876px) {
-  .gallery,
-  .site-info,
-  .map-info {
-    width: 700px;
-  }
-  .index-bar {
-    display: block;
-  }
-}
-
 /* Save Button */
 .saveButton {
   position: absolute;
@@ -964,7 +944,7 @@ p a {
   position: absolute;
   left: 80px;
   border-radius: 5px;
-  background-color: #24292f;;
+  background-color: #24292f;
   color: white;
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -974,7 +954,7 @@ p a {
   width: 100%;
   height: 15vw;
   object-fit: cover;
- 
+
   border-radius: 0em;
 }
 
@@ -988,7 +968,7 @@ p a {
   margin-top: 1px;
 }
 
-.bookmark-view p{
+.bookmark-view p {
   text-align: center;
 }
 
@@ -997,4 +977,24 @@ p a {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+@media (min-width: 768px) {
+  nav input {
+    display: inline-block;
+  }
+  .state-card-container {
+    height: 300px;
+  }
+}
+
+@media (min-width: 876px) {
+  .gallery,
+  .site-info,
+  .map-info {
+    width: 700px;
+  }
+  .index-bar {
+    display: block;
+  }
 }
