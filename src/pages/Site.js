@@ -213,7 +213,12 @@ function SideBarRight(props) {
 function SiteComment(props) {
   return (
     <div className="site-info" id="site-comment">
-      <RateStars />
+      <h2>Write a review</h2>
+      <div className="write-review">
+        <textarea placeholder="Write a review..."></textarea>
+
+        <RateStars />
+      </div>
     </div>
   );
 }

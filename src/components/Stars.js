@@ -78,14 +78,7 @@ export function RateStars(props) {
   const [starCount, setStarCount] = useState(0);
   const [clicked, setClicked] = useState(false);
   let stars = [];
-  const reaction = [
-    "Rate this Place",
-    "Terrible",
-    "Bad",
-    "Okay",
-    "Good",
-    "Excellent",
-  ];
+  const reaction = ["", "Terrible", "Bad", "Okay", "Good", "Excellent"];
 
   for (let i = 1; i <= starCount; i++) {
     stars.push(
