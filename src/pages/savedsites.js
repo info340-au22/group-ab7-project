@@ -18,17 +18,19 @@ export default function SavedSites(props) {
   } else {
     view = ( <>
       <p>You currently have no saved sites.</p>
+      <img src="img/WestCoast.png" alt="United States with West Coast highlighted in red"></img>
       <p>In order to get started, select sites that you want to bookmark under the "Sites" tab.</p>
       </>
     );
   }
 
-  return (
-    <div className="bookmark-view">
+  return ( <>
       <NavBar></NavBar>
-      <h1> Your Saved Sites </h1>
-       {view}
+      <div className="bookmark-view">
+        <h1> Your Saved Sites: </h1>
+        {view}
+       </div>
       <Footer></Footer>
-    </div>
+      </>
   );
 }

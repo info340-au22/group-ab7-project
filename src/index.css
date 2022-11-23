@@ -937,3 +937,10 @@ p a {
 .bookmark-view p{
   text-align: center;
 }
+
+.bookmark-view img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
