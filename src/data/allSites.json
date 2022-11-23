@@ -33,7 +33,8 @@
     "bannerImg": "",
     "mapName": "Seattle Great Wheel",
     "location": "",
-    "ratings": [0, 0, 0, 0, 0]
+    "ratings": [0, 0, 0, 0, 0],
+    "gallery": []
   },
   "Mount Rainier": {
     "state": "WA",
@@ -49,7 +50,8 @@
     "bannerImg": "",
     "mapName": "Mount Rainier",
     "location": "",
-    "ratings": [0, 0, 0, 0, 0]
+    "ratings": [0, 0, 0, 0, 0],
+    "gallery": []
   },
   "Pike Place Market": {
     "state": "WA",
@@ -65,7 +67,8 @@
     "bannerImg": "",
     "mapName": "Pike Place Market",
     "location": "",
-    "ratings": [0, 0, 0, 0, 0]
+    "ratings": [0, 0, 0, 0, 0],
+    "gallery": []
   },
   "Golden Gate Bridge": {
     "state": "CA",
@@ -81,7 +84,8 @@
     "bannerImg": "",
     "mapName": "Golden Gate Bridge",
     "location": "",
-    "ratings": [0, 0, 0, 0, 0]
+    "ratings": [0, 0, 0, 0, 0],
+    "gallery": []
   },
   "Space Needle": {
     "state": "WA",
@@ -97,6 +101,7 @@
     "bannerImg": "",
     "mapName": "Space Needle",
     "location": "",
-    "ratings": [0, 0, 0, 0, 0]
+    "ratings": [0, 0, 0, 0, 0],
+    "gallery": []
   }
 }

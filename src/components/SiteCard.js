@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import reactDOM from "react-dom/client";
 
+import { Stars, calcRating } from "../components/Stars";
+
 export default function SiteCard(props) {
   const bookmarks = props.bookmarks;
   const setBookmarks = props.setBookmarks;
@@ -67,6 +69,14 @@ export default function SiteCard(props) {
         <h2>{singleSiteData.siteName}</h2>
         <h3>{singleSiteData.siteFact}</h3>
         <p>{singleSiteData.siteLocation}</p>
+        <div className="card-rating">
+          <Stars starCount={calcRating(singleSiteData.ratings)} />
+          <h3>
+            {calcRating(singleSiteData.ratings).toFixed(1) + "" !== "NaN"
+              ? calcRating(singleSiteData.ratings).toFixed(1) + "/5"
+              : "No rating"}
+          </h3>
+        </div>
       </div>
     </div>
   );

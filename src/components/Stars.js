@@ -73,3 +73,62 @@ export function calcRating(ratings) {
   }
   return total / totalCount;
 }
+
+export function RateStars(props) {
+  const [starCount, setStarCount] = useState(0);
+  const [clicked, setClicked] = useState(false);
+  let stars = [];
+  const reaction = [
+    "Rate this Place",
+    "Terrible",
+    "Bad",
+    "Okay",
+    "Good",
+    "Excellent",
+  ];
+
+  for (let i = 1; i <= starCount; i++) {
+    stars.push(
+      <FontAwesomeIcon
+        icon={faStarSolid}
+        className="star"
+        key={"star-" + i}
+        onMouseEnter={() => {
+          setStarCount(i);
+          setClicked(false);
+        }}
+        onMouseLeave={() => {
+          if (!clicked) setStarCount(0);
+        }}
+        onClick={() => {
+          setClicked(true);
+        }}
+      />
+    );
+  }
+  for (let i = starCount + 1; i <= 5; i++) {
+    stars.push(
+      <FontAwesomeIcon
+        icon={faStar}
+        className="star"
+        key={"star-" + i}
+        onMouseEnter={() => {
+          setStarCount(i);
+          setClicked(false);
+        }}
+        onMouseLeave={() => {
+          if (!clicked) setStarCount(0);
+        }}
+        onClick={() => {
+          setClicked(true);
+        }}
+      />
+    );
+  }
+  return (
+    <div class="rate-stars">
+      {stars}
+      <p>{reaction[starCount]}</p>
+    </div>
+  );
+}
