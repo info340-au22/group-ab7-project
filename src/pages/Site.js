@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import allSites from "../data/allSites.json";
 import { Stars, StarDistribution, calcRating } from "../components/Stars";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 export default function HomePage(props) {
   let data = allSites[props.site];
@@ -25,6 +27,17 @@ export default function HomePage(props) {
             <p key={"paragraph" + index}>{element}</p>
           ))}
         </div>
+      </div>
+      <div className="sites-info-container">
+        <ImageGallery
+          items={data.gallery.map((element) => {
+            console.log("/img/" + data.title + "/" + element);
+            return {
+              original: "/img/" + data.title + "/" + element,
+              thumbnail: "/img/" + data.title + "/" + element,
+            };
+          })}
+        />
       </div>
       <div className="sites-info-container">
         <div className="map-info">

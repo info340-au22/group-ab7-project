@@ -14,7 +14,7 @@ export default function SiteCard(props) {
     const bookmarkedCard = event.target.parentNode;
     console.log(bookmarkedCard);
     const bookmarksCopy = new Set(...bookmarks);
-    const bookmarksArr = [...bookmarks]
+    const bookmarksArr = [...bookmarks];
 
     if (bookmarksCopy.has(bookmarkedCard)) {
       bookmarksCopy.delete(bookmarkedCard);
@@ -50,12 +50,15 @@ export default function SiteCard(props) {
     >
       <div
         className="site-card"
-        onClick={() => {
-          window.location.href = "/site/" + singleSiteData.title;
+        onClick={(event) => {
+          if (event.target !== document.getElementById("bookmark-button")) {
+            window.location.href = "/site/" + singleSiteData.title;
+          }
         }}
       >
         <img src={singleSiteData.imgSrc} alt={singleSiteData.imgAlt} />
         <input
+          id="bookmark-button"
           type="image"
           src={imgSrc}
           className="bookmark"

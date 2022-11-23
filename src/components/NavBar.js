@@ -12,7 +12,7 @@ export default function NavBar(props) {
           <div>
             <ul>
               <li className="title">
-                <a href="home">
+                <a href="/home">
                   <img
                     className="page-icon"
                     src="/img/icon.png"
