@@ -913,6 +913,7 @@ p a {
   background-color: #24292f;;
   color: white;
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .bookmark-card img {
@@ -925,12 +926,14 @@ p a {
 
 .bookmark-card {
   width: 200px;
- 
+  text-align: center;
 }
 
 .bookmark-card h2 {
   font-size: 20px;
   margin-top: 1px;
-  text-align: center;
 }
 
+.bookmark-view p{
+  text-align: center;
+}

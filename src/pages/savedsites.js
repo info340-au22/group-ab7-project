@@ -7,18 +7,27 @@ import BookmarkBox from "../components/BookmarkBox";
 
 
 export default function SavedSites(props) {
-  //console.log(props.state);
   const stateArray = Object.values(props.state);
-  //console.log(stateArray);
   const bookmarkedArray = stateArray.filter((currentObj) => {
     return currentObj.bookmarked;
   });
+  let view;
+
+  if (bookmarkedArray.length !== 0) {
+    view = <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>;
+  } else {
+    view = ( <>
+      <p>You currently have no saved sites.</p>
+      <p>In order to get started, select sites that you want to bookmark under the "Sites" tab.</p>
+      </>
+    );
+  }
 
   return (
-    <div>
+    <div className="bookmark-view">
       <NavBar></NavBar>
       <h1> Your Saved Sites </h1>
-       <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>
+       {view}
       <Footer></Footer>
     </div>
   );
