@@ -18,7 +18,7 @@ export default function SitesPage(props) {
   const [titleSearchContent, setTitleSearchContent] = useState(searchContent);
 
   function statesFilterClicked(event) {
-    event.currentTarget.classList.toggle("selected");
+    event.currentTarget.classList.toggle("card-selected");
     event.currentTarget.children[0].children[1].classList.toggle("not-shown");
     let filter = event.currentTarget.dataset.filterName;
     if (stateFilter.indexOf(filter) === -1) {
@@ -33,7 +33,7 @@ export default function SitesPage(props) {
   }
 
   function siteFilterClicked(event) {
-    event.currentTarget.classList.toggle("selected");
+    event.currentTarget.classList.toggle("card-selected");
     event.currentTarget.children[0].children[1].classList.toggle("not-shown");
     let filter = event.currentTarget.dataset.filterName.toLowerCase();
     if (siteTypeFilter.indexOf(filter) === -1) {
@@ -93,7 +93,7 @@ export default function SitesPage(props) {
                 <li
                   key={element.name}
                   data-filter-name={element.short}
-                  className="unselected"
+                  className="uncard-selected"
                   onClick={statesFilterClicked}
                 >
                   <div>
@@ -111,7 +111,7 @@ export default function SitesPage(props) {
                 <li
                   key={element}
                   data-filter-name={element.toLowerCase()}
-                  className="unselected"
+                  className="uncard-selected"
                   onClick={siteFilterClicked}
                 >
                   <div>

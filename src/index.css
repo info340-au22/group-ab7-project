@@ -166,6 +166,7 @@ nav a:hover {
     realistic shadow
   */
 
+.gallery,
 .map-info,
 .side-bar,
 .site-info,
@@ -254,7 +255,7 @@ nav {
 
 .site-card {
   width: 280px;
-  height: 230px;
+  height: 255px;
   background-color: white;
   border-radius: 20px;
   margin: 10px;
@@ -263,7 +264,7 @@ nav {
 
 .site-card img {
   width: 100%;
-  height: 68%;
+  height: 156px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
@@ -285,6 +286,22 @@ nav {
   font-style: italic;
   margin: 0px 20px;
   font-size: 10pt;
+}
+
+.card-rating {
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-rating h3 {
+  font-size: 14pt;
+  margin: 0 5px;
+}
+
+.rate-stars {
+  font-size: 24pt;
 }
 
 .sites-box {
@@ -313,7 +330,7 @@ nav {
 
 .card-container {
   width: 300px;
-  height: 250px;
+  height: 270px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,7 +433,7 @@ nav {
   padding: 0 10px;
 }
 
-.selected,
+.card-selected,
 .unselected:hover {
   background: lightgray;
 }
@@ -433,11 +450,11 @@ nav {
   visibility: hidden;
 }
 
-.selected {
+.card-selected {
   border: 1px darkgray solid;
 }
 
-.selected:hover {
+.card-selected:hover {
   background-color: darkgray;
 }
 
@@ -590,6 +607,24 @@ img.card-img-top {
   overflow: hidden;
 }
 
+.gallery li {
+  border: 0;
+}
+
+.gallery div,
+.gallery button,
+.gallery .carousel-slider img {
+  border-radius: 5px 5px 0 0;
+}
+
+.gallery .carousel-slider div {
+  object-fit: cover;
+}
+
+.thumbs-wrapper img {
+  border-radius: 5px;
+}
+
 .rating {
   display: flex;
   flex-direction: row;
@@ -728,12 +763,20 @@ h1 {
   color: grey;
 }
 
-.site-info {
+.site-info,
+.gallery {
   margin: 20px auto;
-  width: 80vw;
-  padding: 30px;
   background-color: white;
   border-radius: 5px;
+}
+
+.site-info,
+.gallery {
+  width: 80vw;
+}
+
+.site-info {
+  padding: 30px;
   border: 1px solid #f0f2f7;
 }
 
@@ -743,7 +786,6 @@ h1 {
 
 .side-bar {
   background-color: white;
-  border: 1px solid #f0f2f7;
   height: 100%;
   position: sticky;
   top: 80px;
@@ -779,11 +821,22 @@ h1 {
 
 .side-bar li {
   border-top: 1px solid #e2e3e7;
+  border-left: 1px solid #f0f2f7;
+  border-right: 1px solid #f0f2f7;
   transition: all 150ms ease-out;
+}
+
+.side-bar li:first-of-type {
+  border-top: 1px solid #f0f2f7;
+}
+
+.side-bar li:last-of-type {
+  border-bottom: 1px solid #f0f2f7;
 }
 
 .side-bar li:hover {
   background-color: #e2e3e7;
+  border-color: #e2e3e7;
   transition: all 150ms ease-in;
 }
 
@@ -868,25 +921,6 @@ p a {
   font-size: 14pt;
 }
 
-@media (min-width: 768px) {
-  nav input {
-    display: inline-block;
-  }
-  .state-card-container {
-    height: 300px;
-  }
-}
-
-@media (min-width: 876px) {
-  .site-info,
-  .map-info {
-    width: 700px;
-  }
-  .index-bar {
-    display: block;
-  }
-}
-
 /* Save Button */
 .saveButton {
   position: absolute;
@@ -910,7 +944,7 @@ p a {
   position: absolute;
   left: 80px;
   border-radius: 5px;
-  background-color: #24292f;;
+  background-color: #24292f;
   color: white;
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -920,7 +954,7 @@ p a {
   width: 100%;
   height: 15vw;
   object-fit: cover;
- 
+
   border-radius: 0em;
 }
 
@@ -935,7 +969,7 @@ p a {
   margin-top: 1px;
 }
 
-.bookmark-view p{
+.bookmark-view p {
   text-align: center;
 }
 
@@ -946,3 +980,24 @@ p a {
   width: 50%;
 }
 
+
+
+@media (min-width: 768px) {
+  nav input {
+    display: inline-block;
+  }
+  .state-card-container {
+    height: 300px;
+  }
+}
+
+@media (min-width: 876px) {
+  .gallery,
+  .site-info,
+  .map-info {
+    width: 700px;
+  }
+  .index-bar {
+    display: block;
+  }
+}

@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import StatesPage from "./pages/StatesPage";
 import SitesPage from "./pages/SitesPage";
 import Site from "./pages/Site";
-import SavedSites from "./pages/savedsites";
+import SavedSites from "./pages/SavedSites";
 import React, { useState, Component } from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import allSites from "./data/allSites.json";
