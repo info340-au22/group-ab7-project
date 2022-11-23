@@ -983,6 +983,7 @@ p a {
   border-radius: 20px;
   margin: auto;
   overflow: hidden;
+  margin-bottom: 1rem;
 
 }
 .bookmark-card .findFlights {
@@ -1057,6 +1058,7 @@ div.img-text {
 
   .bookmark-box {
     display: flex;
+    flex-wrap: wrap;
   }
 }
 
