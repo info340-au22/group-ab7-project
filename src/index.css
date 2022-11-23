@@ -312,7 +312,7 @@ nav {
   justify-content: center;
 }
 
-.site-card:hover {
+.site-card:hover, .bookmark-card:hover {
   transform: scale(1.1);
   transition: all 500ms ease;
   --shadow-color: 210deg 8% 61%;
@@ -931,7 +931,6 @@ p a {
   color: white;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
-
 .bookmark {
   height: 25px;
   width: 25px;
@@ -940,28 +939,39 @@ p a {
   right: 5px;
 }
 
-.findFlights {
-  position: absolute;
-  left: 80px;
+.bookmark-card {
+  width: 200px;
+  height: 250px;
+  text-align: center;
+  position: relative;
+  margin: auto;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  width: 280px;
+  height: 255px;
+  background-color: white;
+  border-radius: 20px;
+  margin: auto;
+  overflow: hidden;
+
+}
+.bookmark-card .findFlights {
   border-radius: 5px;
   background-color: #24292f;
   color: white;
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin: auto;
+  width: 50%;
+  
 }
 
 .bookmark-card img {
   width: 100%;
-  height: 15vw;
-  object-fit: cover;
+  border-radius: 20px;
+  height: 8rem;
 
   border-radius: 0em;
-}
-
-.bookmark-card {
-  width: 200px;
-  text-align: center;
-  display: flex;
 }
 
 .bookmark-card h2 {
@@ -971,15 +981,40 @@ p a {
 
 .bookmark-view p {
   text-align: center;
+  position: relative;
 }
 
-.bookmark-view img {
+.map-image {
+  margin: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  width: 240px;
+ 
 }
 
+.bookmark-box {
+  position: center;
+}
+
+.book-mark-box img.map-img {
+  height: 50px;
+  width: 100px;
+}
+
+div.img-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.bookmark-heading {
+ padding-top: -1px;
+}
+
+.headWrapper {
+  width: 100px;
+  position: relative;
+  margin-top: 5px;
+}
 
 
 @media (min-width: 768px) {
@@ -988,6 +1023,10 @@ p a {
   }
   .state-card-container {
     height: 300px;
+  }
+
+  .bookmark-box {
+    display: flex;
   }
 }
 
@@ -1001,3 +1040,4 @@ p a {
     display: block;
   }
 }
+

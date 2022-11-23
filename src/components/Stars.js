@@ -126,7 +126,7 @@ export function RateStars(props) {
     );
   }
   return (
-    <div class="rate-stars">
+    <div className="rate-stars">
       {stars}
       <p>{reaction[starCount]}</p>
     </div>

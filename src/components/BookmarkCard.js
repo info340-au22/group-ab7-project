@@ -4,6 +4,9 @@ export default function BookmarkCard(props) {
 
     function handleClick(stateFull) {
         console.log(stateFull);
+        if (stateFull === "Washington") {
+            stateFull += " state";
+        }
         const url = "https://www.google.com";
         console.log(url);
         window.open('http://google.com/search?q=' + stateFull + " flights", "_blank");
@@ -11,9 +14,9 @@ export default function BookmarkCard(props) {
     return (
         
             <div className="card bookmark-card">
-                <img src={data.imgSrc} className="card-img-top" alt={data.imgAlt}></img>
+                    <img src={data.imgSrc} className="card-img-top bookmarkImg" alt={data.imgAlt}></img>
                 <div className="card-body">
-                    <h2>{data.siteName}</h2>
+                    <h2 className="bookmark-heading">{data.siteName}</h2>
                     <button className="findFlights" onClick={() => handleClick(data.stateFull)}>Find Flights</button>
                 </div>
             </div>

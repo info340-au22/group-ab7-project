@@ -13,10 +13,7 @@ export default function BookmarkBox(props) {
        
       return (
         <section className="bookmark-box">
-            <div>
                 {bookmarks}
-            </div>
-            
         </section>
       );
 }

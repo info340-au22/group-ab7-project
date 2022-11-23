@@ -25,8 +25,8 @@ export default function SavedSites(props) {
   } else {
     view = ( <>
       <p>You currently have no saved sites.</p>
-      <img src="img/WestCoast.png" alt="United States with West Coast highlighted in red"></img>
-      <p>In order to get started, select sites that you want to bookmark under the "Sites" tab.</p>
+      <img src="img/WestCoast.png" className="map-image" alt="United States with West Coast highlighted in red"></img>
+      <p>To get started, select sites to bookmark under the "Sites" tab.</p>
       </>
     );
   }
