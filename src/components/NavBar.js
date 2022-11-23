@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import NavList from "../components/NavList";
 
 export default function NavBar(props) {
-  console.log(faMagnifyingGlass);
+  //console.log(faMagnifyingGlass);
+  NavList();
+  
   return (
     <header>
       <nav>
@@ -12,23 +15,13 @@ export default function NavBar(props) {
           <div>
             <ul>
               <li className="title">
-                <a href="/home">
                   <img
                     className="page-icon"
                     src="/img/icon.png"
                     alt="Website Icon"
                   />
-                </a>
               </li>
-              <li className="nav-option">
-                <a href="/states">States</a>
-              </li>
-              <li className="nav-option">
-                <a href="/sites">Sites</a>
-              </li>
-              <li className="nav-option">
-                <a href="/savedsites">Saved Sites</a>
-              </li>
+              <NavList></NavList>
             </ul>
           </div>
           <div className="nav-right">

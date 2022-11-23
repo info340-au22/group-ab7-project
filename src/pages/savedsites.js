@@ -3,51 +3,34 @@ import Footer from "../components/Footer";
 import SitesBox from "../components/SitesBox";
 import React, { useState } from "react";
 import SiteCard from "../components/SiteCard";
+import BookmarkBox from "../components/BookmarkBox";
+
 
 export default function SavedSites(props) {
-  const [bookmarkedSites, setBookmarked] = useState([]);
-  const bookmarks = props.savedSites;
+  const stateArray = Object.values(props.state);
+  const bookmarkedArray = stateArray.filter((currentObj) => {
+    return currentObj.bookmarked;
+  });
   let view;
-  //console.log(bookmarks);
-  /* const bookmarkedCards = bookmarks.map((currentObj) => {
-    return currentObj.innerHTML;
-  }); */
 
-  //console.log(bookmarkedCards);
-
-  if (bookmarks.size === 0) {
-    view = <p> You have no saved sites </p>;
+  if (bookmarkedArray.length !== 0) {
+    view = <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>;
   } else {
-    view = bookmarks;
+    view = ( <>
+      <p>You currently have no saved sites.</p>
+      <img src="img/WestCoast.png" alt="United States with West Coast highlighted in red"></img>
+      <p>In order to get started, select sites that you want to bookmark under the "Sites" tab.</p>
+      </>
+    );
   }
-  console.log(view);
-  return (
-    <div>
+
+  return ( <>
       <NavBar></NavBar>
-      <h1> Your Saved Sites </h1>
-      {view}
+      <div className="bookmark-view">
+        <h1> Your Saved Sites: </h1>
+        {view}
+       </div>
       <Footer></Footer>
-    </div>
+      </>
   );
 }
-
-/*
-<div
-      className="card-container"
-      data-state={singleSiteData.state}
-      data-type={singleSiteData.siteType}
-    >
-      <div className="site-card">
-        <img src={singleSiteData.imgSrc} alt={singleSiteData.imgAlt} />
-        <input
-          type="image"
-          src={imgSrc}
-          className="bookmark"
-          onClick={handleClick}
-        />
-        <h2>{singleSiteData.siteName}</h2>
-        <h3>{singleSiteData.siteFact}</h3>
-        <p>{singleSiteData.siteLocation}</p>
-      </div>
-    </div>
-    */

@@ -127,8 +127,8 @@ export default function SitesPage(props) {
           filterStates={stateFilter}
           filterType={siteTypeFilter}
           titleSearch={titleSearchContent}
-          setBookmarks={props.setBookmarks}
-          bookmarks={props.bookmarks}
+          setState={props.setState}
+          state={props.state}
         />
       </div>
       <Footer></Footer>
