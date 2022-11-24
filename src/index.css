@@ -971,12 +971,8 @@ p a {
 }
 
 .bookmark-card {
-  width: 200px;
-  height: 250px;
   text-align: center;
   position: relative;
-  margin: auto;
-  margin-bottom: 12px;
   box-sizing: border-box;
   width: 280px;
   height: 255px;
@@ -985,7 +981,6 @@ p a {
   margin: auto;
   overflow: hidden;
   margin-bottom: 1rem;
-
 }
 
 .bookmark-card .findFlights {
