@@ -14,30 +14,29 @@ export default function SavedSites(props) {
   let view;
 
   if (bookmarkedArray.length !== 0) {
-    
-      view = (<>
-        <div className="bookmark-box">
+      view = ( // BookmarkBox returns <section>
         <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>
-        </div>
-      </>
       );
-    
   } else {
-    view = ( <>
+    view = ( 
+      <section>
       <p>You currently have no saved sites.</p>
       <img src="img/WestCoast.png" className="map-image" alt="United States with West Coast highlighted in red"></img>
       <p>To get started, select sites to bookmark under the "Sites" tab.</p>
-      </>
+      </section>
     );
   }
 
-  return ( <>
+  return (
+  <div>
       <NavBar></NavBar>
-      <div className="bookmark-view">
-        <h1> Your Saved Sites: </h1>
-        {view}
-       </div>
+      <main>
+        <div className="bookmark-view">
+          <h1> Your Saved Sites: </h1>
+          {view}
+        </div>
+       </main>
       <Footer></Footer>
-      </>
+  </div>
   );
 }

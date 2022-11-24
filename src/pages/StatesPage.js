@@ -13,10 +13,16 @@ export default function StatesPage(props) {
     <div>
       <NavBar></NavBar>
       <title>States</title>
-      <StatesInfo callBackFilterStates={updateFilter}/>
+      <main>
+        <section>
+          <StatesInfo callBackFilterStates={updateFilter}/>
+        </section>
 
-      <h3 className="sub-title">Sites of this State</h3>
-      <SitesBox filterStates={[stateFilter]} />
+        <section>
+        <h3 className="sub-title">Sites of this State</h3>
+        <SitesBox filterStates={[stateFilter]} />
+        </section>
+      </main>
       <Footer></Footer>
     </div>
   );
