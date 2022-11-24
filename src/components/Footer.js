@@ -1,8 +1,9 @@
 import React from "react";
 import footerData from "../data/authors.json";
 
-export default function Footer() {
+export default function Footer(props) {
   const footerDataArray = footerData;
+  
 
   let columnMap = footerDataArray.map((element, index) => {
     return (
