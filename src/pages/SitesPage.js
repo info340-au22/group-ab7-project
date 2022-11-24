@@ -56,81 +56,83 @@ export default function SitesPage(props) {
   return (
     <div>
       <NavBar></NavBar>
-      <div className="content-area">
-        <section className="page-search">
-          <div className="page-search-bar">
-            <input
-              id="title-search"
-              type="text"
-              defaultValue={searchContent}
-              placeholder="Search.."
-              onKeyDown={(event) => {
-                if (event.which === 13) {
-                  search();
-                }
-              }}
-              onChange={(event) => {
-                if (event.target.value === "") {
-                  search();
-                }
-              }}
-            />
-            <button type="submit" onClick={search}>
-              <FontAwesomeIcon
-                className="page-search-icon"
-                icon={faMagnifyingGlass}
+      <main>
+        <div className="content-area">
+          <section className="page-search">
+            <div className="page-search-bar">
+              <input
+                id="title-search"
+                type="text"
+                defaultValue={searchContent}
+                placeholder="Search.."
+                onKeyDown={(event) => {
+                  if (event.which === 13) {
+                    search();
+                  }
+                }}
+                onChange={(event) => {
+                  if (event.target.value === "") {
+                    search();
+                  }
+                }}
               />
-            </button>
-          </div>
-        </section>
+              <button type="submit" onClick={search}>
+                <FontAwesomeIcon
+                  className="page-search-icon"
+                  icon={faMagnifyingGlass}
+                />
+              </button>
+            </div>
+          </section>
 
-        <section className="filter-box">
-          <h3>Filters:</h3>
-          <div className="filter">
-            <h4>State:</h4>
-            <ul>
-              {states.map((element) => (
-                <li
-                  key={element.name}
-                  data-filter-name={element.short}
-                  className="uncard-selected"
-                  onClick={statesFilterClicked}
-                >
-                  <div>
-                    <span>{element.name} </span>
-                    <span className="cancel not-shown">×</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="filter">
-            <h4>Type:</h4>
-            <ul>
-              {typeFilter.map((element) => (
-                <li
-                  key={element}
-                  data-filter-name={element.toLowerCase()}
-                  className="uncard-selected"
-                  onClick={siteFilterClicked}
-                >
-                  <div>
-                    <span>{element} </span>
-                    <span className="cancel not-shown">×</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-        <SitesBox
-          filterStates={stateFilter}
-          filterType={siteTypeFilter}
-          titleSearch={titleSearchContent}
-          setState={props.setState}
-          state={props.state}
-        />
-      </div>
+          <section className="filter-box">
+            <h3>Filters:</h3>
+            <div className="filter">
+              <h4>State:</h4>
+              <ul>
+                {states.map((element) => (
+                  <li
+                    key={element.name}
+                    data-filter-name={element.short}
+                    className="uncard-selected"
+                    onClick={statesFilterClicked}
+                  >
+                    <div>
+                      <span>{element.name} </span>
+                      <span className="cancel not-shown">×</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="filter">
+              <h4>Type:</h4>
+              <ul>
+                {typeFilter.map((element) => (
+                  <li
+                    key={element}
+                    data-filter-name={element.toLowerCase()}
+                    className="uncard-selected"
+                    onClick={siteFilterClicked}
+                  >
+                    <div>
+                      <span>{element} </span>
+                      <span className="cancel not-shown">×</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+            <SitesBox // SitesBox returns a <section>
+              filterStates={stateFilter}
+              filterType={siteTypeFilter}
+              titleSearch={titleSearchContent}
+              setState={props.setState}
+              state={props.state}
+            />
+        </div>
+      </main>
       <Footer></Footer>
     </div>
   );

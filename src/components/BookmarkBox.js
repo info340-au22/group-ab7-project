@@ -3,7 +3,6 @@ import BookmarkCard from "./BookmarkCard";
 
 export default function BookmarkBox(props) {
     const bookmarkedArray = props.bookmarks;
-      //console.log(Array.isArray(bookmarkedArray));
       console.log(bookmarkedArray);
       
       const bookmarks = bookmarkedArray.map((current) => {
@@ -13,10 +12,7 @@ export default function BookmarkBox(props) {
        
       return (
         <section className="bookmark-box">
-            <div>
                 {bookmarks}
-            </div>
-            
         </section>
       );
 }

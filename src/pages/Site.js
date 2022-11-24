@@ -38,7 +38,7 @@ export default function HomePage(props) {
           <SiteComment />
         </div>
         <SideBarRight />
-        <div class="balancer"></div>
+        <div className="balancer"></div>
       </div>
 
       <Footer></Footer>
@@ -48,7 +48,7 @@ export default function HomePage(props) {
 
 function SideBarLeft(props) {
   return (
-    <div class="index-bar side-bar">
+    <div className="index-bar side-bar">
       <ul>
         <li
           onClick={() => {
@@ -166,44 +166,44 @@ function SiteRating(props) {
 
 function SideBarRight(props) {
   return (
-    <div class="operation-bar side-bar">
+    <div className="operation-bar side-bar">
       <ul>
         <li
-          tabindex="0"
-          class="popover-content"
+          tabIndex="0"
+          className="popover-content"
           role="button"
           data-toggle="popover"
           data-trigger="focus"
           title="Add to Bookmark"
         >
-          <i class="fa-regular fa-bookmark"></i>
+          <i className="fa-regular fa-bookmark"></i>
         </li>
         <li
-          tabindex="0"
+          tabIndex="0"
           role="button"
           data-toggle="popover"
           data-trigger="hover"
           title="Share"
         >
-          <i class="fa-solid fa-share-from-square"></i>
+          <i className="fa-solid fa-share-from-square"></i>
         </li>
         <li
-          tabindex="0"
+          tabIndex="0"
           role="button"
           data-toggle="popover"
           data-trigger="hover"
           title="Print"
         >
-          <i class="fa-solid fa-print"></i>
+          <i className="fa-solid fa-print"></i>
         </li>
         <li
-          tabindex="0"
+          tabIndex="0"
           role="button"
           data-toggle="popover"
           data-trigger="hover"
           title="Add to Calendar"
         >
-          <i class="fa-regular fa-calendar-plus"></i>
+          <i className="fa-regular fa-calendar-plus"></i>
         </li>
       </ul>
     </div>
@@ -213,7 +213,12 @@ function SideBarRight(props) {
 function SiteComment(props) {
   return (
     <div className="site-info" id="site-comment">
-      <RateStars />
+      <h2>Write a review</h2>
+      <div className="write-review">
+        <textarea placeholder="Write a review..."></textarea>
+
+        <RateStars />
+      </div>
     </div>
   );
 }

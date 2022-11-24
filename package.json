@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-plugin-macros": "^3.1.0",
     "firebase": "^9.14.0",
+    "firebase-tools": "^11.16.1",
     "fs": "^0.0.1-security",
     "react": "^18.2.0",
     "react-click-away-listener": "^2.2.2",

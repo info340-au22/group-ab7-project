@@ -8,21 +8,19 @@ export default function SiteCard(props) {
 
   const singleSiteData = props.singleSiteData;
 
-
-  //console.log(props.bookmarks);
   const handleClick = function (event) {
     const bookmarkedCard = event.target.parentNode;
     const name = bookmarkedCard.children[2].outerText;
     
     const stateCopy = {...props.state};
   
-    if (!stateCopy[name].bookmarked) {
+    /* if (!stateCopy[name].bookmarked) {
       stateCopy[name].bookmarked = true;
     } else {
         stateCopy[name].bookmarked = false;
-    }
+    } */
+    stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
 
-  
     props.setState(stateCopy);
   }
 
