@@ -431,6 +431,7 @@ nav {
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   height: 70px;
+  flex-wrap: wrap;
 }
 
 .filter:last-child {
@@ -1041,6 +1042,24 @@ div.img-text {
   position: relative;
   margin-top: 5px;
 }
+
+@media (max-width: 730px) {
+  .filter ul{
+    display: flex;
+    flex-wrap: wrap;  
+  }
+
+  .filter {
+   height: 6rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .filter {
+    height: 8rem;
+   }
+}
+
 
 
 @media (min-width: 768px) {
