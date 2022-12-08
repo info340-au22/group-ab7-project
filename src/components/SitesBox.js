@@ -40,6 +40,7 @@ export default function SitesBox(props) {
   }, []);
 
   const siteCardArray = siteData
+    .filter((element) => element.published)
     .filter((element) => {
       if (props.titleSearch !== undefined && props.titleSearch !== "") {
         return element.siteName

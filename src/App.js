@@ -11,6 +11,7 @@ import allSites from "./data/allSites.json";
 import LogInPage from "./pages/LogIn";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import EditUserInfo from "./pages/PersonalSettings";
+import NewSitePage from "./pages/NewSitePage";
 
 export default function App() {
   const [state, setState] = useState(allSites);
@@ -64,6 +65,7 @@ export default function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="states" element={<StatesPage />} />
           <Route path="login" element={<LogInPage />} />
+          <Route path="newSite" element={<NewSitePage />} />
           <Route path="settings" element={<EditUserInfo />} />
           <Route
             path="sites"
