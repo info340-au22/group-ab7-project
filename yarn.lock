@@ -6263,7 +6263,7 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-firebase-tools@*:
+firebase-tools@^11.16.1:
   version "11.16.1"
   resolved "https://registry.npmjs.org/firebase-tools/-/firebase-tools-11.16.1.tgz"
   integrity sha512-vi8NRUeeBXy7Be+Hk7DK0+ClF+snhjYa5s3fwPRYCGXbCX47E+jreahS6jXJIxeqMbHPmhPZrJXsy7Tdp1Ryug==
