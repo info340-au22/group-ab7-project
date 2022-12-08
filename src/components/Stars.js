@@ -37,7 +37,7 @@ export function Stars(props) {
 export function StarDistribution(props) {
   let body = [];
   let starMax = props.stars.reduce((max, cur) => Math.max(max, cur), 0);
-  console.log(props.stars);
+  //  console.log(props.stars);
   for (let i = props.stars.length; i >= 1; i--) {
     body.push(
       <tr key={i + 1 + "-stars"} className="rating-tr">
@@ -77,9 +77,9 @@ export function calcRating(ratings) {
 export function RateStars(props) {
   const [starCount, setStarCount] = useState(0);
   const [clicked, setClicked] = useState(false);
+  props.setStarCount(starCount);
   let stars = [];
   const reaction = ["", "Terrible", "Bad", "Okay", "Good", "Excellent"];
-
   for (let i = 1; i <= starCount; i++) {
     stars.push(
       <FontAwesomeIcon

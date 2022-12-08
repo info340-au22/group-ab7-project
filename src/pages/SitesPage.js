@@ -55,7 +55,6 @@ export default function SitesPage(props) {
   }
   return (
     <div>
-      <NavBar></NavBar>
       <main>
         <div className="content-area">
           <section className="page-search">
@@ -133,7 +132,6 @@ export default function SitesPage(props) {
             />
         </div>
       </main>
-      <Footer></Footer>
     </div>
   );
 }

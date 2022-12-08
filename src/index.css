@@ -338,7 +338,15 @@ nav {
   justify-content: center;
 }
 
-.site-card:hover, .bookmark-card:hover {
+.dropdown-animation {
+  position: absolute;
+  transition: 0.3s;
+  background-color: red;
+  z-index: 1;
+}
+
+.site-card:hover,
+.bookmark-card:hover {
   transform: scale(1.1);
   transition: all 500ms ease;
   --shadow-color: 210deg 8% 61%;
@@ -991,7 +999,6 @@ p a {
   text-align: center;
   margin: auto;
   width: 50%;
-  
 }
 
 .bookmark-card img {
@@ -1022,22 +1029,60 @@ p a {
   margin-top: 5px;
 }
 
+#page-main {
+  min-height: calc(100vh - 380px);
+}
+
+.page-center {
+  min-height: calc(100vh - 440px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dropdown-toggle {
+  background-color: #00000000;
+  border: none;
+}
+
+.dropdown-toggle div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.dropdown-toggle:hover {
+  background-color: #00000044;
+  border: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+#nav-username {
+  display: none;
+  margin: 0 0 0 8px;
+}
+
 @media (max-width: 730px) {
-  .filter ul{
+  .filter ul {
     display: flex;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
     border-bottom: red;
   }
 
   .filter {
-   height: 6rem;
+    height: 6rem;
   }
 }
 
 @media (max-width: 500px) {
   .filter {
     height: 8rem;
-   }
+  }
 }
 
 @media (min-width: 768px) {
@@ -1065,6 +1110,8 @@ p a {
   .map-info {
     width: 700px;
   }
+
+  #nav-username,
   .index-bar {
     display: block;
   }
@@ -1073,4 +1120,3 @@ p a {
     width: 350px;
   }
 }
-

@@ -11,7 +11,6 @@ export default function StatesPage(props) {
   }
   return (
     <div>
-      <NavBar></NavBar>
       <title>States</title>
       <main>
         <section>
@@ -23,7 +22,6 @@ export default function StatesPage(props) {
         <SitesBox filterStates={[stateFilter]} />
         </section>
       </main>
-      <Footer></Footer>
     </div>
   );
 }

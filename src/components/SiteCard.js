@@ -5,15 +5,14 @@ import { Stars, calcRating } from "../components/Stars";
 
 export default function SiteCard(props) {
   const bookmarks = props.state;
-
   const singleSiteData = props.singleSiteData;
 
   const handleClick = function (event) {
     const bookmarkedCard = event.target.parentNode;
     const name = bookmarkedCard.children[2].outerText;
-    
-    const stateCopy = {...props.state};
-  
+
+    const stateCopy = { ...props.state };
+
     /* if (!stateCopy[name].bookmarked) {
       stateCopy[name].bookmarked = true;
     } else {
@@ -22,7 +21,7 @@ export default function SiteCard(props) {
     stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
 
     props.setState(stateCopy);
-  }
+  };
 
   let imgSrc;
   if (singleSiteData.bookmarked) {

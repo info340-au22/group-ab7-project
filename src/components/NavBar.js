@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import NavList from "../components/NavList";
+import NavList from "./NavList";
+import NavMenu from "./NavBarMenu";
+import Button from "react-bootstrap/Button";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function NavBar(props) {
   //console.log(faMagnifyingGlass);
   NavList();
-  
+
   return (
     <header>
       <nav>
@@ -15,11 +19,11 @@ export default function NavBar(props) {
           <div>
             <ul>
               <li className="title">
-                  <img
-                    className="page-icon"
-                    src="/img/icon.png"
-                    alt="Website Icon"
-                  />
+                <img
+                  className="page-icon"
+                  src="/img/icon.png"
+                  alt="Website Icon"
+                />
               </li>
               <NavList></NavList>
             </ul>
@@ -43,7 +47,7 @@ export default function NavBar(props) {
                 />
               </button>
             </div>
-            <img className="avatar" src="/img/ava.jpg" alt="avatar" />
+            <UserAuth />
           </div>
         </div>
       </nav>
@@ -54,4 +58,38 @@ export default function NavBar(props) {
 function goSearch() {
   window.location.href =
     "/sites?search=" + document.getElementById("nav-search-input").value;
+}
+
+function UserAuth() {
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
+
+  if (loading) {
+    //still waiting
+    return <p>Initializing user</p>;
+  }
+
+  if (error) {
+    //error logging in
+    return <p>Error: {error}</p>;
+  }
+
+  if (user) {
+    //user is defined, so logged in
+    return <NavMenu user={user} />;
+  } else {
+    //user is undefined
+    return (
+      <div>
+        <Button
+          variant="success"
+          onClick={() => {
+            window.location.replace("/login");
+          }}
+        >
+          Log In
+        </Button>{" "}
+      </div>
+    );
+  }
 }

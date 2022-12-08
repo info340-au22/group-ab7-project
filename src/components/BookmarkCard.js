@@ -12,7 +12,6 @@ export default function BookmarkCard(props) {
         window.open('http://google.com/search?q=' + stateFull + " flights", "_blank");
       }
     return (
-        
             <div className="card bookmark-card">
                     <img src={data.imgSrc} className="card-img-top bookmarkImg" alt={data.imgAlt}></img>
                 <div className="card-body">
