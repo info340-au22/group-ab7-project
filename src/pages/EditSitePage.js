@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function NewSitePage(props) {
+export default function EditSitePage(props) {
   const [contactInfo, setContactInfo] = useState({
     name: "",
     email: "",

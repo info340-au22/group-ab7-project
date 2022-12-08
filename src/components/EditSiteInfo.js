@@ -37,7 +37,7 @@ export function editSite(siteName, properties) {}
 export function commentSite(siteName, starCount, user, comment) {
   console.log(starCount);
   addStar(siteName, starCount);
-  window.location.reload();
+//  window.location.reload();
   if (starCount >= 1 && starCount <= 5) {
     if (comment !== "" || comment !== undefined) {
     }
