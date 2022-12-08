@@ -8,6 +8,9 @@ export default function SiteCard(props) {
   if (singleSiteData.ratings === undefined) {
     singleSiteData.ratings = [0, 0, 0, 0, 0];
   }
+  const state = props.state;
+  const name = props.singleSiteData.siteName;
+  //console.log(props.state);
 
   const handleClick = function (event) {
     const stateCopy = {...props.state};
