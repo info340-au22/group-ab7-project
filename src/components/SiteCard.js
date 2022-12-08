@@ -48,7 +48,7 @@ export default function SiteCard(props) {
         className="site-card"
         onClick={(event) => {
           if (!event.target.classList.contains("bookmark")) {
-            window.location.href = "/site/" + singleSiteData.title;
+            window.location.href = "/site?siteName=" + singleSiteData.title;
           }
         }}
       >
