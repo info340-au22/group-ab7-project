@@ -19,7 +19,7 @@ export default function StatesPage(props) {
 
         <section>
         <h3 className="sub-title">Sites of this State</h3>
-        <SitesBox filterStates={[stateFilter]} />
+        <SitesBox filterStates={[stateFilter]} setState={props.setState}state={props.state} />
         </section>
       </main>
     </div>

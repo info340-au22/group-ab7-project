@@ -63,7 +63,7 @@ export default function App() {
         <Routes>
           <Route path="" element={<StatesPage />} />
           <Route path="home" element={<HomePage />} />
-          <Route path="states" element={<StatesPage />} />
+          <Route path="states" element={<StatesPage setState={setState} state={state} />} />
           <Route path="login" element={<LogInPage />} />
           <Route path="newSite" element={<NewSitePage />} />
           <Route path="settings" element={<EditUserInfo />} />
