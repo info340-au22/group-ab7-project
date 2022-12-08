@@ -34,7 +34,14 @@ export function createSite(siteName, userId) {
   });
 }
 
-export function editSite(siteName, properties) { }
+export function editSiteInfo(siteName, properties) {
+  console.log(siteName);
+  console.log(properties);
+  const db = getDatabase();
+  update(ref(db, `sitesInfo/${siteName}`), properties);
+}
+
+export function editSiteDetail(siteName, properties) { }
 
 export function commentSite(siteName, starCount, user, comment) {
   console.log(starCount);
@@ -58,7 +65,7 @@ export function toggleSiteStatus(siteName) {
       }
     })
     .then((data) => {
-      update(ref(db, `sitesInfo/${siteName}/published`), !data);
+      update(ref(db, `sitesInfo/${siteName}`), { published: !data });
     })
     .catch((error) => {
       console.error(error);

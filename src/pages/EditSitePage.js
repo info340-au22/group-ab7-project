@@ -3,7 +3,8 @@ import { getDatabase, ref, set, child, get, update } from "firebase/database";
 import { useSearchParams } from "react-router-dom";
 import Select from 'react-select'
 import Form from 'react-bootstrap/Form';
-
+import SiteCard from "../components/SiteCard";
+import { editSiteInfo, toggleSiteStatus } from "../components/EditSiteInfo";
 
 const optionsState = [
   { value: 'WA', label: 'Washington' },
@@ -63,7 +64,9 @@ export default function EditSitePage(props) {
 
   const [siteInfoForm, setSiteInfoForm] = useState({
     state: "",
-    name: ""
+    type: "",
+    siteLocation: "",
+    siteFact: ""
   });
 
   function handleSubmit(event) {
@@ -73,38 +76,51 @@ export default function EditSitePage(props) {
 
   const handleChange = (event) => {
     setSiteInfoForm({ ...siteInfoForm, [event.target.name]: event.target.value });
-    console.log(event.target.value);
-    console.log(siteInfoForm);
   };
 
   return (
     <div>
+      <div className="m-3">
+        <label className="mx-3">Choose file: </label>
+        <input type="file" id="fileInput" />
+        <button className="btn btn-outline-primary" onClick={() => {
+          console.log(document.getElementById("fileInput").value);
+        }}>Upload</button>
+      </div>
+
+      <SiteCard singleSiteData={{ ...siteInfoForm, siteName: data.title }} />
       <form onSubmit={handleSubmit} onChange={handleChange}>
         <div>
           <h3>Edit Site</h3>
         </div>
         <h4>Site Name: {data.title}</h4>
+
+        <label>State</label>
         <Form.Select aria-label="Default select example" name="state">
-          <option>Select State...</option>
+          <option value="">Select State...</option>
           {optionsState.map((element) => {
             return <option key={element.value} value={element.value}>{element.label}</option>
           })}
         </Form.Select>
+        <label>Type</label>
+        <Form.Select name="type">
+          <option value="">Select Type...</option>
+          {optionsType.map((element) => {
+            return <option key={element.value} value={element.value}>{element.label}</option>
+          })}
+        </Form.Select>
         <label>
-          Type
-          <Select options={optionsType} />
+          Site Location: <input type="text" name="siteLocation" placeholder="Seattle, WA" />
         </label>
         <label>
-          <div>
-            Name:
-
-            <input type="text" name="name" placeholder="Name" /></div>
+          Site Fact: <input type="text" name="siteFact" placeholder="SiteFact" />
         </label>
-
         <div>
-          <button>Submit Contact</button>
+          <button>Submit Site Info</button>
         </div>
       </form>
+      <button onClick={() => { editSiteInfo(data.title, siteInfoForm) }}>Submit Change</button>
+      <button onClick={() => { toggleSiteStatus(data.title) }}>Publish/Retract the site</button>
     </div>
   );
 }

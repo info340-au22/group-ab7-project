@@ -23,7 +23,7 @@ export default function App() {
   //setBookmarkSetter("hello");
 
   // }
-
+  /*
   let siteLink = [];
   for (const [key, value] of Object.entries(allSites)) {
     siteLink.push(
@@ -33,7 +33,7 @@ export default function App() {
         element={<Site site={value.title} />}
       />
     );
-  }
+  }*/
 
   useEffect(() => {
     const auth = getAuth();
@@ -67,13 +67,13 @@ export default function App() {
           <Route path="states" element={<StatesPage />} />
           <Route path="login" element={<LogInPage />} />
           <Route path="newSite" element={<NewSitePage />} />
+          <Route path="site" element={<Site />} />
           <Route path="editSite" element={<EditSitePage />} />
           <Route path="settings" element={<EditUserInfo />} />
           <Route
             path="sites"
             element={<SitesPage setState={setState} state={state} />}
           />
-          {siteLink}
           <Route
             path="savedsites"
             element={<SavedSites state={state}></SavedSites>}

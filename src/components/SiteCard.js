@@ -6,6 +6,9 @@ import { Stars, calcRating } from "../components/Stars";
 export default function SiteCard(props) {
   const bookmarks = props.state;
   const singleSiteData = props.singleSiteData;
+  if (singleSiteData.ratings === undefined) {
+    singleSiteData.ratings = [0, 0, 0, 0, 0];
+  }
 
   const handleClick = function (event) {
     const bookmarkedCard = event.target.parentNode;
