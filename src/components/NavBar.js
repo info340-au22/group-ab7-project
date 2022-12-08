@@ -76,7 +76,7 @@ function UserAuth() {
 
   if (user) {
     //user is defined, so logged in
-    return <NavMenu userName={user.displayName} />;
+    return <NavMenu user={user} />;
   } else {
     //user is undefined
     return (
