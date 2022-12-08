@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import NavList from "../components/NavList";
+import NavList from "./NavList";
+import NavMenu from "./NavBarMenu";
+import Button from "react-bootstrap/Button";
 
 export default function NavBar(props) {
   //console.log(faMagnifyingGlass);
   NavList();
-  
+
   return (
     <header>
       <nav>
@@ -15,11 +17,11 @@ export default function NavBar(props) {
           <div>
             <ul>
               <li className="title">
-                  <img
-                    className="page-icon"
-                    src="/img/icon.png"
-                    alt="Website Icon"
-                  />
+                <img
+                  className="page-icon"
+                  src="/img/icon.png"
+                  alt="Website Icon"
+                />
               </li>
               <NavList></NavList>
             </ul>
@@ -43,7 +45,15 @@ export default function NavBar(props) {
                 />
               </button>
             </div>
-            <img className="avatar" src="/img/ava.jpg" alt="avatar" />
+            <NavMenu />
+            <Button
+              variant="success"
+              onClick={() => {
+                window.location.replace("/login");
+              }}
+            >
+              Log In
+            </Button>{" "}
           </div>
         </div>
       </nav>

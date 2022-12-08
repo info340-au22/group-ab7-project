@@ -19,7 +19,6 @@ export default function HomePage(props) {
   let data = allSites[props.site];
   return (
     <div>
-      <NavBar></NavBar>
       <div
         className="site-page-header"
         style={{ backgroundImage: `url(${data.bannerImg})` }}
@@ -40,8 +39,6 @@ export default function HomePage(props) {
         <SideBarRight />
         <div className="balancer"></div>
       </div>
-
-      <Footer></Footer>
     </div>
   );
 }

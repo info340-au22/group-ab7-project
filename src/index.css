@@ -338,7 +338,14 @@ nav {
   justify-content: center;
 }
 
-.site-card:hover, .bookmark-card:hover {
+.test {
+  position: absolute;
+  transition: 0.3s;
+  z-index: 1;
+}
+
+.site-card:hover,
+.bookmark-card:hover {
   transform: scale(1.1);
   transition: all 500ms ease;
   --shadow-color: 210deg 8% 61%;
@@ -991,7 +998,6 @@ p a {
   text-align: center;
   margin: auto;
   width: 50%;
-  
 }
 
 .bookmark-card img {
@@ -1022,22 +1028,33 @@ p a {
   margin-top: 5px;
 }
 
+#page-main {
+  min-height: calc(100vh - 380px);
+}
+
+.page-center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 730px) {
-  .filter ul{
+  .filter ul {
     display: flex;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
     border-bottom: red;
   }
 
   .filter {
-   height: 6rem;
+    height: 6rem;
   }
 }
 
 @media (max-width: 500px) {
   .filter {
     height: 8rem;
-   }
+  }
 }
 
 @media (min-width: 768px) {
@@ -1073,4 +1090,3 @@ p a {
     width: 350px;
   }
 }
-
