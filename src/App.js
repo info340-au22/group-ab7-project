@@ -12,17 +12,9 @@ import LogInPage from "./pages/LogIn";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import EditUserInfo from "./pages/PersonalSettings";
 import NewSitePage from "./pages/NewSitePage";
-import EditSitePage from "./pages/EditSitePage";
 
 export default function App() {
   const [state, setState] = useState(allSites);
-
-  //console.log(this.state);
-  //  console.log(allSites);
-  //function setBookmarks() {
-  //setBookmarkSetter("hello");
-
-  // }
 
   let siteLink = [];
   for (const [key, value] of Object.entries(allSites)) {
@@ -62,12 +54,11 @@ export default function App() {
       <div id="page-main">
         <NavBar></NavBar>
         <Routes>
-          <Route path="" element={<StatesPage />} />
+          <Route path="" element={<StatesPage setState={setState} state={state} />} />
           <Route path="home" element={<HomePage />} />
           <Route path="states" element={<StatesPage setState={setState} state={state} />} />
           <Route path="login" element={<LogInPage />} />
           <Route path="newSite" element={<NewSitePage />} />
-          <Route path="editSite" element={<EditSitePage />} />
           <Route path="settings" element={<EditUserInfo />} />
           <Route
             path="sites"
@@ -76,7 +67,7 @@ export default function App() {
           {siteLink}
           <Route
             path="savedsites"
-            element={<SavedSites state={state}></SavedSites>}
+            element={<SavedSites state></SavedSites>}
           />
           <Route path="*" element={<h1>404 Not found</h1>} />
         </Routes>
