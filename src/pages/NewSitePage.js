@@ -1,7 +1,11 @@
 import React, { useState } from "react"; import { useNavigate } from "react-router-dom";
 import { toggleSiteStatus, createSite } from "../components/EditSiteInfo";
+import { getAuth } from "firebase/auth";
 
 export default function NewSitePage(props) {
+
+  const auth = getAuth();
+  const user = auth.currentUser;
   const navigate = useNavigate();
   const [newSiteInfo, setNewSiteInfo] = useState({
     name: "",
@@ -9,7 +13,7 @@ export default function NewSitePage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createSite(newSiteInfo.name);
+    createSite(newSiteInfo.name, user.uid);
     navigate("/editSite?siteName=" + newSiteInfo.name);
   }
 

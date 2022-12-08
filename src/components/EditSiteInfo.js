@@ -1,6 +1,7 @@
 import { getDatabase, ref, set, child, get, update } from "firebase/database";
 
-export function createSite(siteName) {
+export function createSite(siteName, userId) {
+
   const db = getDatabase();
   update(ref(db, `sitesInfo/${siteName}`), {
     state: "WA",
@@ -17,6 +18,7 @@ export function createSite(siteName) {
     ratings: [0, 0, 0, 0, 0],
   });
   update(ref(db, `sitesDetail/${siteName}`), {
+    addedBy: userId,
     siteName: siteName,
     siteFact: "",
     siteLocation: "",
@@ -32,12 +34,12 @@ export function createSite(siteName) {
   });
 }
 
-export function editSite(siteName, properties) {}
+export function editSite(siteName, properties) { }
 
 export function commentSite(siteName, starCount, user, comment) {
   console.log(starCount);
   addStar(siteName, starCount);
-//  window.location.reload();
+  //  window.location.reload();
   if (starCount >= 1 && starCount <= 5) {
     if (comment !== "" || comment !== undefined) {
     }
