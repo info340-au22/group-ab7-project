@@ -6,7 +6,6 @@ import { Stars, calcRating } from "../components/Stars";
 export default function SiteCard(props) {
   const singleSiteData = props.singleSiteData;
   const state = props.state;
-
   const name = props.singleSiteData.siteName;
   //console.log(props.state);
 
@@ -27,7 +26,9 @@ export default function SiteCard(props) {
   }
 
   let imgSrc;
-  
+  if (state[name] === undefined) {
+    console.log("!!!" + name);
+  } else 
   if (state[name].bookmarked) {
     imgSrc = "./img/bookmark-filled.png";
   } else {
