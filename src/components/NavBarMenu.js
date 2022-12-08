@@ -4,10 +4,19 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { getAuth, signOut } from "firebase/auth";
+import Fade from "react-bootstrap/Fade";
 
 export default function NavMenu(props) {
+  //  const [showDropdown, setShowDropdown] = useState(false);
   return (
-    <Dropdown>
+    <Dropdown /*
+      onMouseLeave={() => {
+        setShowDropdown(false);
+      }}
+      onMouseOver={() => {
+        setShowDropdown(true);
+      }}*/
+    >
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         <div>
           <img className="avatar" src="/img/ava.jpg" alt="avatar" />
@@ -15,7 +24,7 @@ export default function NavMenu(props) {
         </div>
       </Dropdown.Toggle>
 
-      <Dropdown.Menu className="test">
+      <Dropdown.Menu /*show={showDropdown}*/>
         <Dropdown.Item href="/newSite">
           <FontAwesomeIcon icon={faCloudArrowUp} />
           New Site

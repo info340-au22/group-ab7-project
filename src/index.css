@@ -338,9 +338,10 @@ nav {
   justify-content: center;
 }
 
-.test {
+.dropdown-animation {
   position: absolute;
   transition: 0.3s;
+  background-color: red;
   z-index: 1;
 }
 
