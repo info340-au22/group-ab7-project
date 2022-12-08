@@ -1,30 +1,31 @@
-import React, { useState } from "react";
-import reactDOM from "react-dom/client";
+import React from "react";
+//import reactDOM from "react-dom/client";
 
 import { Stars, calcRating } from "../components/Stars";
 
 export default function SiteCard(props) {
-  const bookmarks = props.state;
   const singleSiteData = props.singleSiteData;
+  const name = props.singleSiteData.siteName;
+  //console.log(props.state);
 
   const handleClick = function (event) {
-    const bookmarkedCard = event.target.parentNode;
-    const name = bookmarkedCard.children[2].outerText;
+    const stateCopy = {...props.state};
 
-    const stateCopy = { ...props.state };
-
-    /* if (!stateCopy[name].bookmarked) {
+    /*
+    if (!stateCopy[name].bookmarked) {
+      console.log("bookmarked");
       stateCopy[name].bookmarked = true;
     } else {
         stateCopy[name].bookmarked = false;
+        console.log("not bookmarked");
     } */
-    stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
 
+    stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
     props.setState(stateCopy);
-  };
+  }
 
   let imgSrc;
-  if (singleSiteData.bookmarked) {
+  if (props.state[name].bookmarked) {
     imgSrc = "./img/bookmark-filled.png";
   } else {
     imgSrc = "./img/bookmark.png";
@@ -51,6 +52,7 @@ export default function SiteCard(props) {
           src={imgSrc}
           className="bookmark"
           onClick={handleClick}
+          aria-label="bookmark button"
         />
         <h2>{singleSiteData.siteName}</h2>
         <h3>{singleSiteData.siteFact}</h3>
