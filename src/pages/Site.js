@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import allSites from "../data/allSites.json";
+import { getDatabase, ref, child, get } from "firebase/database";
+import { commentSite } from "../components/EditSiteInfo";
+
 import {
   RateStars,
   Stars,
@@ -16,34 +19,59 @@ function jumpTo(target) {
 }
 
 export default function HomePage(props) {
-  let data = allSites[props.site];
-  return (
-    <div>
-      <NavBar></NavBar>
-      <div
-        className="site-page-header"
-        style={{ backgroundImage: `url(${data.bannerImg})` }}
-      >
-        <div className="site-page-title-box">
-          <h1 className="site-page-title">{data.title}</h1>{" "}
-        </div>
-      </div>
-      <div className="sites-info-container">
-        <SideBarLeft />
-        <div>
-          <SiteIntro text={data.intro} />
-          <SiteGallery data={data} />
-          <SiteMap data={data} />
-          <SiteRating ratings={data.ratings} />
-          <SiteComment />
-        </div>
-        <SideBarRight />
-        <div className="balancer"></div>
-      </div>
+  let [data, setData] = useState({});
+  let [loading, setLoading] = useState(true);
 
-      <Footer></Footer>
-    </div>
-  );
+  useEffect(() => {
+    const db = getDatabase();
+    const cardsRef = ref(db);
+    get(child(cardsRef, "sitesDetail/" + props.site))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          console.log("No data available");
+        }
+        console.log("sitesDetail/" + props.site);
+      })
+      .then((siteData) => {
+        setData(siteData);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  if (loading) {
+    return <h3>Loading...</h3>;
+  } else {
+    console.log(data.bannerImg);
+    return (
+      <div>
+        <div
+          className="site-page-header"
+          style={{ backgroundImage: `url(${data.bannerImg})` }}
+        >
+          <div className="site-page-title-box">
+            <h1 className="site-page-title">{data.title}</h1>{" "}
+          </div>
+        </div>
+        <div className="sites-info-container">
+          <SideBarLeft />
+          <div>
+            <SiteIntro text={data.intro} />
+            <SiteGallery data={data} />
+            <SiteMap data={data} />
+            <SiteRating ratings={data.ratings} />
+            <SiteComment siteName={data.title} />
+          </div>
+          <SideBarRight />
+          <div className="balancer"></div>
+        </div>
+      </div>
+    );
+  }
 }
 
 function SideBarLeft(props) {
@@ -96,19 +124,21 @@ function SiteIntro(props) {
 
 function SiteGallery(props) {
   const data = props.data;
-  return (
+
+  return data.gallery !== undefined ? (
     <div id="site-gallery">
       <Carousel className="gallery">
-        {data.gallery.map((element) => {
-          console.log("/img/" + data.title + "/" + element);
+        {data.gallery.map((element, index) => {
           return (
-            <div>
+            <div key={"img" + index}>
               <img src={"/img/" + data.title + "/" + element} />
             </div>
           );
         })}
       </Carousel>
     </div>
+  ) : (
+    <div></div>
   );
 }
 
@@ -211,13 +241,26 @@ function SideBarRight(props) {
 }
 
 function SiteComment(props) {
+  let starCount;
+  function setStarCount(count) {
+    starCount = count;
+  }
   return (
     <div className="site-info" id="site-comment">
       <h2>Write a review</h2>
       <div className="write-review">
         <textarea placeholder="Write a review..."></textarea>
 
-        <RateStars />
+        <RateStars setStarCount={setStarCount} />
+        <button
+          onClick={() => {
+            if (starCount !== 0) {
+              commentSite(props.siteName, starCount);
+            }
+          }}
+        >
+          Submit!
+        </button>
       </div>
     </div>
   );
