@@ -4,7 +4,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { getAuth, signOut } from "firebase/auth";
-import Fade from "react-bootstrap/Fade";
 
 export default function NavMenu(props) {
   //  const [showDropdown, setShowDropdown] = useState(false);
@@ -39,9 +38,8 @@ export default function NavMenu(props) {
         </Dropdown.Item>
         <Dropdown.Item href="/bookmarks">Bookmarks</Dropdown.Item>
         <Dropdown.Item>Dark Mode</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Personal settings</Dropdown.Item>
+        <Dropdown.Item href="/settings">Personal settings</Dropdown.Item>
         <Dropdown.Item
-          href="#/action-4"
           onClick={() => {
             const auth = getAuth();
             signOut(auth).catch((err) => console.log(err));

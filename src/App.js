@@ -10,6 +10,8 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import allSites from "./data/allSites.json";
 import LogInPage from "./pages/LogIn";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import EditUserInfo from "./pages/PersonalSettings";
+
 export default function App() {
   const [state, setState] = useState(allSites);
 
@@ -62,6 +64,7 @@ export default function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="states" element={<StatesPage />} />
           <Route path="login" element={<LogInPage />} />
+          <Route path="settings" element={<EditUserInfo />} />
           <Route
             path="sites"
             element={<SitesPage setState={setState} state={state} />}
