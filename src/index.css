@@ -1033,10 +1033,37 @@ p a {
 }
 
 .page-center {
-  height: 100vh;
+  min-height: calc(100vh - 440px);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.dropdown-toggle {
+  background-color: #00000000;
+  border: none;
+}
+
+.dropdown-toggle div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.dropdown-toggle:hover {
+  background-color: #00000044;
+  border: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+#nav-username {
+  display: none;
+  margin: 0 0 0 8px;
 }
 
 @media (max-width: 730px) {
@@ -1082,6 +1109,8 @@ p a {
   .map-info {
     width: 700px;
   }
+
+  #nav-username,
   .index-bar {
     display: block;
   }

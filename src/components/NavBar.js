@@ -5,6 +5,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import NavList from "./NavList";
 import NavMenu from "./NavBarMenu";
 import Button from "react-bootstrap/Button";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function NavBar(props) {
   //console.log(faMagnifyingGlass);
@@ -45,15 +47,7 @@ export default function NavBar(props) {
                 />
               </button>
             </div>
-            <NavMenu />
-            <Button
-              variant="success"
-              onClick={() => {
-                window.location.replace("/login");
-              }}
-            >
-              Log In
-            </Button>{" "}
+            <UserAuth />
           </div>
         </div>
       </nav>
@@ -64,4 +58,38 @@ export default function NavBar(props) {
 function goSearch() {
   window.location.href =
     "/sites?search=" + document.getElementById("nav-search-input").value;
+}
+
+function UserAuth() {
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
+
+  if (loading) {
+    //still waiting
+    return <p>Initializing user</p>;
+  }
+
+  if (error) {
+    //error logging in
+    return <p>Error: {error}</p>;
+  }
+
+  if (user) {
+    //user is defined, so logged in
+    return <NavMenu userName={user.displayName} />;
+  } else {
+    //user is undefined
+    return (
+      <div>
+        <Button
+          variant="success"
+          onClick={() => {
+            window.location.replace("/login");
+          }}
+        >
+          Log In
+        </Button>{" "}
+      </div>
+    );
+  }
 }
