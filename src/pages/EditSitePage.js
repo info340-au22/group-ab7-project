@@ -1,40 +1,126 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getDatabase, ref, set, child, get, update } from "firebase/database";
+import { useSearchParams } from "react-router-dom";
+import Select from 'react-select'
+import Form from 'react-bootstrap/Form';
+import SiteCard from "../components/SiteCard";
+import { editSiteInfo, toggleSiteStatus } from "../components/EditSiteInfo";
+
+const optionsState = [
+  { value: 'WA', label: 'Washington' },
+  { value: 'CA', label: 'California' },
+  { value: 'NV', label: 'Nevada' },
+  { value: 'ID', label: 'Idaho' },
+  { value: 'OR', label: 'Oregon' }
+]
+
+const optionsType = [
+  { value: 'Natural', label: 'Natural' },
+  { value: 'Cultural', label: 'Cultural' }]
 
 export default function EditSitePage(props) {
-  const [contactInfo, setContactInfo] = useState({
-    name: "",
-    email: "",
-    phonenumber: "",
+  const [searchParams] = useSearchParams();
+  let siteName = searchParams.get("siteName");
+
+  let [data, setData] = useState({});
+  let [detail, setDetail] = useState({});
+  let [loadingData, setLoadingData] = useState(true);
+  let [loadingDetail, setLoadingDetail] = useState(true);
+
+  useEffect(() => {
+    const db = getDatabase();
+    const cardsRef = ref(db);
+    get(child(cardsRef, "sitesInfo/" + siteName))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          console.log("No data available");
+        }
+      })
+      .then((siteData) => {
+        setData(siteData);
+        setLoadingData(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    get(child(cardsRef, "sitesDetail/" + siteName))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          console.log("No data available");
+        }
+        setLoadingDetail(false);
+      })
+      .then((siteData) => {
+        setDetail(siteData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const [siteInfoForm, setSiteInfoForm] = useState({
+    state: "",
+    type: "",
+    siteLocation: "",
+    siteFact: ""
   });
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(contactInfo);
+    console.log(siteInfoForm);
   }
 
   const handleChange = (event) => {
-    setContactInfo({ ...contactInfo, [event.target.name]: event.target.value });
+    setSiteInfoForm({ ...siteInfoForm, [event.target.name]: event.target.value });
   };
 
   return (
     <div>
+      <div className="m-3">
+        <label className="mx-3">Choose file: </label>
+        <input type="file" id="fileInput" />
+        <button className="btn btn-outline-primary" onClick={() => {
+          console.log(document.getElementById("fileInput").value);
+        }}>Upload</button>
+      </div>
+
+      <SiteCard singleSiteData={{ ...siteInfoForm, siteName: data.title }} />
       <form onSubmit={handleSubmit} onChange={handleChange}>
         <div>
-          <h3>Add New Site</h3>
+          <h3>Edit Site</h3>
         </div>
+        <h4>Site Name: {data.title}</h4>
+
+        <label>State</label>
+        <Form.Select aria-label="Default select example" name="state">
+          <option value="">Select State...</option>
+          {optionsState.map((element) => {
+            return <option key={element.value} value={element.value}>{element.label}</option>
+          })}
+        </Form.Select>
+        <label>Type</label>
+        <Form.Select name="type">
+          <option value="">Select Type...</option>
+          {optionsType.map((element) => {
+            return <option key={element.value} value={element.value}>{element.label}</option>
+          })}
+        </Form.Select>
+        <label>
+          Site Location: <input type="text" name="siteLocation" placeholder="Seattle, WA" />
+        </label>
+        <label>
+          Site Fact: <input type="text" name="siteFact" placeholder="SiteFact" />
+        </label>
         <div>
-          <input type="text" name="name" placeholder="Name" />
-        </div>
-        <div>
-          <input type="email" name="email" placeholder="Email" />
-        </div>
-        <div>
-          <input type="number" name="phonenumber" placeholder="Phone Number" />
-        </div>
-        <div>
-          <button>Submit Contact</button>
+          <button>Submit Site Info</button>
         </div>
       </form>
+      <button onClick={() => { editSiteInfo(data.title, siteInfoForm) }}>Submit Change</button>
+      <button onClick={() => { toggleSiteStatus(data.title) }}>Publish/Retract the site</button>
     </div>
   );
 }
