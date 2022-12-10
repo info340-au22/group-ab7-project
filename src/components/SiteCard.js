@@ -5,6 +5,9 @@ import { Stars, calcRating } from "../components/Stars";
 
 export default function SiteCard(props) {
   const singleSiteData = props.singleSiteData;
+  if (singleSiteData.ratings === undefined) {
+    singleSiteData.ratings = [0, 0, 0, 0, 0];
+  }
   const state = props.state;
   const name = props.singleSiteData.siteName;
   //console.log(props.state);
@@ -28,11 +31,12 @@ export default function SiteCard(props) {
   let imgSrc;
   if (state[name] === undefined) {
     console.log("!!!" + name);
-  } else 
-  if (state[name].bookmarked) {
-    imgSrc = "./img/bookmark-filled.png";
   } else {
-    imgSrc = "./img/bookmark.png";
+    if (state[name].bookmarked) {
+      imgSrc = "./img/bookmark-filled.png";
+    } else {
+      imgSrc = "./img/bookmark.png";
+    }
   }
   
   return (
@@ -45,7 +49,7 @@ export default function SiteCard(props) {
         className="site-card"
         onClick={(event) => {
           if (!event.target.classList.contains("bookmark")) {
-            window.location.href = "/site/" + singleSiteData.title;
+            window.location.href = "/site?siteName=" + singleSiteData.title;
           }
         }}
       >

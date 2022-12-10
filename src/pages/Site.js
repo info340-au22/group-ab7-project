@@ -14,26 +14,30 @@ import {
 } from "../components/Stars";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { useSearchParams } from "react-router-dom";
 
 function jumpTo(target) {
   window.location.replace("#" + target);
 }
 
 export default function HomePage(props) {
+
+  const [searchParams] = useSearchParams();
+  let siteName = searchParams.get("siteName");
   let [data, setData] = useState({});
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const db = getDatabase();
     const cardsRef = ref(db);
-    get(child(cardsRef, "sitesDetail/" + props.site))
+    get(child(cardsRef, "sitesDetail/" + siteName))
       .then((snapshot) => {
         if (snapshot.exists()) {
           return snapshot.val();
         } else {
           console.log("No data available");
         }
-        console.log("sitesDetail/" + props.site);
+        console.log("sitesDetail/" + siteName);
       })
       .then((siteData) => {
         setData(siteData);

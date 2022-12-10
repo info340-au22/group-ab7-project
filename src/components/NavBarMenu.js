@@ -18,15 +18,7 @@ export default function NavMenu(props) {
     >
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         <div>
-          <img
-            className="avatar"
-            src={
-              props.user.photoURL !== null
-                ? props.user.photoURL
-                : "/img/default-avatar.jpg"
-            }
-            alt="avatar"
-          />
+          
           <p id="nav-username">{props.user.displayName}</p>
         </div>
       </Dropdown.Toggle>
