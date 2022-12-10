@@ -38,7 +38,7 @@ export default function SitesBox(props) {
         console.error(error);
       });
   }, []);
-
+  
   const siteCardArray = siteData
     .filter((element) => element.published)
     .filter((element) => {

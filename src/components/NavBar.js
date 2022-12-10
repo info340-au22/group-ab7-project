@@ -10,8 +10,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function NavBar(props) {
   //console.log(faMagnifyingGlass);
-  NavList();
-
   return (
     <header>
       <nav>
