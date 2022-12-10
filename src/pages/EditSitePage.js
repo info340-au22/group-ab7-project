@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, set, child, get, update } from "firebase/database";
 import { useSearchParams } from "react-router-dom";
-import Select from 'react-select'
+import {Select } from 'react-select'
 import Form from 'react-bootstrap/Form';
 import SiteCard from "../components/SiteCard";
 import { editSiteInfo, toggleSiteStatus } from "../components/EditSiteInfo";
