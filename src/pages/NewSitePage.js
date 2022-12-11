@@ -30,6 +30,7 @@ export default function NewSitePage(props) {
         </div>{" "}
         <label>
           Site Name:
+          <input name="name"></input>
         </label>
         <button>Go edit the site</button>
       </form>

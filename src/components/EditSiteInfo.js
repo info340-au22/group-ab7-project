@@ -41,7 +41,12 @@ export function editSiteInfo(siteName, properties) {
   update(ref(db, `sitesInfo/${siteName}`), properties);
 }
 
-export function editSiteDetail(siteName, properties) { }
+export function editSiteDetail(siteName, properties) {
+  console.log(siteName);
+  console.log(properties);
+  const db = getDatabase();
+  update(ref(db, `sitesDetail/${siteName}`), properties);
+}
 
 export function commentSite(siteName, starCount, user, comment) {
   console.log(starCount);
