@@ -5,6 +5,7 @@ import allSites from "../data/allSites.json";
 import { getDatabase, ref, child, get, set} from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { commentSite } from "../components/EditSiteInfo";
+import { useAuthState } from "react-firebase-hooks/auth"
 
 
 import {
@@ -247,12 +248,19 @@ function SideBarRight(props) {
 }
 
 function SiteComment(props) {
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
   const [comment, setComment] = useState("")
   const db = getDatabase()
   const userID = getAuth().currentUser.uid;
-  const user = ref(db, 'comments/' + userID)
-  set(user, 'test to see if creating the subfolder works for now')
+  const users = ref(db, 'comments/' + userID);
+  set(users, 'test to see if creating the subfolder works for now')
   let starCount;
+  //const handleClick = (event) => {
+    //setComment(true);
+    //event.preventDefault();
+  //}
+ 
   function setStarCount(count) {
     starCount = count;
   }
@@ -260,17 +268,20 @@ function SiteComment(props) {
     <div className="site-info" id="site-comment">
       <h2>Write a review</h2>
       <div className="write-review">
-        <textarea onChange= {(e)=> setComment(e.target.value)} placeholder="Write a review..."></textarea>
+      <textarea onChange= {(e)=> {setComment(e.target.value)}} placeholder="Write a review..."></textarea>
 
         <RateStars setStarCount={setStarCount} />
         <button
           onClick={() => {
             
-          
 
             if (starCount !== 0) {
               commentSite(props.siteName, starCount);
             }
+            if(!user) {
+              <p>Error you must log in</p>
+            }
+
           }}
         >
           Submit!
