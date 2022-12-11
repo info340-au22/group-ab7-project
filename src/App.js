@@ -13,27 +13,28 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import EditUserInfo from "./pages/PersonalSettings";
 import NewSitePage from "./pages/NewSitePage";
 import EditSitePage from "./pages/EditSitePage";
+import { getDatabase, ref, child, get, onValue} from 'firebase/database';
+import _ from 'lodash';
 
 export default function App() {
-  const [state, setState] = useState(allSites);
+ 
+  const [state, setState] = useState({});
 
-  //console.log(this.state);
-  //  console.log(allSites);
-  //function setBookmarks() {
-  //setBookmarkSetter("hello");
+  useEffect(() => {
+    const db = getDatabase();
+    const sitesDetail = ref(db, "sitesDetail");
+    
+    const unregisterFunction = onValue(sitesDetail, (snapshot) => {
+      const changedValue = snapshot.val();
+      //console.log(changedValue);
+      setState(changedValue);
+    })
 
-  // }
-  /*
-  let siteLink = [];
-  for (const [key, value] of Object.entries(allSites)) {
-    siteLink.push(
-      <Route
-        key={key}
-        path={"site/" + value.title}
-        element={<Site site={value.title} />}
-      />
-    );
-  }*/
+    function cleanup() {
+      unregisterFunction();
+    }
+    return cleanup;
+  }, [])
 
   useEffect(() => {
     const auth = getAuth();
@@ -74,10 +75,7 @@ export default function App() {
             path="sites"
             element={<SitesPage setState={setState} state={state} />}
           />
-          <Route
-            path="savedsites"
-            element={<SavedSites state></SavedSites>}
-          />
+          <Route path="bookmarks" element={<SavedSites state={state}></SavedSites>} />
           <Route path="*" element={<h1>404 Not found</h1>} />
         </Routes>
       </div>
