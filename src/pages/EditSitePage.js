@@ -89,7 +89,6 @@ export default function EditSitePage(props) {
         }}>Upload</button>
       </div>
 
-      <SiteCard singleSiteData={{ ...siteInfoForm, siteName: data.title }} />
       <form onSubmit={handleSubmit} onChange={handleChange}>
         <div>
           <h3>Edit Site</h3>

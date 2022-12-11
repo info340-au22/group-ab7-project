@@ -12,7 +12,6 @@ export default function NavBar(props) {
   //console.log(faMagnifyingGlass);
   return (
     <header>
-      <h1> West Sites</h1>
       <nav>
         <div className="titlecore">
           <div>
@@ -23,8 +22,11 @@ export default function NavBar(props) {
                   src="/img/icon.png"
                   alt="Website Icon"
                 />
+                <div className="nav-title">
+                  <h1>WEST</h1>
+                  <h1>SITES</h1>
+                </div>
               </li>
-              
               <NavList></NavList>
             </ul>
           </div>

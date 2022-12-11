@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getDatabase, ref, child, get, onValue } from 'firebase/database';
+import { getDatabase, ref, child, get, onValue } from "firebase/database";
 //import reactDOM from "react-dom/client";
 
 import { Stars, calcRating } from "../components/Stars";
@@ -13,10 +13,9 @@ export default function SiteCard(props) {
   const name = props.singleSiteData.siteName;
 
   let cardName;
-  
+
   const handleClick = function (event) {
-    
-    const stateCopy = {...props.state};
+    const stateCopy = { ...props.state };
     /*
     if (!stateCopy[name].bookmarked) {
       console.log("bookmarked");
@@ -25,10 +24,9 @@ export default function SiteCard(props) {
         stateCopy[name].bookmarked = false;
         console.log("not bookmarked");
     } */
-   stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
+    stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
     props.setState(stateCopy);
-  }
-
+  };
 
   let imgSrc;
   if (state[name] === undefined) {
@@ -50,7 +48,7 @@ export default function SiteCard(props) {
       imgSrc = "./img/bookmark.png";
     }
   } */
-  
+
   //console.log(props.state);
   return (
     <div
