@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getDatabase, ref, child, get, onValue } from 'firebase/database';
 //import reactDOM from "react-dom/client";
 
 import { Stars, calcRating } from "../components/Stars";
@@ -10,11 +11,12 @@ export default function SiteCard(props) {
   }
   const state = props.state;
   const name = props.singleSiteData.siteName;
-  //console.log(props.state);
 
+  let cardName;
+  
   const handleClick = function (event) {
+    
     const stateCopy = {...props.state};
-
     /*
     if (!stateCopy[name].bookmarked) {
       console.log("bookmarked");
@@ -23,21 +25,33 @@ export default function SiteCard(props) {
         stateCopy[name].bookmarked = false;
         console.log("not bookmarked");
     } */
-
-    stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
+   stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
     props.setState(stateCopy);
   }
 
+
   let imgSrc;
   if (state[name] === undefined) {
-    console.log("!!!" + name);
-  } else 
-  if (state[name].bookmarked) {
-    imgSrc = "./img/bookmark-filled.png";
+    //console.log("!!!" + name);
   } else {
-    imgSrc = "./img/bookmark.png";
+    if (props.state[name].bookmarked) {
+      imgSrc = "./img/bookmark-filled.png";
+    } else {
+      imgSrc = "./img/bookmark.png";
+    }
   }
+
+  /* if (state[name] === undefined) {
+    //console.log("!!!" + name);
+  } else {
+    if (state[name].bookmarked) {
+      imgSrc = "./img/bookmark-filled.png";
+    } else {
+      imgSrc = "./img/bookmark.png";
+    }
+  } */
   
+  //console.log(props.state);
   return (
     <div
       className="card-container"

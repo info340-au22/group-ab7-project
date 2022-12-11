@@ -15,6 +15,8 @@ export default function NavMenu(props) {
       onMouseOver={() => {
         setShowDropdown(true);
       }}*/
+
+
     >
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         <div>
@@ -32,13 +34,13 @@ export default function NavMenu(props) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu /*show={showDropdown}*/>
-        <Dropdown.Item href="/newSite">
+        <Dropdown.Item as={Link} to="/newSite">
           <FontAwesomeIcon icon={faCloudArrowUp} />
           New Site
         </Dropdown.Item>
-        <Dropdown.Item href="/bookmarks">Bookmarks</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/bookmarks">Bookmarks</Dropdown.Item>
         <Dropdown.Item>Dark Mode</Dropdown.Item>
-        <Dropdown.Item href="/settings">Personal settings</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/settings">Personal settings</Dropdown.Item>
         <Dropdown.Item
           onClick={() => {
             const auth = getAuth();
