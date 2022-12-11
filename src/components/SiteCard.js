@@ -30,7 +30,7 @@ export default function SiteCard(props) {
   };
 
   let imgSrc;
-  if (state[name] === undefined) {
+  if (state === undefined) {
     //console.log("!!!" + name);
   } else {
     if (props.state[name].bookmarked) {
@@ -49,9 +49,9 @@ export default function SiteCard(props) {
       imgSrc = "./img/bookmark.png";
     }
   } */
-  let nameNoSpace = singleSiteData.title.replace(/\s+/g, '-');
+  let nameNoSpace = singleSiteData.title.replace(/\s+/g, "-");
   //console.log(nameNoSpace);
-  let nameWithSpace = singleSiteData.title.replace('-', ' ');
+  let nameWithSpace = singleSiteData.title.replace("-", " ");
   //console.log(props.state);
   //console.log(nameWithSpace);
   return (
@@ -63,7 +63,10 @@ export default function SiteCard(props) {
       <div
         className="site-card"
         onClick={(event) => {
-          if (!event.target.classList.contains("bookmark")) {
+          if (
+            props.clickable !== "false" &&
+            !event.target.classList.contains("bookmark")
+          ) {
             window.location.href = "/site?siteName=" + singleSiteData.title;
           }
         }}
