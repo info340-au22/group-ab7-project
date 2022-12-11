@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { getDatabase, ref, child, get, onValue } from 'firebase/database';
 //import reactDOM from "react-dom/client";
+import { Link } from "react-router-dom";
 
 import { Stars, calcRating } from "../components/Stars";
 
@@ -50,8 +51,11 @@ export default function SiteCard(props) {
       imgSrc = "./img/bookmark.png";
     }
   } */
-  
+  let nameNoSpace = singleSiteData.title.replace(/\s+/g, '-');
+  //console.log(nameNoSpace);
+  let nameWithSpace = singleSiteData.title.replace('-', ' ');
   //console.log(props.state);
+  //console.log(nameWithSpace);
   return (
     <div
       className="card-container"
