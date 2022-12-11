@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import Select from 'react-select'
 import Form from 'react-bootstrap/Form';
 import SiteCard from "../components/SiteCard";
-import { editSiteInfo, toggleSiteStatus } from "../components/EditSiteInfo";
+import { editSiteInfo, toggleSiteStatus, editSiteDetail } from "../components/EditSiteInfo";
 
 const optionsState = [
   { value: 'WA', label: 'Washington' },
@@ -69,6 +69,12 @@ export default function EditSitePage(props) {
     siteFact: ""
   });
 
+  const [siteDetailForm, setSiteDetailForm] = useState({
+    intro: [],
+    mapName: "",
+    stateFull: "",
+  })
+
   function handleSubmit(event) {
     event.preventDefault();
     console.log(siteInfoForm);
@@ -76,6 +82,24 @@ export default function EditSitePage(props) {
 
   const handleChange = (event) => {
     setSiteInfoForm({ ...siteInfoForm, [event.target.name]: event.target.value });
+  };
+
+  function handleSubmitDetail(event) {
+    event.preventDefault();
+    console.log(siteDetailForm);
+  }
+
+  const handleChangeDetail = (event) => {
+    if (event.target.name === "intro") {
+      let introPart = event.target.value;
+      while (introPart.indexOf("\n\n") !== -1) {
+        introPart = introPart.replace(/\n\n/g, "\n");
+      }
+      let introSplited = introPart.split("\n");
+      setSiteDetailForm({ ...siteDetailForm, intro: introSplited });
+    } else {
+      setSiteDetailForm({ ...siteDetailForm, [event.target.name]: event.target.value });
+    }
   };
 
   return (
@@ -119,7 +143,23 @@ export default function EditSitePage(props) {
           <button>Submit Site Info</button>
         </div>
       </form>
-      <button onClick={() => { editSiteInfo(data.title, siteInfoForm) }}>Submit Change</button>
+      <button onClick={() => { editSiteInfo(data.title, siteInfoForm) }}>Submit Info Change</button>
+
+      <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
+        <label>
+          <textarea name="intro"></textarea>
+        </label>
+        <label>
+          Map location
+          <input name="mapName"></input>
+        </label>
+        <label>
+          StateFullName
+          <input name="stateFull"></input>
+        </label>
+        <button>Log Site Detail</button>
+      </form>
+      <button onClick={() => { editSiteDetail(data.title, siteDetailForm) }}>Submit Detail Change</button>
       <button onClick={() => { toggleSiteStatus(data.title) }}>Publish/Retract the site</button>
     </div>
   );

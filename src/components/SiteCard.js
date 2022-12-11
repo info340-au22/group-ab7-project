@@ -29,10 +29,9 @@ export default function SiteCard(props) {
   }
 
   let imgSrc;
-  if (state[name] === undefined) {
+  if (state === undefined || state[name] === undefined) {
     console.log("!!!" + name);
-  } else 
-  if (state[name].bookmarked) {
+  } else if (state[name].bookmarked) {
     imgSrc = "./img/bookmark-filled.png";
   } else {
     imgSrc = "./img/bookmark.png";
