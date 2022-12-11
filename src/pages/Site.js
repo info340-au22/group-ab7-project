@@ -6,6 +6,7 @@ import { getDatabase, ref, child, get, set} from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { commentSite } from "../components/EditSiteInfo";
 
+
 import {
   RateStars,
   Stars,
@@ -246,6 +247,7 @@ function SideBarRight(props) {
 }
 
 function SiteComment(props) {
+  const [comment, setComment] = useState("")
   const db = getDatabase()
   const userID = getAuth().currentUser.uid;
   const user = ref(db, 'comments/' + userID)
@@ -258,7 +260,7 @@ function SiteComment(props) {
     <div className="site-info" id="site-comment">
       <h2>Write a review</h2>
       <div className="write-review">
-        <textarea placeholder="Write a review..."></textarea>
+        <textarea onChange= {(e)=> setComment(e.target.value)} placeholder="Write a review..."></textarea>
 
         <RateStars setStarCount={setStarCount} />
         <button
