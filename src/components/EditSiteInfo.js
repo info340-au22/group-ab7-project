@@ -61,13 +61,14 @@ export function commentSite(siteName, starCount, user, comment) {
             return snapshot.val();
           } else {
             console.log("No data available");
+            return [];
           }
         })
         .then((data) => {
           set(ref(db, `sitesDetail/${siteName}/comments`), [
             ...data,
             {
-              userId: user === undefined ? "Anmous" : user,
+              userId: user === undefined ? "Anonymous" : user,
               comment: comment === undefined ? "ERROR LOADING COMMENT" : user,
               stars: starCount,
             },
