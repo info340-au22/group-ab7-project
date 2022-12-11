@@ -253,9 +253,13 @@ function SiteComment(props) {
   const [user, loading, error] = useAuthState(auth);
   const [comment, setComment] = useState("")
   const db = getDatabase()
-  const userID = getAuth().currentUser.uid;
-  const users = ref(db, 'comments/' + userID);
+  let userID, users; // claiming variables as function-wide variables 
+  if (getAuth().currentUser != null) {
+    userID = getAuth().currentUser.uid; //assigning value to the variable
+     users = ref(db, 'comments/' + userID);
   set(users, 'test to see if creating the subfolder works for now')
+  } 
+
   let starCount;
   //const handleClick = (event) => {
     //setComment(true);
@@ -280,7 +284,7 @@ function SiteComment(props) {
               commentSite(props.siteName, starCount);
             }
             if(!user) {
-              <p>Error you must log in</p>
+              <p>Error you must log in: {error}</p>
             }
 
           }}
