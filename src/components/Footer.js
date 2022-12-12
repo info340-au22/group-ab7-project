@@ -67,7 +67,7 @@ export default function Footer(props) {
             "
             placeholder="email@domain.com "
           />
-          <button type="button ">Submit</button>
+          <button className= "submit-foot" type="button ">Submit</button>
         </form>
       </div>
       <p className="copyrighted centered ">
