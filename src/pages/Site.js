@@ -7,6 +7,7 @@ import { getAuth } from "firebase/auth";
 import { commentSite } from "../components/EditSiteInfo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "../components/UserAuth";
 
 import {
   RateStars,
@@ -27,6 +28,7 @@ export default function HomePage(props) {
   let siteName = searchParams.get("siteName");
   let [data, setData] = useState({});
   let [loading, setLoading] = useState(true);
+  let [authorData, setAuthorData] = useState({});
 
   useEffect(() => {
     const db = getDatabase();
@@ -43,6 +45,11 @@ export default function HomePage(props) {
         setData(siteData);
         setLoading(false);
       })
+      .then(() => {
+        getUserInfo(data.userId).then((data) => {
+          setAuthorData(data);
+        });
+      })
       .catch((error) => {
         console.error(error);
       });
@@ -51,7 +58,6 @@ export default function HomePage(props) {
   if (loading) {
     return <h3>Loading...</h3>;
   } else {
-    console.log(data.bannerImg);
     return (
       <div>
         <div
@@ -66,7 +72,7 @@ export default function HomePage(props) {
           <SideBarLeft />
           <div>
             <div class="site-info">
-              <p>{"Added by " + data.addedBy}</p>
+              <p>{"Added by " + authorData.name}</p>
             </div>
             <SiteIntro text={data.intro} />
             <SiteGallery data={data} />
@@ -254,7 +260,6 @@ function SideBarRight(props) {
 
 function SiteComment(props) {
   const auth = getAuth();
-  console.log(auth.currentUser);
   const [user, loading, error] = useAuthState(auth);
   const [comment, setComment] = useState("");
   const db = getDatabase();
