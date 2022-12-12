@@ -24,7 +24,7 @@ const firebaseUIConfig = {
 
 export default function LogInPage(props) {
   return (
-    <div class="page-center">
+    <div className="page-center">
       <UserSignIn />
     </div>
   );

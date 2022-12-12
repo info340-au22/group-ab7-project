@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function NavList() {
    
-    const navNames = ["States", "Sites", "Saved Sites"];
+    const navNames = ["States", "Sites"];
     const navLiArray = navNames.map((current) => {
         let navNameNoSpace = current.replace(/\s+/g, '');
         navNameNoSpace = navNameNoSpace.toLowerCase();      

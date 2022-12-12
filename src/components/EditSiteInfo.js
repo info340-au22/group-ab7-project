@@ -1,7 +1,6 @@
 import { getDatabase, ref, set, child, get, update } from "firebase/database";
 
 export function createSite(siteName, userId) {
-
   const db = getDatabase();
   update(ref(db, `sitesInfo/${siteName}`), {
     state: "WA",
@@ -41,14 +40,43 @@ export function editSiteInfo(siteName, properties) {
   update(ref(db, `sitesInfo/${siteName}`), properties);
 }
 
-export function editSiteDetail(siteName, properties) { }
+export function editSiteDetail(siteName, properties) {
+  console.log(siteName);
+  console.log(properties);
+  const db = getDatabase();
+  update(ref(db, `sitesDetail/${siteName}`), properties);
+}
 
 export function commentSite(siteName, starCount, user, comment) {
+  const db = getDatabase();
+  const dbRef = ref(getDatabase());
   console.log(starCount);
   addStar(siteName, starCount);
   //  window.location.reload();
   if (starCount >= 1 && starCount <= 5) {
     if (comment !== "" || comment !== undefined) {
+      get(child(dbRef, `sitesDetail/${siteName}/comments`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            return snapshot.val();
+          } else {
+            console.log("No data available");
+            return [];
+          }
+        })
+        .then((data) => {
+          set(ref(db, `sitesDetail/${siteName}/comments`), [
+            ...data,
+            {
+              userId: user === undefined ? "Anonymous" : user,
+              comment: comment === undefined ? "ERROR LOADING COMMENT" : user,
+              stars: starCount,
+            },
+          ]);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }
 }

@@ -10,8 +10,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function NavBar(props) {
   //console.log(faMagnifyingGlass);
-  NavList();
-
   return (
     <header>
       <nav>
@@ -24,6 +22,10 @@ export default function NavBar(props) {
                   src="/img/icon.png"
                   alt="Website Icon"
                 />
+                <div className="nav-title">
+                  <h1>WEST</h1>
+                  <h1>SITES</h1>
+                </div>
               </li>
               <NavList></NavList>
             </ul>

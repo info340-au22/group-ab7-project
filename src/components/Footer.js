@@ -15,7 +15,7 @@ export default function Footer(props) {
             ) : (
               ""
             )}
-            <p key={element.AuthorData + index} className="padding-zero pb-3">
+            <p key={element.AuthorData + index} className="padding-zero pb-4">
               {element.AuthorData}
             </p>
           </div>
@@ -26,7 +26,7 @@ export default function Footer(props) {
             ) : (
               ""
             )}
-            <p key={element.AuthorData + index} className="padding-zero pb-3">
+            <p key={element.AuthorData + index} className="padding-zero pb-4">
               <a href={"mailto:" + element.AuthorData2}>
                 {element.AuthorData2}
               </a>
@@ -39,7 +39,7 @@ export default function Footer(props) {
             ) : (
               ""
             )}
-            <p key={element.AuthorData + index} className="padding-zero pb-3">
+            <p key={element.AuthorData + index} className="padding-zero pb-4">
               <a href={"tel:" + element.AuthorData3}>{element.AuthorData3}</a>
             </p>
           </div>

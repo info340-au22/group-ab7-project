@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import SiteCard from "../components/SiteCard";
 import allSites from "../data/allSites.json";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get} from "firebase/database";
 import { getAuth, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-//import siteData from "../data/sites.json";
-
 export default function SitesBox(props) {
-  //  console.log(allSites);
-  //  console.log(props.filterStates);
-  //  console.log(props.filterType);
 
   let [siteData, setSiteData] = useState([]);
   let [loading, setLoading] = useState(true);
@@ -38,6 +33,8 @@ export default function SitesBox(props) {
         console.error(error);
       });
   }, []);
+
+  //console.log(siteData);
 
   const siteCardArray = siteData
     .filter((element) => element.published)
@@ -90,7 +87,7 @@ export default function SitesBox(props) {
         ></SiteCard>
       );
     });
-  console.log(siteCardArray);
+  //console.log(siteCardArray);
   if (loading) {
     return (
       <section className="sites-box">
