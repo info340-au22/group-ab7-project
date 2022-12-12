@@ -4,6 +4,7 @@ import { getDatabase, ref, set, child, get, update } from "firebase/database";
 export async function getUserInfo(userId) {
   const db = getDatabase();
   const dbRef = ref(getDatabase());
+  console.log(userId);
   let returnValue;
   await get(child(dbRef, `users/${userId}`))
     .then((snapshot) => {
@@ -20,6 +21,7 @@ export async function getUserInfo(userId) {
     .catch((error) => {
       console.error(error);
     });
+  console.log(returnValue);
   return returnValue;
 }
 

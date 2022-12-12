@@ -27,6 +27,7 @@ form input {
 .email-footer {
   text-align: center;
 }
+
 .submit-foot {
   text-align: center;
   margin: auto;
@@ -1050,6 +1051,36 @@ p a {
   width: 250px;
 }
 
+.single-comment {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+}
+
+.single-comment img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.single-comment:first-of-type {
+  padding-top: 0;
+}
+
+.single-comment img {
+  margin-right: 20px;
+}
+
+.single-comment div {
+  margin: 10px 0;
+}
+
+.single-comment:last-of-type {
+  border: 0;
+  padding-bottom: 0;
+}
+
 .state-info-mid {
   margin: 20px;
   width: 50%;
@@ -1136,6 +1167,23 @@ p a {
   width: 100px;
   position: relative;
   margin-top: 5px;
+}
+
+.author-info {
+  text-align: center;
+}
+
+.author-info p {
+  display: inline;
+}
+.author-info img {
+  margin-left: 10px;
+}
+
+.site-info .avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
 
 #page-main {

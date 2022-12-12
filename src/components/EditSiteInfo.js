@@ -53,7 +53,7 @@ export function commentSite(siteName, starCount, user, comment) {
   addStar(siteName, starCount);
   //  window.location.reload();
   if (starCount >= 1 && starCount <= 5) {
-    if (comment !== "" || comment !== undefined) {
+    if (comment !== undefined && comment !== "") {
       get(child(dbRef, `sitesDetail/${siteName}/comments`))
         .then((snapshot) => {
           if (snapshot.exists()) {
@@ -68,7 +68,8 @@ export function commentSite(siteName, starCount, user, comment) {
             ...data,
             {
               userId: user === undefined ? "Anonymous" : user,
-              comment: comment === undefined ? "ERROR LOADING COMMENT" : user,
+              comment:
+                comment === undefined ? "ERROR LOADING COMMENT" : comment,
               stars: starCount,
             },
           ]);

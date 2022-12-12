@@ -26,9 +26,11 @@ function jumpTo(target) {
 export default function HomePage(props) {
   const [searchParams] = useSearchParams();
   let siteName = searchParams.get("siteName");
-  let [data, setData] = useState({});
-  let [loading, setLoading] = useState(true);
-  let [authorData, setAuthorData] = useState({});
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [authorData, setAuthorData] = useState({});
+  const [siteRatings, setSiteRatings] = useState([0, 0, 0, 0, 0]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const db = getDatabase();
@@ -44,10 +46,14 @@ export default function HomePage(props) {
       .then((siteData) => {
         setData(siteData);
         setLoading(false);
+        setSiteRatings(siteData.ratings);
+        setComments(siteData.comments);
+        return siteData;
       })
-      .then(() => {
-        getUserInfo(data.userId).then((data) => {
-          setAuthorData(data);
+      .then((siteData) => {
+        getUserInfo(siteData.addedBy).then((response) => {
+          setAuthorData(response);
+          console.log("!!", response);
         });
       })
       .catch((error) => {
@@ -71,14 +77,28 @@ export default function HomePage(props) {
         <div className="sites-info-container">
           <SideBarLeft />
           <div>
-            <div class="site-info">
-              <p>{"Added by " + authorData.name}</p>
+            <div className="site-info">
+              <div className="author-info">
+                <p>
+                  {"Added by " + authorData.name}
+                  <img
+                    src={authorData.avatar}
+                    alt={`Avatar of ${authorData.avatar}`}
+                    className="avatar"
+                  ></img>
+                </p>
+              </div>
             </div>
             <SiteIntro text={data.intro} />
             <SiteGallery data={data} />
             <SiteMap data={data} />
-            <SiteRating ratings={data.ratings} />
-            <SiteComment siteName={data.title} />
+            <SiteRating ratings={siteRatings} />
+            <SiteComment
+              siteName={data.title}
+              siteRatings={siteRatings}
+              setSiteRatings={setSiteRatings}
+            />
+            <CommentArea comments={comments} />
           </div>
           <SideBarRight siteName={data.title} />
           <div className="balancer"></div>
@@ -316,7 +336,15 @@ function SiteComment(props) {
               .getElementById("error-not-loged-in")
               .classList.add("hidden");
             if (starCount !== 0) {
-              commentSite(props.siteName, starCount);
+              commentSite(
+                props.siteName,
+                starCount,
+                user.uid,
+                document.getElementById("write-review-textarea").value
+              );
+              let tmpRatings = props.siteRatings;
+              tmpRatings[starCount - 1]++;
+              props.setSiteRatings(tmpRatings);
             } else {
               document
                 .getElementById("error-no-rating")
@@ -330,6 +358,46 @@ function SiteComment(props) {
       >
         Submit!
       </button>
+    </div>
+  );
+}
+
+function CommentArea(props) {
+  return (
+    <div class="site-info">
+      {props.comments === undefined || props.comments.length === 0 ? (
+        <h3>No review yet.</h3>
+      ) : (
+        props.comments.map((element) => {
+          return <SingleComment comment={element} />;
+        })
+      )}
+    </div>
+  );
+}
+
+function SingleComment(props) {
+  let comment = props.comment;
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    getUserInfo(comment.userId)
+      .then((response) => {
+        setUserData(response);
+        console.log("!!", response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <div class="single-comment">
+      <img src={userData.avatar} alt={"avatar of " + userData.name}></img>
+      <div>
+        <h4>{userData.name}</h4>
+        <Stars starCount={comment.stars} />
+        <p>{comment.comment}</p>
+      </div>
     </div>
   );
 }
