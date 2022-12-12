@@ -23,17 +23,18 @@ export default function NewSitePage(props) {
 
   return (
     <div>
-      {" "}
-      <form onSubmit={handleSubmit} onChange={handleChange}>
-        <div>
-          <h3>Add New Site</h3>
-        </div>{" "}
-        <label>
-          Site Name:
-          <input name="name"></input>
-        </label>
-        <button>Go edit the site</button>
-      </form>
+      <div class="site-info">
+        <form onSubmit={handleSubmit} onChange={handleChange}>
+          <div>
+            <h3>Add A New Site</h3>
+          </div>{" "}
+          <label>
+            Site Name:
+            <input name="name"></input>
+          </label>
+          <button>Go edit the site</button>
+        </form>
+      </div>
     </div>
   );
 }

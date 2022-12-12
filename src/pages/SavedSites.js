@@ -6,7 +6,7 @@ import SiteCard from "../components/SiteCard";
 import BookmarkBox from "../components/BookmarkBox";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SavedSites(props) {
   const auth = getAuth();
@@ -15,19 +15,19 @@ export default function SavedSites(props) {
     return (
       <div>
         <main>
-        <p className="noLogIn">Loading user data</p>
+          <p className="noLogIn">Loading user data</p>
         </main>
-        </div>
+      </div>
     );
   }
 
-  if(error) {
+  if (error) {
     return (
       <div>
         <main>
-        <p>There is an error: </p>
+          <p>There is an error: </p>
         </main>
-        </div>
+      </div>
     );
   }
   if (user) {
@@ -46,7 +46,6 @@ export default function SavedSites(props) {
     //console.log(userID);
     //console.log(props.state);
     //console.log(stateArray);
-
 
     let view;
     //console.log(getAuth().currentUser);
@@ -81,7 +80,7 @@ export default function SavedSites(props) {
       </div>
     );
   } else {
-    return(
+    return (
       <div>
         <main>
           <div>
@@ -91,6 +90,4 @@ export default function SavedSites(props) {
       </div>
     );
   }
-
-  
 }

@@ -287,6 +287,7 @@ function SiteComment(props) {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
   const [comment, setComment] = useState("");
+  const [update, setUpdate] = useState(0);
   const db = getDatabase();
   let userID, users; // claiming variables as function-wide variables
   if (getAuth().currentUser != null) {
@@ -328,7 +329,7 @@ function SiteComment(props) {
           placeholder="Write a review..."
         ></textarea>
 
-        <RateStars setStarCount={setStarCount} />
+        <RateStars setStarCount={setStarCount} update={update} />
       </div>
       <button
         id="submit-comment-button"
@@ -357,6 +358,7 @@ function SiteComment(props) {
                   document.getElementById("submit-comment-button"),
                   "Submitted!"
                 );
+                setUpdate(update + 1);
               });
             } else {
               document

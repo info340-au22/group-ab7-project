@@ -1072,13 +1072,35 @@ p a {
   margin-right: 20px;
 }
 
-.single-comment div {
+.single-comment > div {
   margin: 10px 0;
+  width: 100%;
 }
 
 .single-comment:last-of-type {
   border: 0;
   padding-bottom: 0;
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-info h4,
+.comment-info div,
+.comment-info p {
+  margin: 0;
+}
+
+.comment-info div {
+  margin-left: 10px;
+}
+
+.comment-info p {
+  margin-left: auto;
 }
 
 .state-info-mid {
