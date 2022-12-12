@@ -139,7 +139,7 @@ function SiteGallery(props) {
         {data.gallery.map((element, index) => {
           return (
             <div key={"img" + index}>
-              <img src={"/img/" + data.title + "/" + element} />
+              <img src={element} alt={"image " + index} />
             </div>
           );
         })}
@@ -271,8 +271,10 @@ function SiteComment(props) {
   }
   return (
     <div className="site-info" id="site-comment">
+      <div className= 'hidden' id= "error"><p>Error you must log in</p></div>
       <h2>Write a review</h2>
       <div className="write-review">
+     
       <textarea onChange= {(e)=> {setComment(e.target.value)}} placeholder="Write a review..."></textarea>
 
         <RateStars setStarCount={setStarCount} />
@@ -284,8 +286,21 @@ function SiteComment(props) {
               commentSite(props.siteName, starCount);
             }
             if(!user) {
-              <p>Error you must log in: {error}</p>
+
+              document.getElementById("error").classList.remove("hidden") // not logged in
             }
+            else {
+              document.getElementById("error").classList.add("hidden")
+            }
+
+            // if(!user) {
+            // <div>
+            //   <div id="error" class="hidden"><p> Error you must log in!</p> </div>
+            // </div>
+            // }
+            // else {
+            //   id("error").classList.remove("hidden")
+            // }
 
           }}
         >

@@ -1051,7 +1051,6 @@ p a {
   min-height: calc(100vh - 395px);
 }
 
-
 .page-center {
   min-height: calc(100vh - 440px);
   display: flex;
@@ -1063,6 +1062,10 @@ p a {
 .dropdown-toggle {
   background-color: #00000000;
   border: none;
+}
+
+.demo-img {
+  width: 60%;
 }
 
 .dropdown-toggle div {

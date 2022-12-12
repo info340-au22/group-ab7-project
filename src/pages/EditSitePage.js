@@ -28,10 +28,12 @@ export default function EditSitePage(props) {
   const [searchParams] = useSearchParams();
   let siteName = searchParams.get("siteName");
 
-  let [data, setData] = useState({});
-  let [detail, setDetail] = useState({});
-  let [loadingData, setLoadingData] = useState(true);
-  let [loadingDetail, setLoadingDetail] = useState(true);
+  const [data, setData] = useState({});
+  const [detail, setDetail] = useState({});
+  const [loadingData, setLoadingData] = useState(true);
+  const [loadingDetail, setLoadingDetail] = useState(true);
+
+  const [currentGalleryImage, setCurrentGalleryImage] = useState("");
 
   const [siteInfoForm, setSiteInfoForm] = useState({
     state: "",
@@ -46,7 +48,11 @@ export default function EditSitePage(props) {
     mapName: "",
     stateFull: "",
     bannerImg: "",
+    location: "",
+    gallery: [],
   });
+
+  const [siteGallery, setSiteGallery] = useState([]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -113,6 +119,7 @@ export default function EditSitePage(props) {
       .then((siteData) => {
         setDetail(siteData);
         setSiteDetailForm(siteData);
+        setSiteGallery(siteData.gallery === undefined ? [] : siteData.gallery);
       })
       .catch((error) => {
         console.error(error);
@@ -226,11 +233,61 @@ export default function EditSitePage(props) {
           Site Detail Banner Image
           <input name="bannerImg" value={siteDetailForm.bannerImg}></input>
         </label>
+        <label>
+          Site Detailed Location
+          <input name="location" value={siteDetailForm.location}></input>
+        </label>
         <button>Log Site Detail</button>
       </form>
+      <select
+        id="gallery-image-select"
+        size="5"
+        onChange={(event) => {
+          setCurrentGalleryImage(event.currentTarget.value);
+        }}
+      >
+        {siteGallery.map((element) => (
+          <option>{element}</option>
+        ))}
+      </select>
+      <img
+        className="demo-img"
+        src={"img/Olympic National Park/" + currentGalleryImage}
+      ></img>
       <button
         onClick={() => {
-          editSiteDetail(data.title, siteDetailForm);
+          setSiteGallery(
+            siteGallery.filter(
+              (element) =>
+                element !==
+                document.getElementById("gallery-image-select").value
+            )
+          );
+        }}
+      >
+        Delete this image
+      </button>
+      <input id="gallery-input"></input>
+      <button
+        onClick={() => {
+          if (document.getElementById("gallery-input").value !== "") {
+            setSiteGallery([
+              ...siteGallery,
+              document.getElementById("gallery-input").value,
+            ]);
+          } else {
+            alert("no image");
+          }
+        }}
+      >
+        Upload this image
+      </button>
+      <button
+        onClick={() => {
+          let tmpSiteDetailForm = siteDetailForm;
+          tmpSiteDetailForm.gallery = siteGallery;
+          console.log("!!!", tmpSiteDetailForm);
+          editSiteDetail(data.title, tmpSiteDetailForm);
         }}
       >
         Submit Detail Change
