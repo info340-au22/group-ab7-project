@@ -26,9 +26,13 @@ form input {
 }
 .email-footer {
   text-align: center;
-
 }
-
+.submit-foot {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
 
 label {
   width: 100%;

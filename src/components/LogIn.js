@@ -26,7 +26,6 @@ const firebaseUIConfig = {
 //the React compnent to render
 export default function SignIn() {
   const auth = getAuth(); //access the "authenticator"
-
   return (
     <div>
       <h1>My App</h1>

@@ -123,6 +123,7 @@ export default function SitesPage(props) {
               </ul>
             </div>
           </section>
+            <p> Note: Bookmarking feature is for signed in users </p>
             <SitesBox // SitesBox returns a <section>
               filterStates={stateFilter}
               filterType={siteTypeFilter}
