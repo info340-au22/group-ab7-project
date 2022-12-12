@@ -32,18 +32,14 @@ export default function SiteCard(props) {
     const userID = getAuth().currentUser.uid;
 
     let handleClick = function (event) {
-      console.log("clicked");
       const stateCopy = { ...props.state };
-      const userID = getAuth().currentUser.uid;
       const db = getDatabase();
       const bookmarkRef = ref(db, "sitesDetail/" + name + "/usersBookmarked/" + "/" + userID);
       stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
         if (stateCopy[name].usersBookmarked === undefined || stateCopy[name].usersBookmarked[userID] === false) {
           stateCopy[name].usersBookmarked[userID] = true;
-          console.log("hello");
         } else if (props.state[name].usersBookmarked[userID] === true) {
           stateCopy[name].usersBookmarked[userID] = false;
-          console.log("Hello");
         }
         props.setState(stateCopy);
         set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);

@@ -4,13 +4,55 @@ import SitesBox from "../components/SitesBox";
 import React, { useState } from "react";
 import SiteCard from "../components/SiteCard";
 import BookmarkBox from "../components/BookmarkBox";
+import { getAuth } from "firebase/auth";
+import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function SavedSites(props) {
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    return (
+      <div>
+        <main>
+        <p>Loading user data</p>
+        </main>
+        </div>
+    );
+  }
+
+  if(error) {
+    return (
+      <div>
+        <main>
+        <p>There is an error: </p>
+        </main>
+        </div>
+    );
+  }
+
+  const userID = getAuth().currentUser.uid;
   const stateArray = Object.values(props.state);
   const bookmarkedArray = stateArray.filter((currentObj) => {
-    return currentObj.bookmarked;
+    //console.log(currentObj);
+    console.log(currentObj.siteName);
+    return currentObj.usersBookmarked[userID];
   });
+
+    //const userID = getAuth().currentUser.uid;
+    //console.log(userID);
+    //console.log(props.state);
+    //console.log(stateArray);
+
+
   let view;
+  //console.log(getAuth().currentUser);
+  //const userID = getAuth().currentUser.uid;
+  //const userID = getAuth().currentUser.uid;
+  //console.log(userID);
+
+
+
 
   if (bookmarkedArray.length !== 0) {
     view = // BookmarkBox returns <section>

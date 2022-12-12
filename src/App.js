@@ -26,7 +26,7 @@ export default function App() {
     
     const unregisterFunction = onValue(sitesDetail, (snapshot) => {
       const changedValue = snapshot.val();
-      console.log(changedValue);
+      //console.log(changedValue);
       setState(changedValue);
     })
 
