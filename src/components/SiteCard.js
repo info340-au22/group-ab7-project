@@ -38,6 +38,7 @@ export default function SiteCard(props) {
       const stateCopy = { ...props.state };
       const db = getDatabase();
       const bookmarkRef = ref(db, "sitesDetail/" + name + "/usersBookmarked/" + "/" + userID);
+      
        //if they don't have bookmark boolean data saved in the database
       // specifically in sitesDetail/nameOfSite//userBookmarked/userID
       // basically, if their userID is not in userBookmarked
@@ -46,7 +47,7 @@ export default function SiteCard(props) {
         stateCopy[name].usersBookmarked[userID] = false;
       }
 
-      stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
+      //stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
         if (stateCopy[name].usersBookmarked === undefined || stateCopy[name].usersBookmarked[userID] === false) {
           stateCopy[name].usersBookmarked[userID] = true;
         } else if (props.state[name].usersBookmarked[userID] === true) {
