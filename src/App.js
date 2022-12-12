@@ -23,7 +23,7 @@ export default function App() {
   useEffect(() => {
     const db = getDatabase();
     const sitesDetail = ref(db, "sitesDetail");
-    
+    // when database is updated, set state to change the state to match
     const unregisterFunction = onValue(sitesDetail, (snapshot) => {
       const changedValue = snapshot.val();
       //console.log(changedValue);
