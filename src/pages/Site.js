@@ -263,15 +263,11 @@ function SiteComment(props) {
   }
 
   let starCount;
-<<<<<<< HEAD
- 
-=======
   //const handleClick = (event) => {
   //setComment(true);
   //event.preventDefault();
   //}
 
->>>>>>> b9833f5cc6f5cbed06997294d47430cc10fc1b51
   function setStarCount(count) {
     starCount = count;
   }
@@ -307,11 +303,6 @@ function SiteComment(props) {
             // if(comment != null) {
             //   commentSite(comment)
             // }
-<<<<<<< HEAD
-
-         
-=======
->>>>>>> b9833f5cc6f5cbed06997294d47430cc10fc1b51
           }}
         >
           Submit!
