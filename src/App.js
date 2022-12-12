@@ -19,10 +19,12 @@ import _ from 'lodash';
 export default function App() {
  
   const [state, setState] = useState({});
+  
 
   useEffect(() => {
     const db = getDatabase();
     const sitesDetail = ref(db, "sitesDetail");
+    
     // when database is updated, set state to change the state to match
     const unregisterFunction = onValue(sitesDetail, (snapshot) => {
       const changedValue = snapshot.val();
@@ -30,8 +32,11 @@ export default function App() {
       setState(changedValue);
     })
 
+    
+
     function cleanup() {
       unregisterFunction();
+   
     }
     return cleanup;
   }, [])
@@ -75,7 +80,7 @@ export default function App() {
             path="sites"
             element={<SitesPage setState={setState} state={state} />}
           />
-          <Route path="bookmarks" element={<SavedSites state={state}></SavedSites>} />
+          <Route path="bookmarks" element={<SavedSites state={state} ></SavedSites>} />
           <Route path="*" element={<h1>404 Not found</h1>} />
         </Routes>
       </div>

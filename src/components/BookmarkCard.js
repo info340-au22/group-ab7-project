@@ -5,6 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 export default function BookmarkCard(props) {
+  //console.log(props.sitesInfo);
+  console.log(props);
     const data = props.data;
     const name = data.siteName;
     function handleClick(stateFull) {
@@ -18,7 +20,7 @@ export default function BookmarkCard(props) {
       }
     return (
             <div className="card bookmark-card">
-                    <img src={data.imgSrc} className="card-img-top bookmarkImg" alt={data.imgAlt}></img>
+                    <img src={data.imgSrc}  className="card-img-top bookmarkImg" alt={data.imgAlt}></img>
                 <div className="card-body">
                     <h2 className="bookmark-heading">{data.siteName}</h2>
                     <button className="findFlights" onClick={() => handleClick(data.stateFull)}>Find Flights</button>
@@ -27,6 +29,7 @@ export default function BookmarkCard(props) {
     );
 }
 // <img src={sitesInfo[name].imgSrc} 
+//<img src={props.sitesInfo[name].imgSrc} 
 /*
 <div
       className="card-container"
