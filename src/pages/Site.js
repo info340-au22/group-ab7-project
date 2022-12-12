@@ -139,7 +139,7 @@ function SiteGallery(props) {
         {data.gallery.map((element, index) => {
           return (
             <div key={"img" + index}>
-              <img src={element} alt={"image " + index} />
+              <img src={"/img/" + data.title + "/" + element} />
             </div>
           );
         })}
@@ -253,13 +253,9 @@ function SiteComment(props) {
   const [user, loading, error] = useAuthState(auth);
   const [comment, setComment] = useState("")
   const db = getDatabase()
-  let userID, users; // claiming variables as function-wide variables 
-  if (getAuth().currentUser != null) {
-    userID = getAuth().currentUser.uid; //assigning value to the variable
-     users = ref(db, 'comments/' + userID);
+  const userID = getAuth().currentUser.uid;
+  const users = ref(db, 'comments/' + userID);
   set(users, 'test to see if creating the subfolder works for now')
-  } 
-
   let starCount;
   //const handleClick = (event) => {
     //setComment(true);
@@ -271,10 +267,8 @@ function SiteComment(props) {
   }
   return (
     <div className="site-info" id="site-comment">
-      <div className= 'hidden' id= "error"><p>Error you must log in</p></div>
       <h2>Write a review</h2>
       <div className="write-review">
-     
       <textarea onChange= {(e)=> {setComment(e.target.value)}} placeholder="Write a review..."></textarea>
 
         <RateStars setStarCount={setStarCount} />
@@ -286,21 +280,8 @@ function SiteComment(props) {
               commentSite(props.siteName, starCount);
             }
             if(!user) {
-
-              document.getElementById("error").classList.remove("hidden") // not logged in
+              <p>Error you must log in</p>
             }
-            else {
-              document.getElementById("error").classList.add("hidden")
-            }
-
-            // if(!user) {
-            // <div>
-            //   <div id="error" class="hidden"><p> Error you must log in!</p> </div>
-            // </div>
-            // }
-            // else {
-            //   id("error").classList.remove("hidden")
-            // }
 
           }}
         >
