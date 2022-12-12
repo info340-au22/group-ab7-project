@@ -95,6 +95,7 @@ export function RateStars(props) {
         }}
         onClick={() => {
           setClicked(true);
+          document.getElementById("error-no-rating").classList.add("hidden");
         }}
       />
     );
@@ -114,6 +115,7 @@ export function RateStars(props) {
         }}
         onClick={() => {
           setClicked(true);
+          document.getElementById("error-no-rating").classList.add("hidden");
         }}
       />
     );

@@ -88,6 +88,11 @@ iframe {
   padding-bottom: 0;
 }
 
+.error {
+  color: red;
+  text-align: center;
+}
+
 .footer-header {
   padding: 0;
   margin: 20px 0;
@@ -229,7 +234,7 @@ nav {
     5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
 }
 
-.write-review textarea,
+#write-review-textarea,
 .search-bar input:focus {
   background: white;
   outline: none;
@@ -358,7 +363,7 @@ nav {
   flex-direction: row;
 }
 
-.write-review textarea {
+#write-review-textarea {
   width: 60%;
   height: 200px;
   resize: none;
@@ -493,7 +498,7 @@ h5 {
   justify-content: center;
 }
 
-.write-review textarea,
+#write-review-textarea,
 .page-search-bar input {
   padding: 4px 6px;
   border-radius: 5px;

@@ -38,7 +38,6 @@ export default function HomePage(props) {
         } else {
           console.log("No data available");
         }
-        console.log("sitesDetail/" + siteName);
       })
       .then((siteData) => {
         setData(siteData);
@@ -66,6 +65,9 @@ export default function HomePage(props) {
         <div className="sites-info-container">
           <SideBarLeft />
           <div>
+            <div class="site-info">
+              <p>{"Added by " + data.addedBy}</p>
+            </div>
             <SiteIntro text={data.intro} />
             <SiteGallery data={data} />
             <SiteMap data={data} />
@@ -252,6 +254,7 @@ function SideBarRight(props) {
 
 function SiteComment(props) {
   const auth = getAuth();
+  console.log(auth.currentUser);
   const [user, loading, error] = useAuthState(auth);
   const [comment, setComment] = useState("");
   const db = getDatabase();
@@ -277,12 +280,18 @@ function SiteComment(props) {
   // }
   return (
     <div className="site-info" id="site-comment">
-      <div className="hidden" id="error">
-        <p>Error you must log in</p>
+      <div className="hidden error" id="error-not-loged-in">
+        <p>
+          You must <a href="/login">Log in</a> to submit a review!
+        </p>
+      </div>
+      <div className="hidden error" id="error-no-rating">
+        <p>You must leave a rating!</p>
       </div>
       <h2>Write a review</h2>
       <div className="write-review">
         <textarea
+          id="write-review-textarea"
           onChange={(e) => {
             setComment(e.target.value);
           }}
@@ -290,24 +299,32 @@ function SiteComment(props) {
         ></textarea>
 
         <RateStars setStarCount={setStarCount} />
-        <button
-          onClick={() => {
+      </div>
+      <button
+        onClick={() => {
+          if (!user) {
+            document
+              .getElementById("error-not-loged-in")
+              .classList.remove("hidden"); // not logged in
+          } else {
+            document
+              .getElementById("error-not-loged-in")
+              .classList.add("hidden");
             if (starCount !== 0) {
               commentSite(props.siteName, starCount);
-            }
-            if (!user) {
-              document.getElementById("error").classList.remove("hidden"); // not logged in
             } else {
-              document.getElementById("error").classList.add("hidden");
+              document
+                .getElementById("error-no-rating")
+                .classList.remove("hidden");
             }
-            // if(comment != null) {
-            //   commentSite(comment)
-            // }
-          }}
-        >
-          Submit!
-        </button>
-      </div>
+          }
+          // if(comment != null) {
+          //   commentSite(comment)
+          // }
+        }}
+      >
+        Submit!
+      </button>
     </div>
   );
 }
