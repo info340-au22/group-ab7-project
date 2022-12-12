@@ -29,8 +29,11 @@ export default function SiteCard(props) {
   let imgSrc;
   let handleClick;
   if (user) {
-    const userID = getAuth().currentUser.uid;
-
+    let userID;
+    if(getAuth().currentUser !== undefined) {
+      userID = getAuth().currentUser.uid;
+    }
+    
     let handleClick = function (event) {
       const stateCopy = { ...props.state };
       const db = getDatabase();

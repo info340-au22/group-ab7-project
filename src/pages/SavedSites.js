@@ -15,7 +15,7 @@ export default function SavedSites(props) {
     return (
       <div>
         <main>
-        <p>Loading user data</p>
+        <p className="noLogIn">Loading user data</p>
         </main>
         </div>
     );
@@ -30,14 +30,14 @@ export default function SavedSites(props) {
         </div>
     );
   }
-
-  const userID = getAuth().currentUser.uid;
-  const stateArray = Object.values(props.state);
-  const bookmarkedArray = stateArray.filter((currentObj) => {
+  if (user) {
+    const userID = getAuth().currentUser.uid;
+    const stateArray = Object.values(props.state);
+    const bookmarkedArray = stateArray.filter((currentObj) => {
     //console.log(currentObj);
     //console.log(currentObj.siteName);
     return currentObj.usersBookmarked[userID];
-  });
+    });
 
     //const userID = getAuth().currentUser.uid;
     //console.log(userID);
@@ -45,37 +45,49 @@ export default function SavedSites(props) {
     //console.log(stateArray);
 
 
-  let view;
-  //console.log(getAuth().currentUser);
-  //const userID = getAuth().currentUser.uid;
-  //const userID = getAuth().currentUser.uid;
-  //console.log(userID);
+    let view;
+    //console.log(getAuth().currentUser);
+    //const userID = getAuth().currentUser.uid;
+    //const userID = getAuth().currentUser.uid;
+    //console.log(userID);
 
-  if (bookmarkedArray.length !== 0) {
-    view = // BookmarkBox returns <section>
-      <BookmarkBox bookmarks={bookmarkedArray} loading={loading} error={error}></BookmarkBox>;
+    if (bookmarkedArray.length !== 0) {
+      view = // BookmarkBox returns <section>
+        <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>;
+    } else {
+      view = (
+        <section>
+          <p>You currently have no saved sites.</p>
+          <img
+            src="img/WestCoast.png"
+            className="map-image"
+            alt="United States with West Coast highlighted in red"
+          ></img>
+          <p>To get started, select sites to bookmark under the "Sites" tab.</p>
+        </section>
+      );
+    }
+    return (
+      <div>
+        <main>
+          <div className="bookmark-view">
+            <h1> Your Saved Sites: </h1>
+            {view}
+          </div>
+        </main>
+      </div>
+    );
   } else {
-    view = (
-      <section>
-        <p>You currently have no saved sites.</p>
-        <img
-          src="img/WestCoast.png"
-          className="map-image"
-          alt="United States with West Coast highlighted in red"
-        ></img>
-        <p>To get started, select sites to bookmark under the "Sites" tab.</p>
-      </section>
+    return(
+      <div>
+        <main>
+          <div>
+            <p className="noLogIn"> No One is signed in...</p>
+          </div>
+        </main>
+      </div>
     );
   }
 
-  return (
-    <div>
-      <main>
-        <div className="bookmark-view">
-          <h1> Your Saved Sites: </h1>
-          {view}
-        </div>
-      </main>
-    </div>
-  );
+  
 }
