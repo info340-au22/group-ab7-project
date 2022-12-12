@@ -38,6 +38,14 @@ export default function SiteCard(props) {
       const stateCopy = { ...props.state };
       const db = getDatabase();
       const bookmarkRef = ref(db, "sitesDetail/" + name + "/usersBookmarked/" + "/" + userID);
+       //if they don't have bookmark boolean data saved in the database
+      // specifically in sitesDetail/nameOfSite//userBookmarked/userID
+      // basically, if their userID is not in userBookmarked
+        // add it and set it to false
+      if(stateCopy[name].usersBookmarked[userID] === undefined) {
+        stateCopy[name].usersBookmarked[userID] = false;
+      }
+
       stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
         if (stateCopy[name].usersBookmarked === undefined || stateCopy[name].usersBookmarked[userID] === false) {
           stateCopy[name].usersBookmarked[userID] = true;
@@ -47,11 +55,11 @@ export default function SiteCard(props) {
         props.setState(stateCopy);
         set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);
     }
-
       if (
         //props.state === undefined ||
         //props.state[name] === undefined ||
         props.state[name].usersBookmarked === undefined ||
+        props.state[name].usersBookmarked[userID] === undefined ||
         props.state[name].usersBookmarked[userID] === false
       ) {
         imgSrc = "./img/bookmark.png";
