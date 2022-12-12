@@ -9,7 +9,7 @@ body {
 }
 
 .site-info button {
-  margin-top: 15px;
+  margin: 15px 0;
   width: 100%;
   background-color: white;
   border: 1px solid lightgray;
@@ -408,9 +408,28 @@ nav {
     11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34);
 }
 
+button {
+  transition: all 500ms ease;
+}
+
+.page-status-published {
+  color: #fbbc04;
+  font-weight: bold;
+}
+
+.page-status-retracted {
+  color: red;
+  font-weight: bold;
+}
+
 .submitted {
-  background-color: green !important;
-  border: none;
+  color: white;
+  background-color: #51af00 !important;
+  border: 1px solid transparent !important;
+}
+
+.submitted:disabled {
+  color: white;
 }
 
 .no-margin {
