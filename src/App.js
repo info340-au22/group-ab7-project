@@ -43,11 +43,11 @@ export default function App() {
     const unregisterFunction = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         //firebaseUser defined: is logged in
-        console.log("logged in", firebaseUser.displayName);
+        //console.log("logged in", firebaseUser.displayName);
         //do something with firebaseUser (e.g. assign to a state variable)
       } else {
         //firebaseUser is undefined: is not logged in
-        console.log("logged out");
+        //console.log("logged out");
       }
     });
 
