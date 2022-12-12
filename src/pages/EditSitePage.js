@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { Select } from "react-select";
 import Form from "react-bootstrap/Form";
 import SiteCard from "../components/SiteCard";
+import { showSubmit } from "../components/showSubmit";
 import {
   editSiteInfo,
   toggleSiteStatus,
@@ -20,14 +21,15 @@ const optionsState = [
 ];
 
 const optionsType = [
-  { value: "Natural", label: "Natural" },
-  { value: "Cultural", label: "Cultural" },
+  { value: "natural", label: "Natural" },
+  { value: "cultural", label: "Cultural" },
 ];
 
 export default function EditSitePage(props) {
   const [searchParams] = useSearchParams();
   let siteName = searchParams.get("siteName");
 
+  const [sitePublishedStatus, setSitePublishedStatus] = useState(false);
   const [data, setData] = useState({});
   const [detail, setDetail] = useState({});
   const [loadingData, setLoadingData] = useState(true);
@@ -37,7 +39,7 @@ export default function EditSitePage(props) {
 
   const [siteInfoForm, setSiteInfoForm] = useState({
     state: "",
-    type: "",
+    siteType: "",
     siteLocation: "",
     siteFact: "",
     imgSrc: "",
@@ -56,7 +58,7 @@ export default function EditSitePage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(siteInfoForm);
+    //console.log(siteInfoForm);
   }
 
   const handleChange = (event) => {
@@ -69,7 +71,7 @@ export default function EditSitePage(props) {
 
   function handleSubmitDetail(event) {
     event.preventDefault();
-    console.log(siteDetailForm);
+    //console.log(siteDetailForm);
   }
 
   const handleChangeDetail = (event) => {
@@ -102,6 +104,7 @@ export default function EditSitePage(props) {
       .then((siteData) => {
         setData(siteData);
         setSiteInfoForm(siteData);
+        setSitePublishedStatus(siteData.published);
         setLoadingData(false);
       })
       .catch((error) => {
@@ -126,179 +129,262 @@ export default function EditSitePage(props) {
       });
   }, []);
 
-  console.log(siteInfoForm);
   return (
     <div>
-      <div className="m-3">
-        <label className="mx-3">Choose file: </label>
-        <input type="file" id="fileInput" />
+      <div
+        className="site-page-header"
+        style={{ backgroundImage: `url(${siteDetailForm.bannerImg})` }}
+      >
+        <div className="site-page-title-box">
+          <h1 className="site-page-title">{"Edit " + data.title}</h1>{" "}
+        </div>
+      </div>
+      <div className="site-info">
+        <form onSubmit={handleSubmit} onChange={handleChange}>
+          <div>
+            <h3>Basic Info</h3>
+          </div>
+
+          <h5>State</h5>
+          <Form.Select
+            name="state"
+            defaultValue={siteInfoForm.state}
+            onChange={(event) => {
+              let select = event.currentTarget;
+              setSiteDetailForm({
+                ...siteDetailForm,
+                stateFull: select.options[select.selectedIndex].innerHTML,
+              });
+            }}
+          >
+            {siteInfoForm.state === "" ? (
+              <option value="">Select State...</option>
+            ) : (
+              ""
+            )}
+            {optionsState.map((element) => {
+              return (
+                <option key={element.value} value={element.value}>
+                  {element.label}
+                </option>
+              );
+            })}
+          </Form.Select>
+          <h5>Type</h5>
+          <Form.Select name="siteType" defaultValue={siteInfoForm.siteType}>
+            {siteInfoForm.siteType === "" ? (
+              <option value="">Select Type...</option>
+            ) : (
+              ""
+            )}
+            {optionsType.map((element) => {
+              return (
+                <option key={element.value} value={element.value}>
+                  {element.label}
+                </option>
+              );
+            })}
+          </Form.Select>
+          <label>
+            <h5>Site Location</h5>
+            <input
+              type="text"
+              name="siteLocation"
+              placeholder="eg. Seattle, WA"
+              defaultValue={siteInfoForm.siteLocation}
+            />
+          </label>
+          <label>
+            <h5>Site Fact</h5>
+            <input
+              type="text"
+              name="siteFact"
+              placeholder="SiteFact"
+              defaultValue={siteInfoForm.siteFact}
+            />
+          </label>
+          <label>
+            <h5>Card Image Link</h5>
+            <input
+              type="text"
+              name="imgSrc"
+              placeholder="Input image link here"
+              defaultValue={siteInfoForm.imgSrc}
+            />
+          </label>
+        </form>
+        <div className="preview-card">
+          <h3>Card Preview:</h3>
+          <SiteCard
+            clickable="false"
+            singleSiteData={{
+              ...siteInfoForm,
+              title: siteName,
+              siteName: siteName,
+            }}
+          />
+          <button
+            onClick={(event) => {
+              editSiteInfo(data.title, siteInfoForm);
+              let button = event.currentTarget;
+              showSubmit(button, "Submitted");
+            }}
+          >
+            Submit Info Change
+          </button>
+        </div>
+      </div>
+      <div className="map-info" id="site-map">
+        <div className="location-info">
+          <h4>Detailed Location</h4>
+          <h5>State</h5>
+          <p className="no-margin">{siteDetailForm.stateFull}</p>
+          <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
+            <label>
+              <h5>Site Detailed Location</h5>
+              <input
+                name="location"
+                defaultValue={siteDetailForm.location}
+              ></input>
+            </label>
+            <label>
+              <h5>Map location</h5>
+              <input
+                name="mapName"
+                defaultValue={siteDetailForm.mapName}
+              ></input>
+            </label>
+          </form>
+        </div>
+        <iframe
+          referrerPolicy="no-referrer-when-downgrade"
+          src={
+            "https://www.google.com/maps/embed/v1/place?key=AIzaSyCOj2Uhxker2xOnU5VMLKLqIhkBIoyTBQ0&q=" +
+            siteDetailForm.mapName
+          }
+          allowFullScreen
+        ></iframe>
+      </div>
+      <div className="site-info">
+        <h4>Data for site page</h4>
+        <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
+          <label>
+            <h5>Site Introduction</h5>
+            <textarea
+              name="intro"
+              defaultValue={convert(siteDetailForm.intro)}
+            ></textarea>
+          </label>
+          <label>
+            <h5>Site Detail Banner Image Link</h5>
+            <input
+              name="bannerImg"
+              defaultValue={siteDetailForm.bannerImg}
+              placeholder="Input image link here"
+            ></input>
+          </label>
+        </form>
+        <label>
+          <h5>Upload new image to gallery</h5>
+          <input id="gallery-input" placeholder="Input image link here"></input>
+        </label>
         <button
-          className="btn btn-outline-primary"
           onClick={() => {
-            console.log(document.getElementById("fileInput").value);
+            if (document.getElementById("gallery-input").value !== "") {
+              setSiteGallery([
+                ...siteGallery,
+                document.getElementById("gallery-input").value,
+              ]);
+              document.getElementById("gallery-input").value = "";
+            } else {
+              alert("no image");
+            }
           }}
         >
-          Upload
+          Upload this image
+        </button>
+        <h5>Site Gallery</h5>
+        <h6>Click below to preview the image!</h6>
+        <select
+          id="gallery-image-select"
+          size="5"
+          onChange={(event) => {
+            setCurrentGalleryImage(event.currentTarget.value);
+            document.getElementById("preview-img").classList.remove("hidden");
+          }}
+        >
+          {siteGallery.map((element, index) => (
+            <option key={"imgae link #" + index}>{element}</option>
+          ))}
+        </select>
+        <div className="hidden" id="preview-img">
+          <img className="demo-img" src={currentGalleryImage}></img>
+          <button
+            onClick={() => {
+              setSiteGallery(
+                siteGallery.filter(
+                  (element) =>
+                    element !==
+                    document.getElementById("gallery-image-select").value
+                )
+              );
+              document.getElementById("preview-img").classList.add("hidden");
+            }}
+          >
+            Delete this image
+          </button>
+        </div>
+        <button
+          onClick={(event) => {
+            editSiteDetail(data.title, {
+              ...siteDetailForm,
+              gallery: siteGallery,
+            });
+            let button = event.currentTarget;
+            showSubmit(button, "Submitted");
+          }}
+        >
+          Submit Detail Change
         </button>
       </div>
-
-      <SiteCard
-        clickable="false"
-        singleSiteData={{
-          ...siteInfoForm,
-          title: siteName,
-          siteName: siteName,
-        }}
-      />
-      <form onSubmit={handleSubmit} onChange={handleChange}>
-        <div>
-          <h3>Edit Site</h3>
-        </div>
-        <h4>Site Name: {data.title}</h4>
-
-        <label>State</label>
-        <Form.Select name="state" value={siteInfoForm.state}>
-          <option value="">Select State...</option>
-          {optionsState.map((element) => {
-            return (
-              <option key={element.value} value={element.value}>
-                {element.label}
-              </option>
+      <div className="site-info">
+        <h3>
+          Currently, this page is{" "}
+          <span
+            className={
+              sitePublishedStatus
+                ? "page-status-published"
+                : "page-status-retracted"
+            }
+          >
+            {sitePublishedStatus ? "PUBLISHED" : "RETRACTED"}
+          </span>
+        </h3>
+        <button
+          onClick={(event) => {
+            toggleSiteStatus(data.title);
+            setTimeout(() => {
+              setSitePublishedStatus(!sitePublishedStatus);
+            }, 200);
+            showSubmit(
+              event.currentTarget,
+              !sitePublishedStatus ? "PUBLISHED" : "RETRACTED"
             );
-          })}
-        </Form.Select>
-        <label>Type</label>
-        <Form.Select name="type" value={siteInfoForm.type}>
-          <option value="">Select Type...</option>
-          {optionsType.map((element) => {
-            return (
-              <option key={element.value} value={element.value}>
-                {element.label}
-              </option>
-            );
-          })}
-        </Form.Select>
-        <label>
-          Site Location:{" "}
-          <input
-            type="text"
-            name="siteLocation"
-            placeholder="eg. Seattle, WA"
-            value={siteInfoForm.siteLocation}
-          />
-        </label>
-        <label>
-          Site Fact:{" "}
-          <input
-            type="text"
-            name="siteFact"
-            placeholder="SiteFact"
-            value={siteInfoForm.siteFact}
-          />
-        </label>
-        <label>
-          Card Image Link:{" "}
-          <input
-            type="text"
-            name="imgSrc"
-            placeholder="http://"
-            value={siteInfoForm.imgSrc}
-          />
-        </label>
-        <div>
-          <button>Submit Site Info</button>
-        </div>
-      </form>
-      <button
-        onClick={() => {
-          editSiteInfo(data.title, siteInfoForm);
-        }}
-      >
-        Submit Info Change
-      </button>
-
-      <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
-        <label>
-          <textarea name="intro" value={siteDetailForm.intro}></textarea>
-        </label>
-        <label>
-          Map location
-          <input name="mapName" value={siteDetailForm.mapName}></input>
-        </label>
-        <label>
-          State Full Name
-          <input name="stateFull" value={siteDetailForm.stateFull}></input>
-        </label>
-        <label>
-          Site Detail Banner Image
-          <input name="bannerImg" value={siteDetailForm.bannerImg}></input>
-        </label>
-        <label>
-          Site Detailed Location
-          <input name="location" value={siteDetailForm.location}></input>
-        </label>
-        <button>Log Site Detail</button>
-      </form>
-      <select
-        id="gallery-image-select"
-        size="5"
-        onChange={(event) => {
-          setCurrentGalleryImage(event.currentTarget.value);
-        }}
-      >
-        {siteGallery.map((element) => (
-          <option>{element}</option>
-        ))}
-      </select>
-      <img
-        className="demo-img"
-        src={"img/Olympic National Park/" + currentGalleryImage}
-      ></img>
-      <button
-        onClick={() => {
-          setSiteGallery(
-            siteGallery.filter(
-              (element) =>
-                element !==
-                document.getElementById("gallery-image-select").value
-            )
-          );
-        }}
-      >
-        Delete this image
-      </button>
-      <input id="gallery-input"></input>
-      <button
-        onClick={() => {
-          if (document.getElementById("gallery-input").value !== "") {
-            setSiteGallery([
-              ...siteGallery,
-              document.getElementById("gallery-input").value,
-            ]);
-          } else {
-            alert("no image");
-          }
-        }}
-      >
-        Upload this image
-      </button>
-      <button
-        onClick={() => {
-          let tmpSiteDetailForm = siteDetailForm;
-          tmpSiteDetailForm.gallery = siteGallery;
-          console.log("!!!", tmpSiteDetailForm);
-          editSiteDetail(data.title, tmpSiteDetailForm);
-        }}
-      >
-        Submit Detail Change
-      </button>
-      <button
-        onClick={() => {
-          toggleSiteStatus(data.title);
-        }}
-      >
-        Publish/Retract the site
-      </button>
+          }}
+        >
+          {"Publish/Retract" + " the site"}
+        </button>
+      </div>
     </div>
   );
+}
+
+function convert(strings) {
+  if (strings === undefined) {
+    return "";
+  } else {
+    return strings
+      .reduce((result, element) => result + element + "\n\n", "")
+      .slice(0, -2);
+  }
 }

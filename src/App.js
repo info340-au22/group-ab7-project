@@ -23,7 +23,7 @@ export default function App() {
   useEffect(() => {
     const db = getDatabase();
     const sitesDetail = ref(db, "sitesDetail");
-    
+    // when database is updated, set state to change the state to match
     const unregisterFunction = onValue(sitesDetail, (snapshot) => {
       const changedValue = snapshot.val();
       //console.log(changedValue);
@@ -43,11 +43,11 @@ export default function App() {
     const unregisterFunction = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         //firebaseUser defined: is logged in
-        console.log("logged in", firebaseUser.displayName);
+        //console.log("logged in", firebaseUser.displayName);
         //do something with firebaseUser (e.g. assign to a state variable)
       } else {
         //firebaseUser is undefined: is not logged in
-        console.log("logged out");
+        //console.log("logged out");
       }
     });
 

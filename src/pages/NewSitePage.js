@@ -1,9 +1,9 @@
-import React, { useState } from "react"; import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toggleSiteStatus, createSite } from "../components/EditSiteInfo";
 import { getAuth } from "firebase/auth";
 
 export default function NewSitePage(props) {
-
   const auth = getAuth();
   const user = auth.currentUser;
   const navigate = useNavigate();
@@ -23,17 +23,18 @@ export default function NewSitePage(props) {
 
   return (
     <div>
-      {" "}
-      <form onSubmit={handleSubmit} onChange={handleChange}>
-        <div>
-          <h3>Add New Site</h3>
-        </div>{" "}
-        <label>
-          Site Name:
-          <input name="name"></input>
-        </label>
-        <button>Go edit the site</button>
-      </form>
+      <div className="site-info">
+        <form onSubmit={handleSubmit} onChange={handleChange}>
+          <div>
+            <h3>Add A New Site</h3>
+          </div>{" "}
+          <label>
+            Site Name:
+            <input name="name"></input>
+          </label>
+          <button>Go edit the site</button>
+        </form>
+      </div>
     </div>
   );
 }

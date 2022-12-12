@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -78,6 +78,9 @@ export function RateStars(props) {
   const [starCount, setStarCount] = useState(0);
   const [clicked, setClicked] = useState(false);
   props.setStarCount(starCount);
+  useEffect(() => {
+    setStarCount(0);
+  }, [props.update]);
   let stars = [];
   const reaction = ["", "Terrible", "Bad", "Okay", "Good", "Excellent"];
   for (let i = 1; i <= starCount; i++) {
@@ -95,6 +98,7 @@ export function RateStars(props) {
         }}
         onClick={() => {
           setClicked(true);
+          document.getElementById("error-no-rating").classList.add("hidden");
         }}
       />
     );
@@ -114,6 +118,7 @@ export function RateStars(props) {
         }}
         onClick={() => {
           setClicked(true);
+          document.getElementById("error-no-rating").classList.add("hidden");
         }}
       />
     );

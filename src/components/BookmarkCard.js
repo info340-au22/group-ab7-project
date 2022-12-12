@@ -1,14 +1,19 @@
-import React from "react";
+import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
+import React, { useState, Component, useEffect } from "react";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+
 export default function BookmarkCard(props) {
     const data = props.data;
-
+    const name = data.siteName;
     function handleClick(stateFull) {
-        console.log(stateFull);
+        //(stateFull);
         if (stateFull === "Washington") {
             stateFull += " state";
         }
         const url = "https://www.google.com";
-        console.log(url);
+        //console.log(url);
         window.open('http://google.com/search?q=' + stateFull + " flights", "_blank");
       }
     return (
@@ -21,7 +26,7 @@ export default function BookmarkCard(props) {
             </div>
     );
 }
-
+// <img src={sitesInfo[name].imgSrc} 
 /*
 <div
       className="card-container"

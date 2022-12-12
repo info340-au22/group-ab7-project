@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import allSites from "../data/allSites.json";
-import { getDatabase, ref, child, get, set} from "firebase/database";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { commentSite } from "../components/EditSiteInfo";
-import { useAuthState } from "react-firebase-hooks/auth"
-
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "../components/UserAuth";
+import { showSubmit } from "../components/showSubmit";
 
 import {
   RateStars,
@@ -24,11 +25,13 @@ function jumpTo(target) {
 }
 
 export default function HomePage(props) {
-
   const [searchParams] = useSearchParams();
   let siteName = searchParams.get("siteName");
-  let [data, setData] = useState({});
-  let [loading, setLoading] = useState(true);
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [authorData, setAuthorData] = useState({});
+  const [siteRatings, setSiteRatings] = useState([0, 0, 0, 0, 0]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const db = getDatabase();
@@ -40,11 +43,23 @@ export default function HomePage(props) {
         } else {
           console.log("No data available");
         }
-        console.log("sitesDetail/" + siteName);
       })
       .then((siteData) => {
         setData(siteData);
         setLoading(false);
+        setSiteRatings(siteData.ratings);
+        setComments(siteData.comments);
+        return siteData;
+      })
+      .then((siteData) => {
+        getUserInfo(siteData.addedBy)
+          .then((response) => {
+            setAuthorData(response);
+            //console.log("!!", response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -54,7 +69,6 @@ export default function HomePage(props) {
   if (loading) {
     return <h3>Loading...</h3>;
   } else {
-    console.log(data.bannerImg);
     return (
       <div>
         <div
@@ -68,13 +82,30 @@ export default function HomePage(props) {
         <div className="sites-info-container">
           <SideBarLeft />
           <div>
+            <div className="site-info">
+              <div className="author-info">
+                <p>
+                  {"Added by " + authorData.name}
+                  <img
+                    src={authorData.avatar}
+                    alt={`Avatar of ${authorData.avatar}`}
+                    className="avatar"
+                  ></img>
+                </p>
+              </div>
+            </div>
             <SiteIntro text={data.intro} />
             <SiteGallery data={data} />
             <SiteMap data={data} />
-            <SiteRating ratings={data.ratings} />
-            <SiteComment siteName={data.title} />
+            <SiteRating ratings={siteRatings} />
+            <SiteComment
+              siteName={data.title}
+              setComments={setComments}
+              setSiteRatings={setSiteRatings}
+            />
+            <CommentArea comments={comments} />
           </div>
-          <SideBarRight />
+          <SideBarRight siteName={data.title} />
           <div className="balancer"></div>
         </div>
       </div>
@@ -139,7 +170,7 @@ function SiteGallery(props) {
         {data.gallery.map((element, index) => {
           return (
             <div key={"img" + index}>
-              <img src={element} alt={"image " + index} />
+              <img src={element} />
             </div>
           );
         })}
@@ -203,6 +234,7 @@ function SiteRating(props) {
 }
 
 function SideBarRight(props) {
+  const navigate = useNavigate();
   return (
     <div className="operation-bar side-bar">
       <ul>
@@ -239,9 +271,12 @@ function SideBarRight(props) {
           role="button"
           data-toggle="popover"
           data-trigger="hover"
-          title="Add to Calendar"
+          title="Edit this page"
+          onClick={() => {
+            navigate("/editSite?siteName=" + props.siteName);
+          }}
         >
-          <i className="fa-regular fa-calendar-plus"></i>
+          <i className="fa-regular fa-pen-to-square"></i>
         </li>
       </ul>
     </div>
@@ -251,61 +286,145 @@ function SideBarRight(props) {
 function SiteComment(props) {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
-  const [comment, setComment] = useState("")
-  const db = getDatabase()
-  let userID, users; // claiming variables as function-wide variables 
+  const [comment, setComment] = useState("");
+  const [update, setUpdate] = useState(0);
+  const db = getDatabase();
+  let userID, users; // claiming variables as function-wide variables
   if (getAuth().currentUser != null) {
     userID = getAuth().currentUser.uid; //assigning value to the variable
-     users = ref(db, 'comments/' + userID);
-  set(users, 'test to see if creating the subfolder works for now')
-  } 
+    users = ref(db, "comments/" + userID);
+    set(users, "test to see if creating the subfolder works for now");
+  }
 
   let starCount;
   //const handleClick = (event) => {
-    //setComment(true);
-    //event.preventDefault();
+  //setComment(true);
+  //event.preventDefault();
   //}
- 
+
   function setStarCount(count) {
     starCount = count;
   }
+  // let comments;
+  // function com(comm) {
+  //   comments =  comm;
+  // }
   return (
     <div className="site-info" id="site-comment">
-      <div className= 'hidden' id= "error"><p>Error you must log in</p></div>
+      <div className="hidden error" id="error-not-loged-in">
+        <p>
+          You must <a href="/login">Log in</a> to submit a review!
+        </p>
+      </div>
+      <div className="hidden error" id="error-no-rating">
+        <p>You must leave a rating!</p>
+      </div>
       <h2>Write a review</h2>
       <div className="write-review">
-     
-      <textarea onChange= {(e)=> {setComment(e.target.value)}} placeholder="Write a review..."></textarea>
-
-        <RateStars setStarCount={setStarCount} />
-        <button
-          onClick={() => {
-            
-
-            if (starCount !== 0) {
-              commentSite(props.siteName, starCount);
-            }
-            if(!user) {
-
-              document.getElementById("error").classList.remove("hidden") // not logged in
-            }
-            else {
-              document.getElementById("error").classList.add("hidden")
-            }
-
-            // if(!user) {
-            // <div>
-            //   <div id="error" class="hidden"><p> Error you must log in!</p> </div>
-            // </div>
-            // }
-            // else {
-            //   id("error").classList.remove("hidden")
-            // }
-
+        <textarea
+          id="write-review-textarea"
+          onChange={(e) => {
+            setComment(e.target.value);
           }}
-        >
-          Submit!
-        </button>
+          placeholder="Write a review..."
+        ></textarea>
+
+        <RateStars setStarCount={setStarCount} update={update} />
+      </div>
+      <button
+        id="submit-comment-button"
+        onClick={() => {
+          if (!user) {
+            document
+              .getElementById("error-not-loged-in")
+              .classList.remove("hidden"); // not logged in
+          } else {
+            document
+              .getElementById("error-not-loged-in")
+              .classList.add("hidden");
+            if (starCount !== 0) {
+              commentSite(
+                props.siteName,
+                starCount,
+                user.uid,
+                document.getElementById("write-review-textarea").value
+              ).then((data) => {
+                props.setSiteRatings(data[0]);
+                if (data[1].length !== 0) {
+                  props.setComments(data[1]);
+                }
+                document.getElementById("write-review-textarea").value = "";
+                showSubmit(
+                  document.getElementById("submit-comment-button"),
+                  "Submitted!"
+                );
+                setUpdate(update + 1);
+              });
+            } else {
+              document
+                .getElementById("error-no-rating")
+                .classList.remove("hidden");
+            }
+          }
+          // if(comment != null) {
+          //   commentSite(comment)
+          // }
+        }}
+      >
+        Submit!
+      </button>
+    </div>
+  );
+}
+
+function submitComment(event) {
+  showSubmit(event.currentTarget, "Submitted");
+}
+
+function CommentArea(props) {
+  let comments;
+  if (props.comments !== undefined) {
+    comments = props.comments.reduce((reserved, element) => {
+      return [element, ...reserved];
+    }, []);
+  }
+  return (
+    <div className="site-info">
+      {props.comments === undefined || props.comments.length === 0 ? (
+        <h3>No review yet.</h3>
+      ) : (
+        comments.map((element, index) => {
+          return <SingleComment comment={element} key={"comment #" + index} />;
+        })
+      )}
+    </div>
+  );
+}
+
+function SingleComment(props) {
+  let comment = props.comment;
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    getUserInfo(comment.userId)
+      .then((response) => {
+        setUserData(response);
+        //console.log("!!", response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <div className="single-comment">
+      <img src={userData.avatar} alt={"avatar of " + userData.name}></img>
+      <div>
+        <div className="comment-info">
+          <h4>{userData.name}</h4>
+          <Stars starCount={comment.stars} />
+          <p>{comment.time === undefined ? "" : comment.time}</p>
+        </div>
+        <p>{comment.comment}</p>
       </div>
     </div>
   );

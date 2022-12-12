@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { UpdateUser } from "../components/UserAuth";
 
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
@@ -47,6 +48,7 @@ function UserSignIn() {
 
   if (user) {
     //user is defined, so logged in
+    UpdateUser(user);
     setTimeout(() => {
       navigate(-1);
     }, 1000);

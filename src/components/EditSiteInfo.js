@@ -3,8 +3,8 @@ import { getDatabase, ref, set, child, get, update } from "firebase/database";
 export function createSite(siteName, userId) {
   const db = getDatabase();
   update(ref(db, `sitesInfo/${siteName}`), {
-    state: "WA",
-    siteType: "cultural",
+    state: "",
+    siteType: "",
     imgSrc: "",
     imgAlt: "",
     siteName: siteName,
@@ -12,8 +12,6 @@ export function createSite(siteName, userId) {
     siteLocation: "",
     published: false,
     title: siteName,
-    stateFull: "Washington",
-    intro: [],
     ratings: [0, 0, 0, 0, 0],
   });
   update(ref(db, `sitesDetail/${siteName}`), {
@@ -21,41 +19,67 @@ export function createSite(siteName, userId) {
     siteName: siteName,
     siteFact: "",
     siteLocation: "",
+    comment: [],
     published: false,
     title: siteName,
-    stateFull: "Washington",
+    stateFull: "",
     intro: [],
     bannerImg: "",
     mapName: siteName,
-    location: "Seattle",
+    location: "",
     ratings: [0, 0, 0, 0, 0],
     gallery: [],
   });
 }
 
 export function editSiteInfo(siteName, properties) {
-  console.log(siteName);
-  console.log(properties);
+  //console.log(siteName);
+  //console.log(properties);
   const db = getDatabase();
   update(ref(db, `sitesInfo/${siteName}`), properties);
 }
 
 export function editSiteDetail(siteName, properties) {
-  console.log(siteName);
-  console.log(properties);
+  //console.log(siteName);
+  //console.log(properties);
   const db = getDatabase();
   update(ref(db, `sitesDetail/${siteName}`), properties);
 }
 
-export function commentSite(siteName, starCount, user, comment) {
+function getCurrentTime() {
+  return new Date()
+    .toLocaleString("en-US", {
+      hour12: false,
+    })
+    .slice(0, -3);
+}
+
+async function getSiteInfo(part, siteName) {
+  const db = getDatabase();
+  const cardsRef = ref(db);
+  return get(child(cardsRef, "sitesDetail/" + siteName + "/" + part))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        console.log("No data available");
+        return "";
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+export async function commentSite(siteName, starCount, user, comment) {
   const db = getDatabase();
   const dbRef = ref(getDatabase());
-  console.log(starCount);
-  addStar(siteName, starCount);
-  //  window.location.reload();
+  let stars,
+    comments = [];
+  stars = await addStar(siteName, starCount);
   if (starCount >= 1 && starCount <= 5) {
-    if (comment !== "" || comment !== undefined) {
-      get(child(dbRef, `sitesDetail/${siteName}/comments`))
+    if (comment !== undefined && comment !== "") {
+      await get(child(dbRef, `sitesDetail/${siteName}/comments`))
         .then((snapshot) => {
           if (snapshot.exists()) {
             return snapshot.val();
@@ -65,20 +89,26 @@ export function commentSite(siteName, starCount, user, comment) {
           }
         })
         .then((data) => {
-          set(ref(db, `sitesDetail/${siteName}/comments`), [
+          comments = [
             ...data,
             {
               userId: user === undefined ? "Anonymous" : user,
-              comment: comment === undefined ? "ERROR LOADING COMMENT" : user,
+              comment:
+                comment === undefined ? "ERROR LOADING COMMENT" : comment,
               stars: starCount,
+              time: getCurrentTime(),
             },
-          ]);
+          ];
+          set(ref(db, `sitesDetail/${siteName}/comments`), comments);
         })
         .catch((error) => {
           console.error(error);
         });
     }
   }
+  //console.log(stars);
+  //console.log(comments);
+  return [stars, comments];
 }
 
 export function toggleSiteStatus(siteName) {
@@ -100,10 +130,11 @@ export function toggleSiteStatus(siteName) {
     });
 }
 
-function addStar(siteName, starCount) {
+async function addStar(siteName, starCount) {
   const db = getDatabase();
   const dbRef = ref(getDatabase());
-  get(child(dbRef, `sitesInfo/${siteName}`))
+  let returnValue;
+  await get(child(dbRef, `sitesInfo/${siteName}`))
     .then((snapshot) => {
       if (snapshot.exists()) {
         return snapshot.val().ratings;
@@ -114,23 +145,11 @@ function addStar(siteName, starCount) {
     .then((data) => {
       data[starCount - 1]++;
       update(ref(db, `sitesInfo/${siteName}`), { ratings: data });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  get(child(dbRef, `sitesDetail/${siteName}`))
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        return snapshot.val().ratings;
-      } else {
-        console.log("No data available");
-      }
-    })
-    .then((data) => {
-      data[starCount - 1]++;
       update(ref(db, `sitesDetail/${siteName}`), { ratings: data });
+      returnValue = data;
     })
     .catch((error) => {
       console.error(error);
     });
+  return returnValue;
 }
