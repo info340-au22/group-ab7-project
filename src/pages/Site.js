@@ -8,7 +8,7 @@ import { commentSite } from "../components/EditSiteInfo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../components/UserAuth";
-
+import { showSubmit } from "../components/showSubmit";
 
 import {
   RateStars,
@@ -52,10 +52,14 @@ export default function HomePage(props) {
         return siteData;
       })
       .then((siteData) => {
-        getUserInfo(siteData.addedBy).then((response) => {
-          setAuthorData(response);
-          console.log("!!", response);
-        });
+        getUserInfo(siteData.addedBy)
+          .then((response) => {
+            setAuthorData(response);
+            //console.log("!!", response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -96,7 +100,7 @@ export default function HomePage(props) {
             <SiteRating ratings={siteRatings} />
             <SiteComment
               siteName={data.title}
-              siteRatings={siteRatings}
+              setComments={setComments}
               setSiteRatings={setSiteRatings}
             />
             <CommentArea comments={comments} />
@@ -327,6 +331,7 @@ function SiteComment(props) {
         <RateStars setStarCount={setStarCount} />
       </div>
       <button
+        id="submit-comment-button"
         onClick={() => {
           if (!user) {
             document
@@ -342,10 +347,17 @@ function SiteComment(props) {
                 starCount,
                 user.uid,
                 document.getElementById("write-review-textarea").value
-              );
-              let tmpRatings = props.siteRatings;
-              tmpRatings[starCount - 1]++;
-              props.setSiteRatings(tmpRatings);
+              ).then((data) => {
+                props.setSiteRatings(data[0]);
+                if (data[1].length !== 0) {
+                  props.setComments(data[1]);
+                }
+                document.getElementById("write-review-textarea").value = "";
+                showSubmit(
+                  document.getElementById("submit-comment-button"),
+                  "Submitted!"
+                );
+              });
             } else {
               document
                 .getElementById("error-no-rating")
@@ -363,14 +375,24 @@ function SiteComment(props) {
   );
 }
 
+function submitComment(event) {
+  showSubmit(event.currentTarget, "Submitted");
+}
+
 function CommentArea(props) {
+  let comments;
+  if (props.comments !== undefined) {
+    comments = props.comments.reduce((reserved, element) => {
+      return [element, ...reserved];
+    }, []);
+  }
   return (
-    <div class="site-info">
+    <div className="site-info">
       {props.comments === undefined || props.comments.length === 0 ? (
         <h3>No review yet.</h3>
       ) : (
-        props.comments.map((element) => {
-          return <SingleComment comment={element} />;
+        comments.map((element, index) => {
+          return <SingleComment comment={element} key={"comment #" + index} />;
         })
       )}
     </div>
@@ -384,7 +406,7 @@ function SingleComment(props) {
     getUserInfo(comment.userId)
       .then((response) => {
         setUserData(response);
-        console.log("!!", response);
+        //console.log("!!", response);
       })
       .catch((error) => {
         console.error(error);
@@ -392,11 +414,14 @@ function SingleComment(props) {
   }, []);
 
   return (
-    <div class="single-comment">
+    <div className="single-comment">
       <img src={userData.avatar} alt={"avatar of " + userData.name}></img>
       <div>
-        <h4>{userData.name}</h4>
-        <Stars starCount={comment.stars} />
+        <div className="comment-info">
+          <h4>{userData.name}</h4>
+          <Stars starCount={comment.stars} />
+          <p>{comment.time === undefined ? "" : comment.time}</p>
+        </div>
         <p>{comment.comment}</p>
       </div>
     </div>

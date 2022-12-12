@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { Select } from "react-select";
 import Form from "react-bootstrap/Form";
 import SiteCard from "../components/SiteCard";
+import { showSubmit } from "../components/showSubmit";
 import {
   editSiteInfo,
   toggleSiteStatus,
@@ -57,7 +58,7 @@ export default function EditSitePage(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(siteInfoForm);
+    //console.log(siteInfoForm);
   }
 
   const handleChange = (event) => {
@@ -70,7 +71,7 @@ export default function EditSitePage(props) {
 
   function handleSubmitDetail(event) {
     event.preventDefault();
-    console.log(siteDetailForm);
+    //console.log(siteDetailForm);
   }
 
   const handleChangeDetail = (event) => {
@@ -380,16 +381,4 @@ function convert(strings) {
       .reduce((result, element) => result + element + "\n\n", "")
       .slice(0, -2);
   }
-}
-
-function showSubmit(button, message) {
-  let originText = button.textContent;
-  button.classList.add("submitted");
-  button.textContent = message;
-  button.disabled = true;
-  setTimeout(() => {
-    button.classList.remove("submitted");
-    button.textContent = originText;
-    button.disabled = false;
-  }, 500);
 }
