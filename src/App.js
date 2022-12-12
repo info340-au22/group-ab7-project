@@ -23,7 +23,7 @@ export default function App() {
   useEffect(() => {
     const db = getDatabase();
     const sitesDetail = ref(db, "sitesDetail");
-    
+
     // when database is updated, set state to change the state to match
     const unregisterFunction = onValue(sitesDetail, (snapshot) => {
       const changedValue = snapshot.val();
@@ -31,11 +31,8 @@ export default function App() {
       setState(changedValue);
     });
 
-    
-
     function cleanup() {
       unregisterFunction();
-   
     }
     return cleanup;
   }, []);
@@ -81,7 +78,7 @@ export default function App() {
           <Route path="newSite" element={<NewSitePage />} />
           <Route path="site" element={<Site />} />
           <Route path="editSite" element={<EditSitePage />} />
-          <Route path="settings" element={<EditUserInfo />} />
+          <Route path="settings" element={<EditUserInfo user={user} />} />
           <Route
             path="sites"
             element={<SitesPage setState={setState} state={state} />}

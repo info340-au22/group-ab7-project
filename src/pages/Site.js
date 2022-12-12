@@ -33,6 +33,7 @@ export default function HomePage(props) {
   const [authorData, setAuthorData] = useState({});
   const [siteRatings, setSiteRatings] = useState([0, 0, 0, 0, 0]);
   const [comments, setComments] = useState([]);
+  //const [siteBookmarked, setSiteBookmarked] = useState(false);
 
   useEffect(() => {
     const db = getDatabase();
@@ -66,6 +67,11 @@ export default function HomePage(props) {
         console.error(error);
       });
   }, []);
+
+  //let handleClick = function (event) {
+    //set(ref(db, userBookmarkLink), !siteBookmarked);
+    //setSiteBookmarked(!siteBookmarked);
+  //};
 
   if (loading) {
     return <h3>Loading...</h3>;
@@ -246,6 +252,7 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="focus"
           title="Add to Bookmark"
+          //onClick={handleClick}
         >
           <i className="fa-regular fa-bookmark"></i>
         </li>
