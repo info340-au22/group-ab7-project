@@ -1,11 +1,13 @@
 import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
 import React, { useState, Component, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function BookmarkCard(props) {
   const data = props.data;
   const name = data.siteName;
+  const navigate = useNavigate();
   function handleClick(stateFull) {
     //(stateFull);
     if (stateFull === "Washington") {
@@ -19,7 +21,12 @@ export default function BookmarkCard(props) {
     );
   }
   return (
-    <div className="card bookmark-card">
+    <div
+      className="card bookmark-card"
+      onClick={() => {
+        navigate("/site?siteName=" + data.title);
+      }}
+    >
       <img
         src={data.imgSrc}
         className="card-img-top bookmarkImg"

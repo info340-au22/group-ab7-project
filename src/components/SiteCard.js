@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 //import reactDOM from "react-dom/client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Stars, calcRating } from "../components/Stars";
 
 export default function SiteCard(props) {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
   const [siteBookmarked, setSiteBookmarked] = useState(false);
 
   const singleSiteData = props.singleSiteData;
@@ -64,7 +65,7 @@ export default function SiteCard(props) {
               props.clickable !== "false" &&
               !event.target.classList.contains("bookmark")
             ) {
-              window.location.href = "/site?siteName=" + singleSiteData.title;
+              navigate("/site?siteName=" + singleSiteData.title);
             }
           }}
         >

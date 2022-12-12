@@ -71,6 +71,30 @@ async function getSiteInfo(part, siteName) {
     });
 }
 
+export async function getSiteBrief(siteName) {
+  const db = getDatabase();
+  const cardsRef = ref(db);
+  let result = [];
+  for (let i = 0; i < siteName.length; i++) {
+    result = [
+      ...result,
+      await get(child(cardsRef, "sitesInfo/" + siteName[i]))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            return snapshot.val();
+          } else {
+            console.log("No data available");
+            return {};
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        }),
+    ];
+  }
+  return result;
+}
+
 export async function commentSite(siteName, starCount, user, comment) {
   const db = getDatabase();
   const dbRef = ref(getDatabase());
