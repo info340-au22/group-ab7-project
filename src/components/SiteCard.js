@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Stars, calcRating } from "../components/Stars";
 
 export default function SiteCard(props) {
+  
   const singleSiteData = props.singleSiteData;
   if (singleSiteData.ratings === undefined) {
     singleSiteData.ratings = [0, 0, 0, 0, 0];
@@ -22,7 +23,7 @@ export default function SiteCard(props) {
   const db = getDatabase();
   const sitesDetail = ref(db, "sitesDetail");
 
-  useEffect(() => {
+  /* useEffect(() => {
     const db = getDatabase();
     const sitesDetail = ref(db, "sitesDetail/" + name);
 
@@ -38,7 +39,7 @@ export default function SiteCard(props) {
     return cleanup;
   }, []);
 
-  /* useEffect(() => {
+  /*useEffect(() => {
     const db = getDatabase();
     const sitesUserRef = ref(db, "sitesDetail");
     
@@ -66,24 +67,25 @@ export default function SiteCard(props) {
         console.log("not bookmarked");
     } */
     const userID = getAuth().currentUser.uid;
+    const db = getDatabase();
+    const bookmarkRef = ref(db, "sitesDetail/" + name + "/usersBookmarked/" + "/" + userID);
     stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
-    if (
-      stateCopy[name].usersBookmarked === undefined ||
-      stateCopy[name].usersBookmarked[userID] === false
-    ) {
+
+    /*if (stateCopy[name].usersBookmarked === undefined) {
+      stateCopy[name].usersBookmarked = {userID : false};
+    } */
+   
+  set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);
+    if (stateCopy[name].usersBookmarked === undefined ||stateCopy[name].usersBookmarked[userID] === false) {
       stateCopy[name].usersBookmarked[userID] = true;
     } else if (props.state[name].usersBookmarked[userID] === true) {
       stateCopy[name].usersBookmarked[userID] = false;
     }
     //stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
-    const db = getDatabase();
-    const bookmarkRef = ref(
-      db,
-      "sitesDetail/" + name + "/usersBookmarked/" + "/" + userID
-    );
+ 
     //const bookmarkedBoolean = get(bookmarkRef);
     props.setState(stateCopy);
-    set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);
+   
   };
 
   let imgSrc;
