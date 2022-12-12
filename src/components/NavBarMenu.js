@@ -39,7 +39,6 @@ export default function NavMenu(props) {
           New Site
         </Dropdown.Item>
         <Dropdown.Item as={Link} to="/bookmarks">Bookmarks</Dropdown.Item>
-        <Dropdown.Item>Dark Mode</Dropdown.Item>
         <Dropdown.Item as={Link} to="/settings">Personal settings</Dropdown.Item>
         <Dropdown.Item
           onClick={() => {

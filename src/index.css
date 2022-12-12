@@ -1103,6 +1103,21 @@ p a {
   margin-left: auto;
 }
 
+.personal-settings img {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+.personal-settings > div {
+  display: flex;
+  align-items: center;
+}
+
+.personal-settings form {
+  margin-left: 10px;
+}
+
 .state-info-mid {
   margin: 20px;
   width: 50%;
