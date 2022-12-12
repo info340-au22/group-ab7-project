@@ -60,7 +60,7 @@ export default function SavedSites(props) {
       <div>
         <div className="site-info">
           <p>
-            You are not <a href="/login">Loged In</a>!
+            You are not <a href="/login">Logged In</a>!
           </p>
         </div>
       </div>
