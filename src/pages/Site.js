@@ -137,7 +137,7 @@ function SiteGallery(props) {
         {data.gallery.map((element, index) => {
           return (
             <div key={"img" + index}>
-              <img src={element} alt={"image " + index} />
+              <img src={"/img/" + data.title + "/" + element} />
             </div>
           );
         })}
@@ -271,6 +271,10 @@ function SiteComment(props) {
   function setStarCount(count) {
     starCount = count;
   }
+  // let comments;
+  // function com(comm) {
+  //   comments =  comm;
+  // }
   return (
     <div className="site-info" id="site-comment">
       <div className="hidden" id="error">
@@ -296,14 +300,8 @@ function SiteComment(props) {
             } else {
               document.getElementById("error").classList.add("hidden");
             }
-
-            // if(!user) {
-            // <div>
-            //   <div id="error" class="hidden"><p> Error you must log in!</p> </div>
-            // </div>
-            // }
-            // else {
-            //   id("error").classList.remove("hidden")
+            // if(comment != null) {
+            //   commentSite(comment)
             // }
           }}
         >
