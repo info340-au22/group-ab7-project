@@ -33,6 +33,7 @@ export default function SavedSites(props) {
   if (user) {
     const userID = getAuth().currentUser.uid;
     const stateArray = Object.values(props.state);
+    getBookMarks(userID).then((element) => console.log(element));
     const bookmarkedArray = stateArray.filter((currentObj) => {
       //console.log(currentObj);
       //console.log(currentObj.siteName);
@@ -89,4 +90,27 @@ export default function SavedSites(props) {
       </div>
     );
   }
+}
+
+async function getBookMarks(userId) {
+  const db = getDatabase();
+  const cardsRef = ref(db);
+  let bookmarks = [];
+  await get(child(cardsRef, "users/" + userId + "/bookmarks"))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        let tmp = snapshot.val();
+        for (const [key, value] of Object.entries(tmp)) {
+          if (value === true) {
+            bookmarks.push(key);
+          }
+        }
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  return bookmarks;
 }
