@@ -43,6 +43,10 @@ export default function SiteCard(props) {
       // specifically in sitesDetail/nameOfSite//userBookmarked/userID
       // basically, if their userID is not in userBookmarked
         // add it and set it to false
+      if(stateCopy[name].usersBookmarked === undefined) {
+        stateCopy[name].usersBookmarked = {};
+      }
+
       if(stateCopy[name].usersBookmarked[userID] === undefined) {
         stateCopy[name].usersBookmarked[userID] = false;
       }
