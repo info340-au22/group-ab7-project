@@ -319,6 +319,7 @@ export default function EditSitePage(props) {
                 ...siteGallery,
                 document.getElementById("gallery-input").value,
               ]);
+              document.getElementById("gallery-input").value = "";
             } else {
               alert("no image");
             }
