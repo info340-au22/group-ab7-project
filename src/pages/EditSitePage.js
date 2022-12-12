@@ -342,6 +342,7 @@ export default function EditSitePage(props) {
         onClick={() => {
           toggleSiteStatus(data.title);
         }}
+        className="site-info"
       >
         Publish/Retract the site
       </button>
@@ -350,7 +351,11 @@ export default function EditSitePage(props) {
 }
 
 function convert(strings) {
-  return strings
-    .reduce((result, element) => result + element + "\n\n", "")
-    .slice(0, -2);
+  if (strings === undefined) {
+    return "";
+  } else {
+    return strings
+      .reduce((result, element) => result + element + "\n\n", "")
+      .slice(0, -2);
+  }
 }
