@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Stars, calcRating } from "../components/Stars";
 
 export default function SiteCard(props) {
-  
   const singleSiteData = props.singleSiteData;
   if (singleSiteData.ratings === undefined) {
     singleSiteData.ratings = [0, 0, 0, 0, 0];
@@ -15,85 +14,76 @@ export default function SiteCard(props) {
   const state = props.state;
   const name = props.singleSiteData.siteName;
 
-  //let cardName;
-
-  //firebase work
-  // how to get userID for their own bookmark node
   const userID = getAuth().currentUser.uid;
-  const db = getDatabase();
-  const sitesDetail = ref(db, "sitesDetail");
+  //const db = getDatabase();
+  //const sitesDetail = ref(db, "sitesDetail");
 
-  /* useEffect(() => {
+  // perhaps have an effect hook here
+  useEffect(() => {
     const db = getDatabase();
-    const sitesDetail = ref(db, "sitesDetail/" + name);
-
-    const unregisterFunction = onValue(sitesDetail, (snapshot) => {
+    const singleSiteDetailRef = ref(db, "sitesDetail/" + name);
+    
+    const unregisterFunction = onValue(singleSiteDetailRef, (snapshot) => {
       const changedValue = snapshot.val();
+      
+      const valueObjectKeys = Object.keys(changedValue);
+      if (!valueObjectKeys.includes("usersBookmarked")) {
+        console.log("Doesn't have it!");
+        //valueObjectKeys.push("usersBookmarked");
+        //console.log(changedValue);
+        //set(singleSiteDetailRef, );
+      }
+      //console.log(valueObjectKeys);
+
+
+
       //console.log(changedValue);
       //setState(changedValue);
-    });
-
-    function cleanup() {
-      unregisterFunction();
-    }
-    return cleanup;
-  }, []);
-
-  /*useEffect(() => {
-    const db = getDatabase();
-    const sitesUserRef = ref(db, "sitesDetail");
-    
-    const unregisterFunction = onValue(sitesDetail, (snapshot) => {
-      const changedValue = snapshot.val();
-      //set(sitesUserRef, props.state);
-      //props.setState(changedValue);
-      set(sitesUserRef, changedValue);
     })
 
     function cleanup() {
       unregisterFunction();
     }
     return cleanup;
-  }, []) */
+  }, [])
+
+
+
+
+
+
+
+
 
   const handleClick = function (event) {
     const stateCopy = { ...props.state };
-    /*
-    if (!stateCopy[name].bookmarked) {
-      console.log("bookmarked");
-      stateCopy[name].bookmarked = true;
-    } else {
-        stateCopy[name].bookmarked = false;
-        console.log("not bookmarked");
-    } */
+    
+    // some testing to do...
+    // if the site object doesn't have usersBookmarked obj, give it one
+    // also has to put user id??? 
+
+
+
     const userID = getAuth().currentUser.uid;
     const db = getDatabase();
     const bookmarkRef = ref(db, "sitesDetail/" + name + "/usersBookmarked/" + "/" + userID);
     stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
 
-    /*if (stateCopy[name].usersBookmarked === undefined) {
-      stateCopy[name].usersBookmarked = {userID : false};
-    } */
-   
-  set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);
-    if (stateCopy[name].usersBookmarked === undefined ||stateCopy[name].usersBookmarked[userID] === false) {
-      stateCopy[name].usersBookmarked[userID] = true;
-    } else if (props.state[name].usersBookmarked[userID] === true) {
-      stateCopy[name].usersBookmarked[userID] = false;
-    }
-    //stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
- 
-    //const bookmarkedBoolean = get(bookmarkRef);
-    props.setState(stateCopy);
-   
+
+
+      if (stateCopy[name].usersBookmarked === undefined || stateCopy[name].usersBookmarked[userID] === false) {
+        stateCopy[name].usersBookmarked[userID] = true;
+      } else if (props.state[name].usersBookmarked[userID] === true) {
+        stateCopy[name].usersBookmarked[userID] = false;
+      }
+      
+      props.setState(stateCopy);
+      set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);
   };
 
   let imgSrc;
-  //console.log(userID);
-  //console.log(props.state[name].usersBookmarked === undefined);
+  
   if (
-    props.state === undefined ||
-    props.state[name] === undefined ||
     props.state[name].usersBookmarked === undefined ||
     props.state[name].usersBookmarked[userID] === false
   ) {
@@ -102,20 +92,6 @@ export default function SiteCard(props) {
     imgSrc = "./img/bookmark-filled.png";
   }
 
-  /* if (state[name] === undefined) {
-    //console.log("!!!" + name);
-  } else {
-    if (state[name].bookmarked) {
-      imgSrc = "./img/bookmark-filled.png";
-    } else {
-      imgSrc = "./img/bookmark.png";
-    }
-  } */
-  let nameNoSpace = singleSiteData.title.replace(/\s+/g, "-");
-  //console.log(nameNoSpace);
-  let nameWithSpace = singleSiteData.title.replace("-", " ");
-  //console.log(props.state);
-  //console.log(nameWithSpace);
   return (
     <div
       className="card-container"

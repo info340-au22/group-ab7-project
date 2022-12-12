@@ -51,6 +51,7 @@ export default function EditSitePage(props) {
     bannerImg: "",
     location: "",
     gallery: [],
+    bookmarkedUsers: {}
   });
 
   const [siteGallery, setSiteGallery] = useState([]);
