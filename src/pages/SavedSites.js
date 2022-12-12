@@ -35,7 +35,7 @@ export default function SavedSites(props) {
   const stateArray = Object.values(props.state);
   const bookmarkedArray = stateArray.filter((currentObj) => {
     //console.log(currentObj);
-    console.log(currentObj.siteName);
+    //console.log(currentObj.siteName);
     return currentObj.usersBookmarked[userID];
   });
 
@@ -51,12 +51,9 @@ export default function SavedSites(props) {
   //const userID = getAuth().currentUser.uid;
   //console.log(userID);
 
-
-
-
   if (bookmarkedArray.length !== 0) {
     view = // BookmarkBox returns <section>
-      <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>;
+      <BookmarkBox bookmarks={bookmarkedArray} loading={loading} error={error}></BookmarkBox>;
   } else {
     view = (
       <section>
