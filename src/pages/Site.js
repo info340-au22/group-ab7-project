@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import allSites from "../data/allSites.json";
-import { getDatabase, ref, child, get, set} from "firebase/database";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { commentSite } from "../components/EditSiteInfo";
-import { useAuthState } from "react-firebase-hooks/auth"
-
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 import {
   RateStars,
@@ -24,7 +23,6 @@ function jumpTo(target) {
 }
 
 export default function HomePage(props) {
-
   const [searchParams] = useSearchParams();
   let siteName = searchParams.get("siteName");
   let [data, setData] = useState({});
@@ -74,7 +72,7 @@ export default function HomePage(props) {
             <SiteRating ratings={data.ratings} />
             <SiteComment siteName={data.title} />
           </div>
-          <SideBarRight />
+          <SideBarRight siteName={data.title} />
           <div className="balancer"></div>
         </div>
       </div>
@@ -203,6 +201,7 @@ function SiteRating(props) {
 }
 
 function SideBarRight(props) {
+  const navigate = useNavigate();
   return (
     <div className="operation-bar side-bar">
       <ul>
@@ -239,9 +238,12 @@ function SideBarRight(props) {
           role="button"
           data-toggle="popover"
           data-trigger="hover"
-          title="Add to Calendar"
+          title="Edit this page"
+          onClick={() => {
+            navigate("/editSite?siteName=" + props.siteName);
+          }}
         >
-          <i className="fa-regular fa-calendar-plus"></i>
+          <i class="fa-regular fa-pen-to-square"></i>
         </li>
       </ul>
     </div>
@@ -251,38 +253,56 @@ function SideBarRight(props) {
 function SiteComment(props) {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
-  const [comment, setComment] = useState("")
-  const db = getDatabase()
-  const userID = getAuth().currentUser.uid;
-  const users = ref(db, 'comments/' + userID);
-  set(users, 'test to see if creating the subfolder works for now')
+  const [comment, setComment] = useState("");
+  const db = getDatabase();
+  let userID, users; // claiming variables as function-wide variables
+  if (getAuth().currentUser != null) {
+    userID = getAuth().currentUser.uid; //assigning value to the variable
+    users = ref(db, "comments/" + userID);
+    set(users, "test to see if creating the subfolder works for now");
+  }
+
   let starCount;
   //const handleClick = (event) => {
-    //setComment(true);
-    //event.preventDefault();
+  //setComment(true);
+  //event.preventDefault();
   //}
- 
+
   function setStarCount(count) {
     starCount = count;
   }
+  // let comments;
+  // function com(comm) {
+  //   comments =  comm;
+  // }
   return (
     <div className="site-info" id="site-comment">
+      <div className="hidden" id="error">
+        <p>Error you must log in</p>
+      </div>
       <h2>Write a review</h2>
       <div className="write-review">
-      <textarea onChange= {(e)=> {setComment(e.target.value)}} placeholder="Write a review..."></textarea>
+        <textarea
+          onChange={(e) => {
+            setComment(e.target.value);
+          }}
+          placeholder="Write a review..."
+        ></textarea>
 
         <RateStars setStarCount={setStarCount} />
         <button
           onClick={() => {
-            
-
             if (starCount !== 0) {
               commentSite(props.siteName, starCount);
             }
-            if(!user) {
-              <p>Error you must log in</p>
+            if (!user) {
+              document.getElementById("error").classList.remove("hidden"); // not logged in
+            } else {
+              document.getElementById("error").classList.add("hidden");
             }
-
+            // if(comment != null) {
+            //   commentSite(comment)
+            // }
           }}
         >
           Submit!

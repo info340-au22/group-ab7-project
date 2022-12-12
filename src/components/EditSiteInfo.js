@@ -3,8 +3,8 @@ import { getDatabase, ref, set, child, get, update } from "firebase/database";
 export function createSite(siteName, userId) {
   const db = getDatabase();
   update(ref(db, `sitesInfo/${siteName}`), {
-    state: "WA",
-    siteType: "cultural",
+    state: "",
+    siteType: "",
     imgSrc: "",
     imgAlt: "",
     siteName: siteName,
@@ -12,8 +12,6 @@ export function createSite(siteName, userId) {
     siteLocation: "",
     published: false,
     title: siteName,
-    stateFull: "Washington",
-    intro: [],
     ratings: [0, 0, 0, 0, 0],
   });
   update(ref(db, `sitesDetail/${siteName}`), {
@@ -21,13 +19,14 @@ export function createSite(siteName, userId) {
     siteName: siteName,
     siteFact: "",
     siteLocation: "",
+    comment: [],
     published: false,
     title: siteName,
-    stateFull: "Washington",
+    stateFull: "",
     intro: [],
     bannerImg: "",
     mapName: siteName,
-    location: "Seattle",
+    location: "",
     ratings: [0, 0, 0, 0, 0],
     gallery: [],
   });
