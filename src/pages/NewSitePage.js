@@ -23,7 +23,7 @@ export default function NewSitePage(props) {
 
   return (
     <div>
-      <div class="site-info">
+      <div className="site-info">
         <form onSubmit={handleSubmit} onChange={handleChange}>
           <div>
             <h3>Add A New Site</h3>
