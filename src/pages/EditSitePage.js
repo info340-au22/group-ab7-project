@@ -126,7 +126,6 @@ export default function EditSitePage(props) {
       });
   }, []);
 
-  console.log(siteInfoForm);
   return (
     <div>
       <div
@@ -143,8 +142,18 @@ export default function EditSitePage(props) {
             <h3>Basic Info</h3>
           </div>
 
-          <label>State</label>
-          <Form.Select name="state" value={siteInfoForm.state}>
+          <h5>State</h5>
+          <Form.Select
+            name="state"
+            value={siteInfoForm.state}
+            onChange={(event) => {
+              let select = event.currentTarget;
+              setSiteDetailForm({
+                ...siteDetailForm,
+                stateFull: select.options[select.selectedIndex].innerHTML,
+              });
+            }}
+          >
             {siteInfoForm.state === "" ? (
               <option value="">Select State...</option>
             ) : (
@@ -158,7 +167,7 @@ export default function EditSitePage(props) {
               );
             })}
           </Form.Select>
-          <label>Type</label>
+          <h5>Type</h5>
           <Form.Select name="siteType" value={siteInfoForm.siteType}>
             {siteInfoForm.siteType === "" ? (
               <option value="">Select Type...</option>
@@ -174,7 +183,7 @@ export default function EditSitePage(props) {
             })}
           </Form.Select>
           <label>
-            Site Location:{" "}
+            <h5>Site Location</h5>
             <input
               type="text"
               name="siteLocation"
@@ -183,7 +192,7 @@ export default function EditSitePage(props) {
             />
           </label>
           <label>
-            Site Fact:{" "}
+            <h5>Site Fact</h5>
             <input
               type="text"
               name="siteFact"
@@ -192,7 +201,7 @@ export default function EditSitePage(props) {
             />
           </label>
           <label>
-            Card Image Link:{" "}
+            <h5>Card Image Link</h5>
             <input
               type="text"
               name="imgSrc"
@@ -229,77 +238,106 @@ export default function EditSitePage(props) {
           </button>
         </div>
       </div>
-      <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
-        <label>
-          <textarea name="intro" value={siteDetailForm.intro}></textarea>
-        </label>
-        <label>
-          Map location
-          <input name="mapName" value={siteDetailForm.mapName}></input>
-        </label>
-        <label>
-          State Full Name
-          <input name="stateFull" value={siteDetailForm.stateFull}></input>
-        </label>
-        <label>
-          Site Detail Banner Image
-          <input name="bannerImg" value={siteDetailForm.bannerImg}></input>
-        </label>
-        <label>
-          Site Detailed Location
-          <input name="location" value={siteDetailForm.location}></input>
-        </label>
-        <button>Log Site Detail</button>
-      </form>
-      <select
-        id="gallery-image-select"
-        size="5"
-        onChange={(event) => {
-          setCurrentGalleryImage(event.currentTarget.value);
-        }}
-      >
-        {siteGallery.map((element) => (
-          <option>{element}</option>
-        ))}
-      </select>
-      <img className="demo-img" src={currentGalleryImage}></img>
-      <button
-        onClick={() => {
-          setSiteGallery(
-            siteGallery.filter(
-              (element) =>
-                element !==
-                document.getElementById("gallery-image-select").value
-            )
-          );
-        }}
-      >
-        Delete this image
-      </button>
-      <input id="gallery-input"></input>
-      <button
-        onClick={() => {
-          if (document.getElementById("gallery-input").value !== "") {
-            setSiteGallery([
-              ...siteGallery,
-              document.getElementById("gallery-input").value,
-            ]);
-          } else {
-            alert("no image");
+      <div className="map-info" id="site-map">
+        <div className="location-info">
+          <h4>Detailed Location</h4>
+          <h5>State</h5>
+          <p class="no-margin">{siteDetailForm.stateFull}</p>
+          <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
+            <label>
+              <h5>Site Detailed Location</h5>
+              <input name="location" value={siteDetailForm.location}></input>
+            </label>
+            <label>
+              <h5>Map location</h5>
+              <input name="mapName" value={siteDetailForm.mapName}></input>
+            </label>
+          </form>
+        </div>
+        <iframe
+          referrerPolicy="no-referrer-when-downgrade"
+          src={
+            "https://www.google.com/maps/embed/v1/place?key=AIzaSyCOj2Uhxker2xOnU5VMLKLqIhkBIoyTBQ0&q=" +
+            siteDetailForm.mapName
           }
-        }}
-      >
-        Upload this image
-      </button>
-      <button
-        onClick={() => {
-          let tmpSiteDetailForm = siteDetailForm;
-          tmpSiteDetailForm.gallery = siteGallery;
-          editSiteDetail(data.title, tmpSiteDetailForm);
-        }}
-      >
-        Submit Detail Change
-      </button>
+          allowFullScreen
+        ></iframe>
+      </div>
+      <div class="site-info">
+        <h4>Data for site page</h4>
+        <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
+          <label>
+            <h5>Site Introduction</h5>
+            <textarea
+              name="intro"
+              value={convert(siteDetailForm.intro)}
+            ></textarea>
+          </label>
+          <label>
+            Site Detail Banner Image
+            <input name="bannerImg" value={siteDetailForm.bannerImg}></input>
+          </label>
+        </form>
+        <h5>Site Gallery</h5>
+        <select
+          id="gallery-image-select"
+          size="5"
+          onChange={(event) => {
+            setCurrentGalleryImage(event.currentTarget.value);
+            document.getElementById("preview-img").classList.remove("hidden");
+          }}
+        >
+          {siteGallery.map((element) => (
+            <option>{element}</option>
+          ))}
+        </select>
+        <div className="hidden" id="preview-img">
+          <img className="demo-img" src={currentGalleryImage}></img>
+          <button
+            onClick={() => {
+              setSiteGallery(
+                siteGallery.filter(
+                  (element) =>
+                    element !==
+                    document.getElementById("gallery-image-select").value
+                )
+              );
+              document.getElementById("preview-img").classList.add("hidden");
+            }}
+          >
+            Delete this image
+          </button>
+        </div>
+        <label>
+          <h5>Upload new image to gallery</h5>
+          <input id="gallery-input"></input>
+        </label>
+        <button
+          onClick={() => {
+            if (document.getElementById("gallery-input").value !== "") {
+              setSiteGallery([
+                ...siteGallery,
+                document.getElementById("gallery-input").value,
+              ]);
+            } else {
+              alert("no image");
+            }
+          }}
+        >
+          Upload this image
+        </button>
+        <button
+          onClick={() => {
+            console.log(siteDetailForm);
+            let tmpSiteDetailForm = siteDetailForm;
+            tmpSiteDetailForm.gallery = siteGallery;
+            console.log("!!!!", tmpSiteDetailForm);
+            editSiteDetail(data.title, tmpSiteDetailForm);
+          }}
+        >
+          Submit Detail Change
+        </button>
+      </div>
       <button
         onClick={() => {
           toggleSiteStatus(data.title);
@@ -309,4 +347,10 @@ export default function EditSitePage(props) {
       </button>
     </div>
   );
+}
+
+function convert(strings) {
+  return strings
+    .reduce((result, element) => result + element + "\n\n", "")
+    .slice(0, -2);
 }
