@@ -139,7 +139,7 @@ export default function EditSitePage(props) {
           <h1 className="site-page-title">{"Edit " + data.title}</h1>{" "}
         </div>
       </div>
-      <div class="site-info">
+      <div className="site-info">
         <form onSubmit={handleSubmit} onChange={handleChange}>
           <div>
             <h3>Basic Info</h3>
@@ -148,7 +148,7 @@ export default function EditSitePage(props) {
           <h5>State</h5>
           <Form.Select
             name="state"
-            value={siteInfoForm.state}
+            defaultValue={siteInfoForm.state}
             onChange={(event) => {
               let select = event.currentTarget;
               setSiteDetailForm({
@@ -171,7 +171,7 @@ export default function EditSitePage(props) {
             })}
           </Form.Select>
           <h5>Type</h5>
-          <Form.Select name="siteType" value={siteInfoForm.siteType}>
+          <Form.Select name="siteType" defaultValue={siteInfoForm.siteType}>
             {siteInfoForm.siteType === "" ? (
               <option value="">Select Type...</option>
             ) : (
@@ -191,7 +191,7 @@ export default function EditSitePage(props) {
               type="text"
               name="siteLocation"
               placeholder="eg. Seattle, WA"
-              value={siteInfoForm.siteLocation}
+              defaultValue={siteInfoForm.siteLocation}
             />
           </label>
           <label>
@@ -200,7 +200,7 @@ export default function EditSitePage(props) {
               type="text"
               name="siteFact"
               placeholder="SiteFact"
-              value={siteInfoForm.siteFact}
+              defaultValue={siteInfoForm.siteFact}
             />
           </label>
           <label>
@@ -209,11 +209,11 @@ export default function EditSitePage(props) {
               type="text"
               name="imgSrc"
               placeholder="Input image link here"
-              value={siteInfoForm.imgSrc}
+              defaultValue={siteInfoForm.imgSrc}
             />
           </label>
         </form>
-        <div class="preview-card">
+        <div className="preview-card">
           <h3>Card Preview:</h3>
           <SiteCard
             clickable="false"
@@ -238,15 +238,21 @@ export default function EditSitePage(props) {
         <div className="location-info">
           <h4>Detailed Location</h4>
           <h5>State</h5>
-          <p class="no-margin">{siteDetailForm.stateFull}</p>
+          <p className="no-margin">{siteDetailForm.stateFull}</p>
           <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
             <label>
               <h5>Site Detailed Location</h5>
-              <input name="location" value={siteDetailForm.location}></input>
+              <input
+                name="location"
+                defaultValue={siteDetailForm.location}
+              ></input>
             </label>
             <label>
               <h5>Map location</h5>
-              <input name="mapName" value={siteDetailForm.mapName}></input>
+              <input
+                name="mapName"
+                defaultValue={siteDetailForm.mapName}
+              ></input>
             </label>
           </form>
         </div>
@@ -259,21 +265,21 @@ export default function EditSitePage(props) {
           allowFullScreen
         ></iframe>
       </div>
-      <div class="site-info">
+      <div className="site-info">
         <h4>Data for site page</h4>
         <form onSubmit={handleSubmitDetail} onChange={handleChangeDetail}>
           <label>
             <h5>Site Introduction</h5>
             <textarea
               name="intro"
-              value={convert(siteDetailForm.intro)}
+              defaultValue={convert(siteDetailForm.intro)}
             ></textarea>
           </label>
           <label>
             <h5>Site Detail Banner Image Link</h5>
             <input
               name="bannerImg"
-              value={siteDetailForm.bannerImg}
+              defaultValue={siteDetailForm.bannerImg}
               placeholder="Input image link here"
             ></input>
           </label>
@@ -307,8 +313,8 @@ export default function EditSitePage(props) {
             document.getElementById("preview-img").classList.remove("hidden");
           }}
         >
-          {siteGallery.map((element) => (
-            <option>{element}</option>
+          {siteGallery.map((element, index) => (
+            <option key={"imgae link #" + index}>{element}</option>
           ))}
         </select>
         <div className="hidden" id="preview-img">
