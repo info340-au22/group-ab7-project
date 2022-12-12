@@ -57,7 +57,7 @@ export default function Footer(props) {
       <p className="text-center m-0 pt-3">Subscribe to our Email!</p>
       <div className="centering">
         <form>
-          <label className="p-3 " htmlFor="email_input ">
+          <label className="email-footer p-3 " htmlFor="email_input ">
             Email:
           </label>
           <input
