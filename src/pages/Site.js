@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../components/UserAuth";
 
+
 import {
   RateStars,
   Stars,
@@ -271,7 +272,7 @@ function SideBarRight(props) {
             navigate("/editSite?siteName=" + props.siteName);
           }}
         >
-          <i class="fa-regular fa-pen-to-square"></i>
+          <i className="fa-regular fa-pen-to-square"></i>
         </li>
       </ul>
     </div>

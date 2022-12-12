@@ -1297,3 +1297,7 @@ header {
 header h1 {
   color: white;
 }
+
+.noLogIn {
+  text-align: center;
+}
