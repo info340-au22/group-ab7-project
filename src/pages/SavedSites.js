@@ -1,61 +1,37 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import SitesBox from "../components/SitesBox";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SiteCard from "../components/SiteCard";
 import BookmarkBox from "../components/BookmarkBox";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { getSiteBrief } from "../components/EditSiteInfo";
 
 export default function SavedSites(props) {
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
-  if (loading) {
-    return (
-      <div>
-        <main>
-          <p className="noLogIn">Loading user data</p>
-        </main>
-      </div>
-    );
-  }
+  const [bookmarks, setBookmarks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const currentUser = props.user;
 
-  if (error) {
-    return (
-      <div>
-        <main>
-          <p>There is an error: </p>
-        </main>
-      </div>
-    );
-  }
-  if (user) {
-    const userID = getAuth().currentUser.uid;
-    const stateArray = Object.values(props.state);
-    const bookmarkedArray = stateArray.filter((currentObj) => {
-    //console.log(currentObj);
-    //console.log(currentObj.siteName);
-    if (currentObj.usersBookmarked !== undefined) {
-      //console.log(currentObj.usersBookmarked[userID])
-    return currentObj.usersBookmarked[userID];
+  useEffect(() => {
+    console.log(currentUser);
+    if (currentUser !== null) {
+      getBookMarks(currentUser.uid).then((element) => {
+        console.log(element);
+        getSiteBrief(element).then((result) => {
+          setBookmarks(result);
+        });
+      });
+      setLoading(false);
     }
-    });
+  }, [currentUser]);
 
-    //const userID = getAuth().currentUser.uid;
-    //console.log(userID);
-    //console.log(props.state);
-    //console.log(stateArray);
-
+  if (currentUser !== null) {
     let view;
-    //console.log(getAuth().currentUser);
-    //const userID = getAuth().currentUser.uid;
-    //const userID = getAuth().currentUser.uid;
-    //console.log(userID);
-
-    if (bookmarkedArray.length !== 0) {
+    if (bookmarks.length !== 0) {
       view = // BookmarkBox returns <section>
-        <BookmarkBox bookmarks={bookmarkedArray}></BookmarkBox>;
+        <BookmarkBox bookmarks={bookmarks}></BookmarkBox>;
     } else {
       view = (
         <section>
@@ -82,12 +58,35 @@ export default function SavedSites(props) {
   } else {
     return (
       <div>
-        <main>
-          <div>
-            <p className="noLogIn"> No One is signed in...</p>
-          </div>
-        </main>
+        <div className="site-info">
+          <p>
+            You are not <a href="/login">Logged In</a>!
+          </p>
+        </div>
       </div>
     );
   }
+}
+
+async function getBookMarks(userId) {
+  const db = getDatabase();
+  const cardsRef = ref(db);
+  let bookmarks = [];
+  await get(child(cardsRef, "users/" + userId + "/bookmarks"))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        let tmp = snapshot.val();
+        for (const [key, value] of Object.entries(tmp)) {
+          if (value === true) {
+            bookmarks = [...bookmarks, key];
+          }
+        }
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  return bookmarks;
 }

@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../components/UserAuth";
 import { showSubmit } from "../components/showSubmit";
+import { FacebookShareButton } from "react-share";
 
 import {
   RateStars,
@@ -263,6 +264,9 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="hover"
           title="Print"
+          onClick={() => {
+            window.print();
+          }}
         >
           <i className="fa-solid fa-print"></i>
         </li>

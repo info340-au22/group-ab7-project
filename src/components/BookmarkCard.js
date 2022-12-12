@@ -1,32 +1,50 @@
 import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
 import React, { useState, Component, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { getAuth } from "firebase/auth";
-import { useAuthState } from 'react-firebase-hooks/auth';
-
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function BookmarkCard(props) {
-    const data = props.data;
-    const name = data.siteName;
-    function handleClick(stateFull) {
-        //(stateFull);
-        if (stateFull === "Washington") {
-            stateFull += " state";
-        }
-        const url = "https://www.google.com";
-        //console.log(url);
-        window.open('http://google.com/search?q=' + stateFull + " flights", "_blank");
-      }
-    return (
-            <div className="card bookmark-card">
-                    <img src={data.imgSrc} className="card-img-top bookmarkImg" alt={data.imgAlt}></img>
-                <div className="card-body">
-                    <h2 className="bookmark-heading">{data.siteName}</h2>
-                    <button className="findFlights" onClick={() => handleClick(data.stateFull)}>Find Flights</button>
-                </div>
-            </div>
+  const data = props.data;
+  const name = data.siteName;
+  const navigate = useNavigate();
+  function handleClick(stateFull) {
+    //(stateFull);
+    if (stateFull === "Washington") {
+      stateFull += " state";
+    }
+    const url = "https://www.google.com";
+    //console.log(url);
+    window.open(
+      "http://google.com/search?q=" + stateFull + " flights",
+      "_blank"
     );
+  }
+  return (
+    <div
+      className="card bookmark-card"
+      onClick={() => {
+        navigate("/site?siteName=" + data.title);
+      }}
+    >
+      <img
+        src={data.imgSrc}
+        className="card-img-top bookmarkImg"
+        alt={data.imgAlt}
+      ></img>
+      <div className="card-body">
+        <h2 className="bookmark-heading">{data.siteName}</h2>
+        <button
+          className="findFlights"
+          onClick={() => handleClick(data.stateFull)}
+        >
+          Find Flights
+        </button>
+      </div>
+    </div>
+  );
 }
-// <img src={sitesInfo[name].imgSrc} 
+// <img src={sitesInfo[name].imgSrc}
 /*
 <div
       className="card-container"
