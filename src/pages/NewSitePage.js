@@ -1,9 +1,9 @@
-import React, { useState } from "react"; import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toggleSiteStatus, createSite } from "../components/EditSiteInfo";
 import { getAuth } from "firebase/auth";
 
 export default function NewSitePage(props) {
-
   const auth = getAuth();
   const user = auth.currentUser;
   const navigate = useNavigate();
