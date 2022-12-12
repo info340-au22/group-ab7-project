@@ -8,7 +8,7 @@ export default function BookmarkBox(props) {
    
       const bookmarks = bookmarkedArray.map((current) => {
         return(
-            <BookmarkCard data={current} key={current.siteName} loading={props.loading} error={props.error}></BookmarkCard>);
+            <BookmarkCard data={current} key={current.siteName}></BookmarkCard>);
       });
        
       return (

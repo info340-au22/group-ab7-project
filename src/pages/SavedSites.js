@@ -35,11 +35,12 @@ export default function SavedSites(props) {
     const stateArray = Object.values(props.state);
     getBookMarks(userID).then((element) => console.log(element));
     const bookmarkedArray = stateArray.filter((currentObj) => {
-      //console.log(currentObj);
-      //console.log(currentObj.siteName);
-      return currentObj.usersBookmarked === undefined
-        ? false
-        : currentObj.usersBookmarked[userID];
+    //console.log(currentObj);
+    //console.log(currentObj.siteName);
+    if (currentObj.usersBookmarked !== undefined) {
+      //console.log(currentObj.usersBookmarked[userID])
+    return currentObj.usersBookmarked[userID];
+    }
     });
 
     //const userID = getAuth().currentUser.uid;
