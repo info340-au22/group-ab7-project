@@ -54,17 +54,14 @@ export default function SiteCard(props) {
         stateCopy[name].usersBookmarked[userID] = false;
       }
       //stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
-      if (
-        stateCopy[name].usersBookmarked === undefined ||
-        stateCopy[name].usersBookmarked[userID] === false
-      ) {
+      if (stateCopy[name].usersBookmarked[userID] === false) {
         stateCopy[name].usersBookmarked[userID] = true;
       } else if (props.state[name].usersBookmarked[userID] === true) {
         stateCopy[name].usersBookmarked[userID] = false;
       }
       props.setState(stateCopy);
       set(bookmarkRef, stateCopy[name].usersBookmarked[userID]);
-    };
+    }
     if (
       props.state === undefined ||
       props.state[name] === undefined ||
