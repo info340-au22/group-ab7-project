@@ -261,14 +261,14 @@ function SiteComment(props) {
   } 
 
   let starCount;
-  //const handleClick = (event) => {
-    //setComment(true);
-    //event.preventDefault();
-  //}
  
   function setStarCount(count) {
     starCount = count;
   }
+  // let comments;
+  // function com(comm) {
+  //   comments =  comm;
+  // }
   return (
     <div className="site-info" id="site-comment">
       <div className= 'hidden' id= "error"><p>Error you must log in</p></div>
@@ -292,16 +292,11 @@ function SiteComment(props) {
             else {
               document.getElementById("error").classList.add("hidden")
             }
-
-            // if(!user) {
-            // <div>
-            //   <div id="error" class="hidden"><p> Error you must log in!</p> </div>
-            // </div>
-            // }
-            // else {
-            //   id("error").classList.remove("hidden")
+            // if(comment != null) {
+            //   commentSite(comment)
             // }
 
+         
           }}
         >
           Submit!
