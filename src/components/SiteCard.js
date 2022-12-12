@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { getDatabase, ref, child, get, onValue, set} from "firebase/database";
+import { getDatabase, ref, child, get, onValue, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 //import reactDOM from "react-dom/client";
 import { Link } from "react-router-dom";
 
 import { Stars, calcRating } from "../components/Stars";
-
 
 export default function SiteCard(props) {
   
@@ -15,7 +14,7 @@ export default function SiteCard(props) {
   }
   const state = props.state;
   const name = props.singleSiteData.siteName;
- 
+
   //let cardName;
 
   //firebase work
@@ -27,18 +26,18 @@ export default function SiteCard(props) {
   /* useEffect(() => {
     const db = getDatabase();
     const sitesDetail = ref(db, "sitesDetail/" + name);
-    
+
     const unregisterFunction = onValue(sitesDetail, (snapshot) => {
       const changedValue = snapshot.val();
       //console.log(changedValue);
       //setState(changedValue);
-    })
+    });
 
     function cleanup() {
       unregisterFunction();
     }
     return cleanup;
-  }, []) */
+  }, []);
 
   /*useEffect(() => {
     const db = getDatabase();
@@ -56,8 +55,7 @@ export default function SiteCard(props) {
     }
     return cleanup;
   }, []) */
- 
-  
+
   const handleClick = function (event) {
     const stateCopy = { ...props.state };
     /*
@@ -84,21 +82,25 @@ export default function SiteCard(props) {
       stateCopy[name].usersBookmarked[userID] = false;
     }
     //stateCopy[name].bookmarked = !stateCopy[name].bookmarked;
-    
+ 
     //const bookmarkedBoolean = get(bookmarkRef);
     props.setState(stateCopy);
    
   };
 
   let imgSrc;
-    //console.log(userID);
-    //console.log(props.state[name].usersBookmarked === undefined);
-    if (props.state[name].usersBookmarked === undefined || props.state[name].usersBookmarked[userID] === false) {
-      imgSrc = "./img/bookmark.png";
-    } else if (props.state[name].usersBookmarked[userID] === true) {
-      imgSrc = "./img/bookmark-filled.png";
-    }
-  
+  //console.log(userID);
+  //console.log(props.state[name].usersBookmarked === undefined);
+  if (
+    props.state === undefined ||
+    props.state[name] === undefined ||
+    props.state[name].usersBookmarked === undefined ||
+    props.state[name].usersBookmarked[userID] === false
+  ) {
+    imgSrc = "./img/bookmark.png";
+  } else if (props.state[name].usersBookmarked[userID] === true) {
+    imgSrc = "./img/bookmark-filled.png";
+  }
 
   /* if (state[name] === undefined) {
     //console.log("!!!" + name);

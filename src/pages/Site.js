@@ -137,7 +137,7 @@ function SiteGallery(props) {
         {data.gallery.map((element, index) => {
           return (
             <div key={"img" + index}>
-              <img src={"/img/" + data.title + "/" + element} />
+              <img src={element} />
             </div>
           );
         })}

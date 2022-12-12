@@ -28,6 +28,7 @@ export default function EditSitePage(props) {
   const [searchParams] = useSearchParams();
   let siteName = searchParams.get("siteName");
 
+  const [sitePublishedStatus, setSitePublishedStatus] = useState(false);
   const [data, setData] = useState({});
   const [detail, setDetail] = useState({});
   const [loadingData, setLoadingData] = useState(true);
@@ -102,6 +103,7 @@ export default function EditSitePage(props) {
       .then((siteData) => {
         setData(siteData);
         setSiteInfoForm(siteData);
+        setSitePublishedStatus(siteData.published);
         setLoadingData(false);
       })
       .catch((error) => {
@@ -205,7 +207,7 @@ export default function EditSitePage(props) {
             <input
               type="text"
               name="imgSrc"
-              placeholder="http://"
+              placeholder="Input image link here"
               value={siteInfoForm.imgSrc}
             />
           </label>
@@ -224,14 +226,7 @@ export default function EditSitePage(props) {
             onClick={(event) => {
               editSiteInfo(data.title, siteInfoForm);
               let button = event.currentTarget;
-              button.classList.add("submitted");
-              button.textContent = "Submitted!";
-              button.disabled = true;
-              setTimeout(() => {
-                button.classList.remove("submitted");
-                button.textContent = "Submit Info Change";
-                button.disabled = false;
-              }, 800);
+              showSubmit(button, "Submitted");
             }}
           >
             Submit Info Change
@@ -274,11 +269,35 @@ export default function EditSitePage(props) {
             ></textarea>
           </label>
           <label>
-            Site Detail Banner Image
-            <input name="bannerImg" value={siteDetailForm.bannerImg}></input>
+            <h5>Site Detail Banner Image Link</h5>
+            <input
+              name="bannerImg"
+              value={siteDetailForm.bannerImg}
+              placeholder="Input image link here"
+            ></input>
           </label>
         </form>
+        <label>
+          <h5>Upload new image to gallery</h5>
+          <input id="gallery-input" placeholder="Input image link here"></input>
+        </label>
+        <button
+          onClick={() => {
+            if (document.getElementById("gallery-input").value !== "") {
+              setSiteGallery([
+                ...siteGallery,
+                document.getElementById("gallery-input").value,
+              ]);
+              document.getElementById("gallery-input").value = "";
+            } else {
+              alert("no image");
+            }
+          }}
+        >
+          Upload this image
+        </button>
         <h5>Site Gallery</h5>
+        <h6>Click below to preview the image!</h6>
         <select
           id="gallery-image-select"
           size="5"
@@ -308,45 +327,47 @@ export default function EditSitePage(props) {
             Delete this image
           </button>
         </div>
-        <label>
-          <h5>Upload new image to gallery</h5>
-          <input id="gallery-input"></input>
-        </label>
         <button
-          onClick={() => {
-            if (document.getElementById("gallery-input").value !== "") {
-              setSiteGallery([
-                ...siteGallery,
-                document.getElementById("gallery-input").value,
-              ]);
-              document.getElementById("gallery-input").value = "";
-            } else {
-              alert("no image");
-            }
-          }}
-        >
-          Upload this image
-        </button>
-        <button
-          onClick={() => {
-            console.log(siteDetailForm);
-            let tmpSiteDetailForm = siteDetailForm;
-            tmpSiteDetailForm.gallery = siteGallery;
-            console.log("!!!!", tmpSiteDetailForm);
-            editSiteDetail(data.title, tmpSiteDetailForm);
+          onClick={(event) => {
+            editSiteDetail(data.title, {
+              ...siteDetailForm,
+              gallery: siteGallery,
+            });
+            let button = event.currentTarget;
+            showSubmit(button, "Submitted");
           }}
         >
           Submit Detail Change
         </button>
       </div>
-      <button
-        onClick={() => {
-          toggleSiteStatus(data.title);
-        }}
-        className="site-info"
-      >
-        Publish/Retract the site
-      </button>
+      <div className="site-info">
+        <h3>
+          Currently, this page is{" "}
+          <span
+            className={
+              sitePublishedStatus
+                ? "page-status-published"
+                : "page-status-retracted"
+            }
+          >
+            {sitePublishedStatus ? "PUBLISHED" : "RETRACTED"}
+          </span>
+        </h3>
+        <button
+          onClick={(event) => {
+            toggleSiteStatus(data.title);
+            setTimeout(() => {
+              setSitePublishedStatus(!sitePublishedStatus);
+            }, 200);
+            showSubmit(
+              event.currentTarget,
+              !sitePublishedStatus ? "PUBLISHED" : "RETRACTED"
+            );
+          }}
+        >
+          {"Publish/Retract" + " the site"}
+        </button>
+      </div>
     </div>
   );
 }
@@ -359,4 +380,16 @@ function convert(strings) {
       .reduce((result, element) => result + element + "\n\n", "")
       .slice(0, -2);
   }
+}
+
+function showSubmit(button, message) {
+  let originText = button.textContent;
+  button.classList.add("submitted");
+  button.textContent = message;
+  button.disabled = true;
+  setTimeout(() => {
+    button.classList.remove("submitted");
+    button.textContent = originText;
+    button.disabled = false;
+  }, 500);
 }
