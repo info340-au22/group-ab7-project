@@ -24,6 +24,11 @@ form input {
   border-color: lightgray;
   width: 100%;
 }
+.email-footer {
+  text-align: center;
+
+}
+
 
 label {
   width: 100%;
