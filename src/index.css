@@ -1283,12 +1283,31 @@ p a {
   .filter {
     height: 6rem;
   }
+
+  .state-info-card {
+    flex-direction: column;
+  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 598px) {
   .filter {
     height: 8rem;
   }
+
+  .state-card-container {
+    width: 80%;
+    flex-direction: row;
+  }
+
+  .state-info-card {
+    flex-direction: column;
+  }
+
+  .state-info {
+    margin: 0 0 0 0;
+  }
+
+  
 }
 
 @media (min-width: 768px) {
