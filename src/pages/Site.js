@@ -33,10 +33,25 @@ export default function HomePage(props) {
   const [authorData, setAuthorData] = useState({});
   const [siteRatings, setSiteRatings] = useState([0, 0, 0, 0, 0]);
   const [comments, setComments] = useState([]);
+  const [siteBookmarked, setSiteBookmarked] = useState(false);
+  let userId = "";
+  if (getAuth().currentUser !== null) {
+    userId = getAuth().currentUser.uid;
+  }
+  let userBookmarkLink = "users/" + userId + "/bookmarks/" + siteName;
+  const db = getDatabase();
+  const cardsRef = ref(db);
 
   useEffect(() => {
-    const db = getDatabase();
-    const cardsRef = ref(db);
+    get(child(cardsRef, userBookmarkLink))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setSiteBookmarked(snapshot.val());
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     get(child(cardsRef, "sitesDetail/" + siteName))
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -67,11 +82,18 @@ export default function HomePage(props) {
       });
   }, []);
 
+  useEffect(() => {
+    set(ref(db, userBookmarkLink), siteBookmarked);
+  }, [siteBookmarked, userId]);
+
   if (loading) {
     return <h3>Loading...</h3>;
   } else {
     return (
       <div>
+        <div className="popup-message hidden">
+          <p></p>
+        </div>
         <div
           className="site-page-header"
           style={{ backgroundImage: `url(${data.bannerImg})` }}
@@ -106,7 +128,11 @@ export default function HomePage(props) {
             />
             <CommentArea comments={comments} />
           </div>
-          <SideBarRight siteName={data.title} />
+          <SideBarRight
+            bookmarked={siteBookmarked}
+            setBookmarked={setSiteBookmarked}
+            siteName={data.title}
+          />
           <div className="balancer"></div>
         </div>
       </div>
@@ -236,6 +262,14 @@ function SiteRating(props) {
 
 function SideBarRight(props) {
   const navigate = useNavigate();
+  function copy() {
+    const el = document.createElement('input');
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
   return (
     <div className="operation-bar side-bar">
       <ul>
@@ -246,8 +280,20 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="focus"
           title="Add to Bookmark"
+          onClick={() => {
+            showMessage(
+              !props.bookmarked
+                ? "Saved to bookmarks!"
+                : "Deleted from bookmarks!"
+            );
+            props.setBookmarked(!props.bookmarked);
+          }}
         >
-          <i className="fa-regular fa-bookmark"></i>
+          {props.bookmarked ? (
+            <i className="fa-solid fa-bookmark"></i>
+          ) : (
+            <i className="fa-regular fa-bookmark"></i>
+          )}
         </li>
         <li
           tabIndex="0"
@@ -255,6 +301,10 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="hover"
           title="Share"
+          onClick={() => {
+            showMessage("Link copied!");
+            copy();
+          }}
         >
           <i className="fa-solid fa-share-from-square"></i>
         </li>
@@ -432,4 +482,18 @@ function SingleComment(props) {
       </div>
     </div>
   );
+}
+
+function showMessage(message) {
+  document.querySelector(".popup-message p").textContent = message;
+  document.querySelector(".popup-message").classList.remove("hidden");
+  document.querySelector(".popup-message").classList.add("fade-in");
+  setTimeout(() => {
+    document.querySelector(".popup-message").classList.add("fade-out");
+    document.querySelector(".popup-message").classList.remove("fade-in");
+  }, 600);
+  setTimeout(() => {
+    document.querySelector(".popup-message").classList.add("hidden");
+    document.querySelector(".popup-message").classList.remove("fade-out");
+  }, 980);
 }

@@ -37,30 +37,34 @@ function StateBrief(props) {
   return (
     <div className="page-middle state-info">
       <div className="shadow state-info-card">
-        <img
-          src={"img/seal-" + props.data.short.toLowerCase() + ".png"}
-          alt={props.data.name}
-        />
-        <div className="state-info-mid">
-          <p>
-            <span className="state-name">{props.data.name}</span>{" "}
-            <span className="state-nickname">"{props.data.nickname}"</span>
-          </p>
-          <p>Motto: {props.data.motto}</p>
-          <p>{props.data.description}</p>
+        <div className="state-title">
+          <p className="state-name">{props.data.name}</p>
+          <p className="state-nickname">"{props.data.nickname}"</p>
         </div>
-        <table className="state-info-table">
-          <tbody>
-            {attributes.map((element) => {
-              return (
-                <tr key={element.name}>
-                  <td>{element.name}</td>
-                  <td>{props.data[element.attr]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div>
+          <div className="state-detail">
+            <img
+              src={"img/seal-" + props.data.short.toLowerCase() + ".png"}
+              alt={props.data.name}
+            />
+            <table className="state-info-table">
+              <tbody>
+                {attributes.map((element) => {
+                  return (
+                    <tr key={element.name}>
+                      <td>{element.name}</td>
+                      <td>{props.data[element.attr]}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="state-info-mid">
+            <p>Motto: {props.data.motto}</p>
+            <p>{props.data.description}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
