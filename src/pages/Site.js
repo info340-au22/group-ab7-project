@@ -263,11 +263,11 @@ function SiteRating(props) {
 function SideBarRight(props) {
   const navigate = useNavigate();
   function copy() {
-    const el = document.createElement('input');
+    const el = document.createElement("input");
     el.value = window.location.href;
     document.body.appendChild(el);
     el.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(el);
   }
   return (
@@ -471,12 +471,23 @@ function SingleComment(props) {
 
   return (
     <div className="single-comment">
-      <img src={userData.avatar} alt={"avatar of " + userData.name}></img>
+      <img
+        className="avatar-1"
+        src={userData.avatar}
+        alt={"avatar of " + userData.name}
+      ></img>
       <div>
-        <div className="comment-info">
-          <h4>{userData.name}</h4>
-          <Stars starCount={comment.stars} />
-          <p>{comment.time === undefined ? "" : comment.time}</p>
+        <div className="comment-user">
+          <img
+            className="avatar-2"
+            src={userData.avatar}
+            alt={"avatar of " + userData.name}
+          ></img>
+          <div className="comment-info">
+            <h4>{userData.name}</h4>
+            <Stars starCount={comment.stars} />
+            <p>{comment.time === undefined ? "" : comment.time}</p>
+          </div>
         </div>
         <p>{comment.comment}</p>
       </div>
