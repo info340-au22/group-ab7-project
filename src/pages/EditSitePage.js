@@ -148,7 +148,7 @@ export default function EditSitePage(props) {
           <h5>State</h5>
           <Form.Select
             name="state"
-            defaultValue={siteInfoForm.state}
+            value={siteInfoForm.state}
             onChange={(event) => {
               let select = event.currentTarget;
               setSiteDetailForm({
@@ -171,7 +171,7 @@ export default function EditSitePage(props) {
             })}
           </Form.Select>
           <h5>Type</h5>
-          <Form.Select name="siteType" defaultValue={siteInfoForm.siteType}>
+          <Form.Select name="siteType" value={siteInfoForm.siteType}>
             {siteInfoForm.siteType === "" ? (
               <option value="">Select Type...</option>
             ) : (
