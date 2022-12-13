@@ -262,6 +262,14 @@ function SiteRating(props) {
 
 function SideBarRight(props) {
   const navigate = useNavigate();
+  function copy() {
+    const el = document.createElement('input');
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
   return (
     <div className="operation-bar side-bar">
       <ul>
@@ -295,6 +303,7 @@ function SideBarRight(props) {
           title="Share"
           onClick={() => {
             showMessage("Link copied!");
+            copy();
           }}
         >
           <i className="fa-solid fa-share-from-square"></i>
