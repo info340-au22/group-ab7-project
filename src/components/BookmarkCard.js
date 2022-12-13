@@ -20,11 +20,25 @@ export default function BookmarkCard(props) {
       "_blank"
     );
   }
+  /*
+onClick={(event) => {
+            if (
+              props.clickable !== "false" &&
+              !event.target.classList.contains("bookmark")
+            ) {
+              navigate("/site?siteName=" + singleSiteData.title);
+            }
+          }
+
+  */
   return (
     <div
       className="card bookmark-card"
-      onClick={() => {
-        navigate("/site?siteName=" + data.title);
+      onClick={(event) => {
+        if(!event.target.classList.contains("findFlights")) {
+          navigate("/site?siteName=" + data.title);
+        }
+        
       }}
     >
       <img
