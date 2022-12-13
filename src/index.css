@@ -676,7 +676,7 @@ img {
 
 .state-info {
   width: 80%;
-  padding: 30px;
+  padding: 20px 0;
 }
 
 .state-card-container {
@@ -1384,18 +1384,8 @@ img.avatar-2 {
 }
 
 @media (max-width: 598px) {
-  .state-card-container {
-    width: 80%;
-    flex-direction: row;
-  }
-
   .state-info-card {
     flex-direction: column;
-    padding: 0 0 0.5px 0.5px;
-  }
-
-  .state-info {
-    font-size: 10pt;
     padding: 0 0 0.5px 0.5px;
   }
 }
@@ -1403,6 +1393,10 @@ img.avatar-2 {
 @media (min-width: 768px) {
   nav input {
     display: inline-block;
+  }
+
+  .state-info {
+    padding: 30px;
   }
 
   nav li {
