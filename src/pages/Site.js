@@ -33,10 +33,25 @@ export default function HomePage(props) {
   const [authorData, setAuthorData] = useState({});
   const [siteRatings, setSiteRatings] = useState([0, 0, 0, 0, 0]);
   const [comments, setComments] = useState([]);
+  const [siteBookmarked, setSiteBookmarked] = useState(false);
+  let userId = "";
+  if (getAuth().currentUser !== null) {
+    userId = getAuth().currentUser.uid;
+  }
+  let userBookmarkLink = "users/" + userId + "/bookmarks/" + siteName;
+  const db = getDatabase();
+  const cardsRef = ref(db);
 
   useEffect(() => {
-    const db = getDatabase();
-    const cardsRef = ref(db);
+    get(child(cardsRef, userBookmarkLink))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setSiteBookmarked(snapshot.val());
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     get(child(cardsRef, "sitesDetail/" + siteName))
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -66,6 +81,10 @@ export default function HomePage(props) {
         console.error(error);
       });
   }, []);
+
+  useEffect(() => {
+    set(ref(db, userBookmarkLink), siteBookmarked);
+  }, [siteBookmarked]);
 
   if (loading) {
     return <h3>Loading...</h3>;
@@ -106,7 +125,11 @@ export default function HomePage(props) {
             />
             <CommentArea comments={comments} />
           </div>
-          <SideBarRight siteName={data.title} />
+          <SideBarRight
+            bookmarked={siteBookmarked}
+            setBookmarked={setSiteBookmarked}
+            siteName={data.title}
+          />
           <div className="balancer"></div>
         </div>
       </div>
@@ -246,8 +269,13 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="focus"
           title="Add to Bookmark"
+          onClick={() => props.setBookmarked(!props.bookmarked)}
         >
-          <i className="fa-regular fa-bookmark"></i>
+          {props.bookmarked ? (
+            <i class="fa-solid fa-bookmark"></i>
+          ) : (
+            <i className="fa-regular fa-bookmark"></i>
+          )}
         </li>
         <li
           tabIndex="0"
