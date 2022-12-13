@@ -91,6 +91,9 @@ export default function HomePage(props) {
   } else {
     return (
       <div>
+        <div className="popup-message">
+          <p className="popup-message-content">TEST</p>
+        </div>
         <div
           className="site-page-header"
           style={{ backgroundImage: `url(${data.bannerImg})` }}

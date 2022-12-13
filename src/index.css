@@ -648,6 +648,10 @@ img {
   border-radius: 30px;
 }
 
+.row {
+  width: 100%;
+}
+
 /*
     styles for the states page, selecting states
   */
@@ -1324,18 +1328,6 @@ p a {
     font-size: 0.5rem;
     padding: 0 0 0.5px 0.5px;
   }
-<<<<<<< HEAD
-
-  .search-bar{
-    display:none;
-  }
-
-  .page-search-bar{
-    max-width: 20%;
-    position: center;
-  }
-=======
->>>>>>> 66f04b96ce9b71453508896d6675a4b12d3ab01e
 }
 
 @media (min-width: 768px) {
