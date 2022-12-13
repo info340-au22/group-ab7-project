@@ -1040,15 +1040,32 @@ p a {
 
 .state-info-card {
   width: 80%;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.state-title {
+  text-align: center;
+}
+
+.state-detail {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+}
+
+.state-detail table {
+  margin-left: 30px;
 }
 
 .state-info img {
   height: 250px;
   width: 250px;
+}
+
+.state-info-mid p:first-of-type {
+  text-align: center;
+  font-weight: bold;
 }
 
 .single-comment {
@@ -1120,7 +1137,6 @@ p a {
 
 .state-info-mid {
   margin: 20px;
-  width: 50%;
 }
 
 .state-info-table td {
@@ -1306,8 +1322,6 @@ p a {
   .state-info {
     margin: 0 0 0 0;
   }
-
-  
 }
 
 @media (min-width: 768px) {
