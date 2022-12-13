@@ -1301,13 +1301,22 @@ p a {
 
   .state-info-card {
     flex-direction: column;
+    padding: 0 0 0.5px 0.5px;
   }
 
   .state-info {
-    margin: 0 0 0 0;
+    font-size: 0.5rem;
+    padding: 0 0 0.5px 0.5px;
   }
 
-  
+  .search-bar{
+    display:none;
+  }
+
+  .page-search-bar{
+    max-width: 20%;
+    position: center;
+  }
 }
 
 @media (min-width: 768px) {
