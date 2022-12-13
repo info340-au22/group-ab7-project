@@ -84,15 +84,15 @@ export default function HomePage(props) {
 
   useEffect(() => {
     set(ref(db, userBookmarkLink), siteBookmarked);
-  }, [siteBookmarked]);
+  }, [siteBookmarked, userId]);
 
   if (loading) {
     return <h3>Loading...</h3>;
   } else {
     return (
       <div>
-        <div className="popup-message">
-          <p className="popup-message-content">TEST</p>
+        <div className="popup-message hidden">
+          <p></p>
         </div>
         <div
           className="site-page-header"
@@ -272,10 +272,17 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="focus"
           title="Add to Bookmark"
-          onClick={() => props.setBookmarked(!props.bookmarked)}
+          onClick={() => {
+            showMessage(
+              !props.bookmarked
+                ? "Saved to bookmarks!"
+                : "Deleted from bookmarks!"
+            );
+            props.setBookmarked(!props.bookmarked);
+          }}
         >
           {props.bookmarked ? (
-            <i class="fa-solid fa-bookmark"></i>
+            <i className="fa-solid fa-bookmark"></i>
           ) : (
             <i className="fa-regular fa-bookmark"></i>
           )}
@@ -286,6 +293,9 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="hover"
           title="Share"
+          onClick={() => {
+            showMessage("Link copied!");
+          }}
         >
           <i className="fa-solid fa-share-from-square"></i>
         </li>
@@ -463,4 +473,18 @@ function SingleComment(props) {
       </div>
     </div>
   );
+}
+
+function showMessage(message) {
+  document.querySelector(".popup-message p").textContent = message;
+  document.querySelector(".popup-message").classList.remove("hidden");
+  document.querySelector(".popup-message").classList.add("fade-in");
+  setTimeout(() => {
+    document.querySelector(".popup-message").classList.add("fade-out");
+    document.querySelector(".popup-message").classList.remove("fade-in");
+  }, 600);
+  setTimeout(() => {
+    document.querySelector(".popup-message").classList.add("hidden");
+    document.querySelector(".popup-message").classList.remove("fade-out");
+  }, 980);
 }
