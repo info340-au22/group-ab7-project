@@ -33,6 +33,7 @@ export default function HomePage(props) {
   const [authorData, setAuthorData] = useState({});
   const [siteRatings, setSiteRatings] = useState([0, 0, 0, 0, 0]);
   const [comments, setComments] = useState([]);
+<<<<<<< HEAD
   const [siteBookmarked, setSiteBookmarked] = useState(false);
   let userId = "";
   if (getAuth().currentUser !== null) {
@@ -41,6 +42,9 @@ export default function HomePage(props) {
   let userBookmarkLink = "users/" + userId + "/bookmarks/" + siteName;
   const db = getDatabase();
   const cardsRef = ref(db);
+=======
+  //const [siteBookmarked, setSiteBookmarked] = useState(false);
+>>>>>>> cc4cde765f5de35aa7066b23e02af85b552a759f
 
   useEffect(() => {
     get(child(cardsRef, userBookmarkLink))
@@ -82,9 +86,16 @@ export default function HomePage(props) {
       });
   }, []);
 
+<<<<<<< HEAD
   useEffect(() => {
     set(ref(db, userBookmarkLink), siteBookmarked);
   }, [siteBookmarked]);
+=======
+  //let handleClick = function (event) {
+    //set(ref(db, userBookmarkLink), !siteBookmarked);
+    //setSiteBookmarked(!siteBookmarked);
+  //};
+>>>>>>> cc4cde765f5de35aa7066b23e02af85b552a759f
 
   if (loading) {
     return <h3>Loading...</h3>;
@@ -269,7 +280,11 @@ function SideBarRight(props) {
           data-toggle="popover"
           data-trigger="focus"
           title="Add to Bookmark"
+<<<<<<< HEAD
           onClick={() => props.setBookmarked(!props.bookmarked)}
+=======
+          //onClick={handleClick}
+>>>>>>> cc4cde765f5de35aa7066b23e02af85b552a759f
         >
           {props.bookmarked ? (
             <i class="fa-solid fa-bookmark"></i>
