@@ -18,7 +18,7 @@ export default function SavedSites(props) {
     console.log(currentUser);
     if (currentUser !== null) {
       getBookMarks(currentUser.uid).then((element) => {
-        console.log(element);
+        //console.log(element);
         getSiteBrief(element).then((result) => {
           setBookmarks(result);
         });

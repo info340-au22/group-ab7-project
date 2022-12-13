@@ -8,15 +8,17 @@ export default function BookmarkCard(props) {
   const data = props.data;
   const name = data.siteName;
   const navigate = useNavigate();
-  function handleClick(stateFull) {
-    //(stateFull);
-    if (stateFull === "Washington") {
-      stateFull += " state";
+  //console.log(data);
+  function handleClick(data) {
+    //console.log(data.stateFull);
+    if (data.stateFull === "Washington") {
+      data.stateFull += " state";
     }
+    //console.log(stateFull);
     const url = "https://www.google.com";
     //console.log(url);
     window.open(
-      "http://google.com/search?q=" + stateFull + " flights",
+      "http://google.com/search?q=" + data.stateFull + " flights",
       "_blank"
     );
   }
@@ -50,7 +52,7 @@ onClick={(event) => {
         <h2 className="bookmark-heading">{data.siteName}</h2>
         <button
           className="findFlights"
-          onClick={() => handleClick(data.stateFull)}
+          onClick={() => handleClick(data)}
         >
           Find Flights
         </button>
