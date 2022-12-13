@@ -1094,6 +1094,14 @@ p a {
 
 .state-title {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-title p {
+  margin: 0;
 }
 
 .state-detail {
@@ -1403,6 +1411,10 @@ p a {
   #nav-username,
   .index-bar {
     display: block;
+  }
+
+  .state-title {
+    flex-direction: row;
   }
 
   .map-image {

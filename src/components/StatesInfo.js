@@ -38,10 +38,8 @@ function StateBrief(props) {
     <div className="page-middle state-info">
       <div className="shadow state-info-card">
         <div className="state-title">
-          <p>
-            <span className="state-name">{props.data.name}</span>{" "}
-            <span className="state-nickname">"{props.data.nickname}"</span>
-          </p>
+          <p className="state-name">{props.data.name}</p>
+          <p className="state-nickname">"{props.data.nickname}"</p>
         </div>
         <div>
           <div className="state-detail">
